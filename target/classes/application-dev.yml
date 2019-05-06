@@ -1,0 +1,8 @@
+#开发环境
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: zfy
+    password: 123456
+    url: jdbc:mysql://39.105.229.163:3306/user?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false

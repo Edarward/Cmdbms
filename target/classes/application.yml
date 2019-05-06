@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    tomcat:
+      uri-encoding: UTF-8
+    http:
+      encoding:
+        charset: UTF-8
+        enabled: true
+        force: true
+
+mybatis:
+  mapperLocations: classpath:mappers/*Mapper.xml
+
+
