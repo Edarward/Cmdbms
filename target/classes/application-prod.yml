@@ -5,4 +5,4 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: DBMS
     password: S4LEdMTafP6e2kE4
-    url: jdbc:mysql://39.105.229.163:3306/DBMS?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://39.105.229.163:3306/db_cmdbms?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false

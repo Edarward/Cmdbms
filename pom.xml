@@ -98,4 +98,14 @@
 
     </dependencies>
 
+    <build>
+        <!-- 打war包使用 -->
+        <finalName>api</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
