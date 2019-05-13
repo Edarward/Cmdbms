@@ -20,4 +20,16 @@ public class EnergySerImpl implements EnergySer {
         System.out.println(record);
         return record.toString();
     }
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int delwater(Integer id){
+        waterMapper.deleteByPrimaryKey(id);
+        return id;
+    }
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public String updatewater(Water water){
+        Integer integer = waterMapper.updateByPrimaryKey(water);
+        return integer.toString();
+    }
 }

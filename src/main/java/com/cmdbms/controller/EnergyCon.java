@@ -18,7 +18,7 @@ public class EnergyCon {
     private WaterMapper waterMapper;
     @Autowired
     EnergySer energySer;
-    @PostMapping("/insertwater")
+    @PostMapping("/insertWater")
     public ResultVO insertOne (Water water){
         try {
             return ResultUtils.success(energySer.insertOne(water));
@@ -27,4 +27,23 @@ public class EnergyCon {
             return ResultUtils.error(-1,"失败");
         }
     }
+
+    @PostMapping("/delWater")
+    public ResultVO delwater (Integer id){
+        try {
+            return ResultUtils.success(energySer.delwater(id));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+    @PostMapping("/updateWater")
+    public ResultVO updatewater (Water water){
+        try {
+            return ResultUtils.success(energySer.updatewater(water));
+        }catch (Exception e){
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+    
 }
