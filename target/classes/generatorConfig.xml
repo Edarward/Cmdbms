@@ -4,53 +4,47 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-  <!--
-    出现错误：Caused by: java.lang.ClassNotFoundException: com.mysql.jdbc.Driver
-    解决办法：将本地的MAVEN仓库中的mysql驱动引入进来
-   -->
+
   <classPathEntry location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar"/>
   <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
-    <!-- jdbc的数据库连接 --> <!-- 需要修改的地方-->
+
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                     connectionURL="jdbc:mysql://39.105.229.163:3306/db_cmdbms"
                     userId="DBMS"
                     password="S4LEdMTafP6e2kE4">
     </jdbcConnection>
 
-    <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制-->
+
     <javaTypeResolver>
       <property name="forceBigDecimals" value="false" />
     </javaTypeResolver>
 
-    <!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类
-            targetPackage     指定生成的model生成所在的包名
-            targetProject     指定在该项目下所在的路径
-        -->
-    <!-- 需要修改的地方  targetPackage  targetProject-->
+
+
     <javaModelGenerator targetPackage="com.cmdbms.model" targetProject="H:\GitHub\Cmdbms\src\main\java">
-      <!-- 是否对model添加 构造函数 -->
+
       <property name="constructorBased" value="true"/>
-      <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+
       <property name="enableSubPackages" value="true" />
-      <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
+
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
 
-    <!-- 需要修改的地方  targetProject-->
-    <!--指定sql映射文件生成的位置 -->
+
+
     <sqlMapGenerator targetPackage="mappers"  targetProject="H:\GitHub\Cmdbms\src\main\resources">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
 
-    <!-- 需要修改的地方  targetPackage  targetProject-->
-    <!-- 指定dao接口生成的位置，mapper接口 -->
+
+
     <javaClientGenerator type="XMLMAPPER" targetPackage="com.cmdbms.mapper"  targetProject="H:\GitHub\Cmdbms\src\main\java" >
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 
 
-    <!-- 配置表信息，这里每生成一张表，这里需要改变一次对应表名 -->
-    <!-- 占位符%表示所有表 -->
+
+
     <table tableName="t%" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
            enableSelectByExample="false" selectByExampleQueryId="true" >
       <property name="useActualColumnNames" value="true"/>

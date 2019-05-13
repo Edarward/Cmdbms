@@ -1,7 +1,8 @@
 package com.cmdbms.controller;
 
-import com.cmdbms.mapper.SpoilageMapper;
+import com.cmdbms.mapper.WaterMapper;
 import com.cmdbms.model.Spoilage;
+import com.cmdbms.model.Water;
 import com.cmdbms.service.EnergySer;
 import com.cmdbms.util.ResultUtils;
 import com.cmdbms.vo.ResultVO;
@@ -14,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/energy")
 public class EnergyCon {
     @Autowired
-    private SpoilageMapper spoilageMapper;
+    private WaterMapper waterMapper;
     @Autowired
     EnergySer energySer;
-    @PostMapping("/insertOne")
-    public ResultVO insertOne (Spoilage spoilage){
+    @PostMapping("/insertwater")
+    public ResultVO insertOne (Water water){
         try {
-            return ResultUtils.success(energySer.insertOne(spoilage));
+            return ResultUtils.success(energySer.insertOne(water));
         }catch (Exception e){
             e.printStackTrace();
             return ResultUtils.error(-1,"失败");

@@ -1,7 +1,7 @@
 package com.cmdbms.service;
 
-import com.cmdbms.model.Spoilage;
+import com.cmdbms.model.Water;
 
 public interface EnergySer {
-    String insertOne(Spoilage spoilage);
+    String insertOne(Water water);
 }

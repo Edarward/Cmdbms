@@ -1,5 +1,7 @@
 package com.cmdbms.service;
 
+import com.cmdbms.model.Argcoure;
+
 import java.util.List;
 
 public interface ArrangeCourseSer {

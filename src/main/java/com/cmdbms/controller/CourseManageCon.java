@@ -1,5 +1,6 @@
 package com.cmdbms.controller;
 
+import com.cmdbms.model.Course;
 import com.cmdbms.service.CourseManageSer;
 import com.cmdbms.util.ResultUtils;
 import com.cmdbms.vo.ResultVO;
