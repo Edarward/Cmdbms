@@ -26,7 +26,7 @@ public class Water {
      *
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
-    private double watQuantity;
+    private Double watQuantity;
 
     /**
      *
@@ -61,7 +61,7 @@ public class Water {
      *
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
-    public Water(Integer watId, String watPlace, double watQuantity, Integer watMonth, Integer watYear, String watPlaceType) {
+    public Water(Integer watId, String watPlace, Double watQuantity, Integer watMonth, Integer watYear, String watPlaceType) {
         this.watId = watId;
         this.watPlace = watPlace;
         this.watQuantity = watQuantity;
@@ -136,7 +136,7 @@ public class Water {
      *
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
-    public double getWatQuantity() {
+    public Double getWatQuantity() {
         return watQuantity;
     }
 
@@ -148,7 +148,7 @@ public class Water {
      *
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
-    public void setWatQuantity(double watQuantity) {
+    public void setWatQuantity(Double watQuantity) {
         this.watQuantity = watQuantity;
     }
 

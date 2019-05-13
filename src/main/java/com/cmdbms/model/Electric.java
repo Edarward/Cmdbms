@@ -26,7 +26,7 @@ public class Electric {
      *
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
-    private Long eleQuantity;
+    private Double eleQuantity;
 
     /**
      *
@@ -61,7 +61,7 @@ public class Electric {
      *
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
-    public Electric(Integer eleId, Integer elePlace, Long eleQuantity, Integer eleMonth, Integer eleYear, String elePlaceType) {
+    public Electric(Integer eleId, Integer elePlace, Double eleQuantity, Integer eleMonth, Integer eleYear, String elePlaceType) {
         this.eleId = eleId;
         this.elePlace = elePlace;
         this.eleQuantity = eleQuantity;
@@ -136,7 +136,7 @@ public class Electric {
      *
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
-    public Long getEleQuantity() {
+    public Double getEleQuantity() {
         return eleQuantity;
     }
 
@@ -148,7 +148,7 @@ public class Electric {
      *
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
-    public void setEleQuantity(Long eleQuantity) {
+    public void setEleQuantity(Double eleQuantity) {
         this.eleQuantity = eleQuantity;
     }
 

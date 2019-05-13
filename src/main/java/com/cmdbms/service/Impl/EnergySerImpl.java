@@ -1,18 +1,21 @@
 package com.cmdbms.service.Impl;
 
+import com.cmdbms.mapper.ElectricMapper;
 import com.cmdbms.mapper.SpoilageMapper;
 import com.cmdbms.mapper.WaterMapper;
+import com.cmdbms.model.Electric;
 import com.cmdbms.model.Water;
 import com.cmdbms.service.EnergySer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 @Service
 public class EnergySerImpl implements EnergySer {
     @Autowired
     WaterMapper waterMapper;
-
+    ElectricMapper electricMapper;
     @Override
     @Transactional(rollbackFor = Exception.class)
     public String insertOne(Water water){
@@ -31,5 +34,18 @@ public class EnergySerImpl implements EnergySer {
     public String updatewater(Water water){
         Integer integer = waterMapper.updateByPrimaryKey(water);
         return integer.toString();
+    }
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public List<Water> selectwater(String watPlace,Integer watMonth,Integer watYear,String watPlaceType){
+        List<Water> waterList= waterMapper.selectByPrimaryKey(watPlace,watMonth,watYear,watPlaceType);
+        System.out.println(waterList);
+        return waterList;
+    }
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public String insertelectricity (Electric electric){
+        electricMapper.insert(electric);
+        return electric.toString();
     }
 }
