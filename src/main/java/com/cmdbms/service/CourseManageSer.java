@@ -1,7 +1,5 @@
 package com.cmdbms.service;
 
-import com.cmdbms.model.Course;
-
 import java.util.List;
 
 public interface CourseManageSer {

@@ -1,7 +1,5 @@
 package com.cmdbms.service.Impl;
 
-import com.cmdbms.mapper.CourseMapper;
-import com.cmdbms.model.Course;
 import com.cmdbms.service.CourseManageSer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
