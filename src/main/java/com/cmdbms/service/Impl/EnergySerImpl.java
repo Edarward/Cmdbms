@@ -55,4 +55,16 @@ public class EnergySerImpl implements EnergySer {
         Integer integer = electricMapper.insert(electric);
         return integer.toString();
     }
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int delelectricity (Integer id){
+        electricMapper.deleteByPrimaryKey(id);
+        return id;
+    }
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public List<Electric> selectElectricity(Integer elePlace,Integer eleMonth,Integer eleYear,String elePlaceType){
+        List<Electric> electricList = electricMapper.selectByPrimaryKey(elePlace,eleMonth,eleYear,elePlaceType);
+        return electricList;
+    }
 }

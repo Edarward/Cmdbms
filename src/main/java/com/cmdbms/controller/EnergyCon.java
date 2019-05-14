@@ -33,7 +33,7 @@ public class EnergyCon {
     }
 
     @PostMapping("/delWater")
-    public ResultVO delwater (Integer id){
+    public ResultVO delWater (Integer id){
         try {
             return ResultUtils.success(energySer.delwater(id));
         }catch (Exception e){
@@ -42,7 +42,7 @@ public class EnergyCon {
         }
     }
     @PostMapping("/updateWater")
-    public ResultVO updatewater (Water water){
+    public ResultVO updateWater (Water water){
         try {
             return ResultUtils.success(energySer.updatewater(water));
         }catch (Exception e){
@@ -50,7 +50,7 @@ public class EnergyCon {
         }
     }
     @GetMapping("/selectWater")
-    public ResultVO selectwater (String watPlace,Integer watMonth,Integer watYear,String watPlaceType){
+    public ResultVO selectWater (String watPlace,Integer watMonth,Integer watYear,String watPlaceType){
         try {
             return ResultUtils.success(energySer.selectwater(watPlace,watMonth,watYear,watPlaceType));
         } catch (Exception e) {
@@ -58,7 +58,7 @@ public class EnergyCon {
         }
     }
     @PostMapping("/insertElectricity")
-    public ResultVO insertelectricity (Electric electric){
+    public ResultVO insertElectricity (Electric electric){
         try {
             return ResultUtils.success(energySer.insertElectricity(electric));
         }catch (Exception e){
@@ -66,4 +66,22 @@ public class EnergyCon {
             return ResultUtils.error(-1,"失败");
         }
     }
+    @PostMapping("/delElectricity")
+    public ResultVO delElectricity (Integer id){
+        try {
+            return ResultUtils.success(energySer.delelectricity(id));
+        }catch (Exception e){
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+    @GetMapping("/selectElectricity")
+    public ResultVO selectElectricity (Integer elePlace,Integer eleMonth,Integer eleYear,String elePlaceType){
+        try {
+            return ResultUtils.success(energySer.selectElectricity(elePlace,eleMonth,eleYear,elePlaceType));
+        }catch (Exception e){
+            System.out.println(e);
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
 }

@@ -16,4 +16,8 @@ public interface EnergySer {
     List<Water> selectwater(String watPlace,Integer watMonth,Integer watYear,String watPlaceType);
 
     String insertElectricity (Electric electric);
+
+    int delelectricity (Integer id);
+
+    List<Electric> selectElectricity(Integer elePlace,Integer eleMonth,Integer eleYear,String elePlaceType);
 }
