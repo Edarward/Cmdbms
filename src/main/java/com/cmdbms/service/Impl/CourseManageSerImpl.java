@@ -1,6 +1,8 @@
 package com.cmdbms.service.Impl;
 
 import com.cmdbms.mapper.CourseMapper;
+import com.cmdbms.mapper.TeaarghisMapper;
+import com.cmdbms.mapper.TeaarrangeMapper;
 import com.cmdbms.model.Course;
 import com.cmdbms.service.CourseManageSer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +15,11 @@ public class CourseManageSerImpl  implements CourseManageSer {
 
     @Autowired
     CourseMapper courseMapper;
-
+    TeaarrangeMapper teaarrangeMapper;
+    TeaarghisMapper teaarghisMapper;
 
     @Override
-    public int insertOne(Course course){
-
-        return  courseMapper.insert(course);
-    }
+    public int insertOne(Course course){     return  courseMapper.insert(course); }
 
     @Override
     public  List selectOne(){

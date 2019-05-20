@@ -45,4 +45,9 @@ public interface TeaarrangeMapper {
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
     int updateByPrimaryKey(Teaarrange record);
+
+
+    /*查询教师姓名，课程名字，上课时间，上课教室，上课日期*/
+    List selectTeaarrange();
+
 }

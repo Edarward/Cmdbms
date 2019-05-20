@@ -71,4 +71,6 @@
     select id, name, period, credit, compulsory, offlineTeach
     from t_course
   </select>
+
+
 </mapper>

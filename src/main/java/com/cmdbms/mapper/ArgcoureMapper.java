@@ -45,4 +45,7 @@ public interface ArgcoureMapper {
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
     int updateByPrimaryKey(Argcoure record);
+
+    List selectCourse();
+
 }

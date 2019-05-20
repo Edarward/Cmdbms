@@ -45,4 +45,8 @@ public interface CourseMapper {
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
     int updateByPrimaryKey(Course record);
+
+
+    /*查询课表信息*/
+    List selectCourse();
 }
