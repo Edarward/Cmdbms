@@ -10,22 +10,14 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @MapperScan("com.cmdbms.mapper")
 //war包使用
 public class CommerceApplication extends SpringBootServletInitializer {
-    public static void main(String[] args) { SpringApplication.run(CommerceApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(CommerceApplication.class, args);
     }
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(CommerceApplication.class);
-    } }
-
-
-//普通写法
-/*public class CommerceApplication {
-
-    public static void main (String[] args) {
-        SpringApplication.run(CommerceApplication.class,args);
     }
-
-}*/
+}
 
 
 

@@ -1,6 +1,17 @@
 spring:
   profiles:
     active: prod
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    defaultPropertyInclusion: NON_EMPTY
+    deserialization:
+      fail_on_unknown_properties: false
+    parser:
+      allow_single_quotes: true
+      allow_unquoted_control_chars: true
+    serialization:
+      fail_on_empty_beans: false
+      indent_output: true
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     tomcat:
@@ -10,8 +21,11 @@ spring:
         charset: UTF-8
         enabled: true
         force: true
+  aop:
+    proxy-target-class: true
 
 mybatis:
   mapperLocations: classpath:mappers/*Mapper.xml
-
-
+server:
+  servlet:
+    context-path: /api

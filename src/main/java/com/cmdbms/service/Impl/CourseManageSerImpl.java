@@ -15,7 +15,9 @@ public class CourseManageSerImpl  implements CourseManageSer {
 
     @Autowired
     CourseMapper courseMapper;
+    @Autowired
     TeaarrangeMapper teaarrangeMapper;
+    @Autowired
     TeaarghisMapper teaarghisMapper;
 
     @Override
