@@ -46,6 +46,6 @@ public interface ArgcoureMapper {
      */
     int updateByPrimaryKey(Argcoure record);
 
-    List selectCourse();
+    //List selectCourse();
 
 }

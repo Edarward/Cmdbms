@@ -21,7 +21,8 @@ public class ArrangeCourseSerImpl implements ArrangeCourseSer{
 
     @Override
     public List selectOne(){
-        return argcoureMapper.selectCourse();
+//        return argcoureMapper.selectCourse();
+        return null;
     }
 
     @Override
