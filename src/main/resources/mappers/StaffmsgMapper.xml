@@ -89,4 +89,22 @@
     politicalStatus, salaryLevel
     from t_staff_msg
   </select>
+
+  <select id="selectTeaId" resultType="int">
+    <!--
+       通过老师的名字查找老师的ID
+     -->
+    SELECT id
+    FROM t_staff_msg A
+    WHERE A.`name` = #{name,jdbcType=VARCHAR};
+  </select>
+
+  <select id="selectNamefromId" resultType="string">
+    SELECT A.`name`
+  FROM t_staff_msg A
+  WHERE A.id = #{id,jdbcType=INTEGER};
+
+
+  </select>
+
 </mapper>

@@ -46,7 +46,10 @@ public interface CourseMapper {
      */
     int updateByPrimaryKey(Course record);
 
+    int selectIDfromName(String name);
+
+    String selectNamefromId(int id);
 
     /*查询课表信息*/
-    List selectCourse();
+    //List selectCourse();
 }

@@ -45,4 +45,9 @@ public interface StaffmsgMapper {
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
     int updateByPrimaryKey(Staffmsg record);
+
+    int selectTeaId(String name);
+
+    String selectNamefromId(int id);
+
 }

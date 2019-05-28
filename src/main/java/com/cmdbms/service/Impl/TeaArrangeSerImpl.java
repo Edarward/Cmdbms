@@ -4,13 +4,21 @@ import com.cmdbms.mapper.TeaarrangeMapper;
 import com.cmdbms.model.Teaarrange;
 import com.cmdbms.service.TeaArrangeSer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class TeaArrangeSerImpl implements TeaArrangeSer {
 
     @Autowired
     TeaarrangeMapper teaarrangeMapper;
+
+    @Override
+    public  int insertOne(Teaarrange teaarrange){
+     return 0;
+    }
 
     @Override
     public List selectOne(){

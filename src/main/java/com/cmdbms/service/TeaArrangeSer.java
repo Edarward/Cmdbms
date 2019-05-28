@@ -8,9 +8,10 @@ public interface TeaArrangeSer {
 
     List selectOne();
 
-    int updateOne(Teaarrange course);
+    int updateOne(Teaarrange teaarrange);
 
     int deleteOne(int id);
 
+    int insertOne(Teaarrange teaarrange);
 
 }
