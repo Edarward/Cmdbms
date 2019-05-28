@@ -6,6 +6,7 @@ import com.cmdbms.model.Water;
 import com.cmdbms.service.EnergySer;
 import com.cmdbms.util.ResultUtils;
 import com.cmdbms.vo.ResultVO;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/energy")
+@Api("用电模块")
 public class EnergyCon {
     @Autowired
     private WaterMapper waterMapper;
