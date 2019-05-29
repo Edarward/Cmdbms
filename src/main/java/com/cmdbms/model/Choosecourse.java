@@ -20,7 +20,6 @@ public class Choosecourse {
         this.applytime = applytime;
     }
 
-
     public Choosecourse() {
         super();
     }
