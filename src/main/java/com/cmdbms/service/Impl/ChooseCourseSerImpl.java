@@ -17,7 +17,7 @@ public class ChooseCourseSerImpl implements ChooseCourseSer {
 
     @Override
     public int stuChooseApply(Choosecourse choosecourse){
-        System.out.println(choosecourse.getApplytime());
+        System.out.println(choosecourse.getClassId());
         System.out.println(choosecourse.getStuID());
         return choosecourseMapper.insert(choosecourse);
     }
