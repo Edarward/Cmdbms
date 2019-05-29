@@ -45,4 +45,6 @@ public interface ChoosecourseMapper {
      * @mbg.generated Mon May 13 10:24:04 CST 2019
      */
     int updateByPrimaryKey(Choosecourse record);
+
+    List<Choosecourse> selectStuApply();
 }
