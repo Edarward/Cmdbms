@@ -1,5 +1,6 @@
 package com.cmdbms.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Check {
@@ -37,7 +38,7 @@ public class Check {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
-    private Byte cheTruefalse;
+    private Boolean cheTruefalse;
 
     /**
      *
@@ -72,7 +73,7 @@ public class Check {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
-    public Check(Integer cheId, Date cheTime, String chePlace, Byte cheTruefalse, String cheEquipment, Integer cheAmount, String cheMan) {
+    public Check(Integer cheId, Date cheTime, String chePlace, Boolean cheTruefalse, String cheEquipment, Integer cheAmount, String cheMan) {
         this.cheId = cheId;
         this.cheTime = cheTime;
         this.chePlace = chePlace;
@@ -172,7 +173,7 @@ public class Check {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
-    public Byte getCheTruefalse() {
+    public Boolean getCheTruefalse() {
         return cheTruefalse;
     }
 
@@ -184,7 +185,7 @@ public class Check {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
-    public void setCheTruefalse(Byte cheTruefalse) {
+    public void setCheTruefalse(Boolean cheTruefalse) {
         this.cheTruefalse = cheTruefalse;
     }
 
