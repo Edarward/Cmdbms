@@ -18,5 +18,10 @@ public interface ChoosecourseMapper {
 
     int updateByPrimaryKey(Choosecourse record);
 
-    List<Choosecourse> selectStuApply();
+
+    //根据查询指定学生的选课信息
+    List<Choosecourse> selectStuApply(int stuId);
+
+
+
 }

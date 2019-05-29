@@ -79,9 +79,16 @@
 
     </select>
 
-  <select id="selectNamefromId" resultType="string">
+  <select id="selectNamefromId"  resultType="string">
     SELECT A.`name`
     FROM t_course A
+    WHERE A.id = #{id,jdbcType=INTEGER}
+
+  </select>
+
+  <select id="selectStuNamefromId" parameterType="java.lang.Integer" resultType="string">
+    SELECT A.`name`
+    FROM t_student_msg A
     WHERE A.id = #{id,jdbcType=INTEGER}
 
   </select>

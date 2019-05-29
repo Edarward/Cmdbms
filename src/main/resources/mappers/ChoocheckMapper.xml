@@ -67,4 +67,28 @@
     select id, clasId, stuId, applyTime, pass
     from t_choo_check
   </select>
+
+
+  <select id="selApplTimeByClaIdAndStuId" parameterType="java.lang.Integer"  resultType="java.sql.Timestamp">
+
+    SELECT A.applytime
+    FROM t_choose_course A
+    WHERE A.classId = #{classId,jdbcType=INTEGER} and A.stuID = #{StudentId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selChoCourIdByClaIdAndStuId" parameterType="java.lang.Integer"  resultType="java.lang.Integer">
+
+    SELECT A.id
+    FROM t_choo_check A
+    WHERE A.clasId = #{classId,jdbcType=INTEGER} and A.stuID = #{StudentId,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="selectInfoByStuId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    SELECT *
+    FROM t_choo_check A
+    WHERE A.stuId = #{stuId,jdbcType=INTEGER} and A.pass=0
+  </select>
+
 </mapper>

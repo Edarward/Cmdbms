@@ -11,7 +11,7 @@
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="classId" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="stuId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="applyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="applyTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />
       <arg column="pass" javaType="java.lang.Boolean" jdbcType="BIT" />
     </constructor>
   </resultMap>
@@ -67,4 +67,20 @@
     select id, classId, stuId, applyTime, pass
     from t_quit_check
   </select>
+
+
+  <select id="selApplTimeByClaIdAndStuId" parameterType="java.lang.Integer"  resultType="java.sql.Timestamp">
+
+    SELECT A.applytime
+    FROM t_quit_coure A
+    WHERE A.classId = #{classId,jdbcType=INTEGER} and A.stuID = #{studentId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selQuitCourIdByClaIdAndStuId" parameterType="java.lang.Integer"  resultType="java.lang.Integer">
+
+    SELECT A.id
+    FROM t_quit_coure A
+    WHERE A.classId = #{classId,jdbcType=INTEGER} and A.stuID = #{studentId,jdbcType=INTEGER}
+  </select>
+
 </mapper>

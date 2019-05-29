@@ -76,7 +76,7 @@
     -->
     select id, classId, stuID, applytime
     from t_choose_course
-    where
+    where stuID = #{stuId,jdbcType=INTEGER}
   </select>
 
 </mapper>

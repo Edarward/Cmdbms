@@ -3,6 +3,7 @@ package com.cmdbms.mapper;
 import com.cmdbms.model.Quitcheck;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
@@ -46,4 +47,8 @@ public interface QuitcheckMapper {
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
     int updateByPrimaryKey(Quitcheck record);
+
+    Timestamp selApplTimeByClaIdAndStuId(int classId,int studentId);
+
+    int selQuitCourIdByClaIdAndStuId(int classId,int studentId);
 }
