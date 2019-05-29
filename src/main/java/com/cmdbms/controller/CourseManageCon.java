@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/courseManage")
+
+/**************************************测试成功*****************************/
+
 public class CourseManageCon {
 
     @Autowired
-    CourseManageSer courseManageSer;
+    private  CourseManageSer courseManageSer;
 
 
     @PostMapping("/addCourse")
@@ -32,7 +35,7 @@ public class CourseManageCon {
         try {
             return ResultUtils.success(courseManageSer.selectOne());
         } catch (Exception e) {
-            return ResultUtils.error(-1,"添加失败！");
+            return ResultUtils.error(-1,"查询失败！");
         }
     }
 
@@ -41,7 +44,7 @@ public class CourseManageCon {
         try {
             return ResultUtils.success(courseManageSer.updateOne(course));
         } catch (Exception e) {
-            return ResultUtils.error(-1,"添加失败！");
+            return ResultUtils.error(-1,"修改失败！");
         }
     }
 
@@ -50,7 +53,7 @@ public class CourseManageCon {
         try {
             return ResultUtils.success(courseManageSer.deleteOne(id));
         } catch (Exception e) {
-            return ResultUtils.error(-1,"添加失败！");
+            return ResultUtils.error(-1,"删除失败！");
         }
     }
 }

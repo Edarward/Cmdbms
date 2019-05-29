@@ -1,25 +1,30 @@
 package com.cmdbms.controller;
 
-
-import com.cmdbms.mapper.ArgcoureMapper;
 import com.cmdbms.model.Argcoure;
 import com.cmdbms.service.ArrangeCourseSer;
 import com.cmdbms.util.ResultUtils;
 import com.cmdbms.vo.ResultVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/arrangeCourse")
+@Api("课程表模块")
 public class ArrangeCourseCon {
 
     @Autowired
-    ArrangeCourseSer arrangeCourseSer;
+    private ArrangeCourseSer arrangeCourseSer;
 
 
-    @PostMapping("/addCourse")
+    /***********测试ing**********/
+    @ApiOperation(value = "添加课表")
+    @PostMapping("/addArgCourse")
     public ResultVO addCourse (Argcoure argcoure) {
         try {
             return ResultUtils.success(arrangeCourseSer.insertOne(argcoure));
@@ -27,4 +32,39 @@ public class ArrangeCourseCon {
             return ResultUtils.error(-1,"添加失败！");
         }
     }
+
+
+    /***********测试成功************/
+    @ApiOperation(value = "修改课表")
+    @PostMapping("/updateArgCourse")
+    public ResultVO updateCourse (Argcoure argcoure) {
+        try {
+            return ResultUtils.success(arrangeCourseSer.updateOne(argcoure));
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"更改失败！");
+        }
+    }
+
+    @ApiOperation(value = "删除课表")
+    @PostMapping("/delArgCourse")
+    public ResultVO delCourse (int id) {
+        try {
+            return ResultUtils.success(arrangeCourseSer.deleteOne(id));
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"删除失败！");
+        }
+    }
+
+
+    /*测试成功*/
+    @ApiOperation(value = "查询课表")
+    @GetMapping("/selectArgCourse")
+    public ResultVO selectCourse () {
+        try {
+            return ResultUtils.success(arrangeCourseSer.selectOne());
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"查询失败！");
+        }
+    }
+
 }

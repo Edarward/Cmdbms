@@ -43,4 +43,12 @@ public interface TeaarrangeMapper {
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
     int updateByPrimaryKey(Teaarrange record);
+
+
+    /*查询教师姓名，课程名字，上课时间，上课教室，上课日期*/
+    String selectTeaNameById(int id);
+    String selectClassNameById(int id);
+
+    int selectTeaIdById(int id);
+    int selectClassIdById(int id);
 }

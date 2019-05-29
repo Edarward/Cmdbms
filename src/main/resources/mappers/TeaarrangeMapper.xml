@@ -74,10 +74,31 @@
     from t_tea_arrange
   </select>
 
-  <select id="selectTeaarrange" resultMap="BaseResultMap">
 
-
+<!-- 根据ID查找教师名字-->
+  <select id="selectTeaNameById" resultType="string">
+    SELECT A.`name`
+    FROM t_staff_msg A
+    WHERE A.id = #{id,jdbcType=INTEGER}
   </select>
 
+  <!-- 根据ID查找课程名字-->
+  <select id="selectClassNameById" resultType="string">
+    SELECT A.`name`
+    FROM t_course A
+    WHERE A.id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectTeaIdById" resultType="int">
+    SELECT A.teacherId
+    FROM t_tea_arrange A
+    WHERE A.id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectClassIdById" resultType="int">
+    SELECT A.classId
+    FROM t_tea_arrange A
+    WHERE A.id = #{id,jdbcType=INTEGER}
+  </select>
 
 </mapper>

@@ -14,11 +14,11 @@ import java.util.List;
 public class CourseManageSerImpl  implements CourseManageSer {
 
     @Autowired
-    CourseMapper courseMapper;
+    private CourseMapper courseMapper;
     @Autowired
-    TeaarrangeMapper teaarrangeMapper;
+    private TeaarrangeMapper teaarrangeMapper;
     @Autowired
-    TeaarghisMapper teaarghisMapper;
+    private TeaarghisMapper teaarghisMapper;
 
     @Override
     public int insertOne(Course course){     return  courseMapper.insert(course); }
@@ -30,6 +30,17 @@ public class CourseManageSerImpl  implements CourseManageSer {
 
     @Override
     public int updateOne(Course course){
+        Course temCourse = courseMapper.selectByPrimaryKey(course.getId());
+        if(course.getName() == null)
+            course.setName(temCourse.getName());
+        if(course.getCompulsory()==null)
+            course.setCompulsory(temCourse.getCompulsory());
+        if(course.getOfflineTeach() == null)
+            course.setOfflineTeach(temCourse.getOfflineTeach());
+        if (course.getCredit()==null)
+            course.setCredit(temCourse.getCredit());
+        if (course.getPeriod()==null)
+            course.setPeriod(temCourse.getPeriod());
         return courseMapper.updateByPrimaryKey(course);
     }
 

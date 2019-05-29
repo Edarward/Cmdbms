@@ -11,8 +11,8 @@
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="classId" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="teacherId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="cordYear" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="collegeTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="cordYear" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />
+      <arg column="collegeTime" javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

@@ -43,4 +43,11 @@ public interface CourseMapper {
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
     int updateByPrimaryKey(Course record);
+
+    int selectIDfromName(String name);
+
+    String selectNamefromId(int id);
+
+    /*查询课表信息*/
+    //List selectCourse();
 }

@@ -72,5 +72,18 @@
     from t_course
   </select>
 
+    <select id="selectIDfromName" resultType="int">
+      SELECT id
+      FROM t_course B
+      WHERE B.`name` = #{name,jdbcType=VARCHAR};
+
+    </select>
+
+  <select id="selectNamefromId" resultType="string">
+    SELECT A.`name`
+    FROM t_course A
+    WHERE A.id = #{id,jdbcType=INTEGER}
+
+  </select>
 
 </mapper>
