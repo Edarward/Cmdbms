@@ -48,6 +48,9 @@ public interface TeaarrangeMapper {
 
 
     /*查询教师姓名，课程名字，上课时间，上课教室，上课日期*/
-    List selectTeaarrange();
+    String selectTeaNameById(int id);
+    String selectClassNameById(int id);
 
+    int selectTeaIdById(int id);
+    int selectClassIdById(int id);
 }

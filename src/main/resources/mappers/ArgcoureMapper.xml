@@ -69,6 +69,25 @@
     from t_arg_coure
   </select>
 
+  <!-- 根据ID查找教师名字-->
+  <select id="selectTeaNameById" resultType="string">
+    SELECT A.`name`
+    FROM t_staff_msg A
+    WHERE A.id = #{id,jdbcType=INTEGER}
+  </select>
 
+  <!-- 根据ID查找课程名字-->
+  <select id="selectClassNameById" resultType="string">
+    SELECT A.`name`
+    FROM t_course A
+    WHERE A.id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="seleByClasAndTea" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT *
+    FROM t_arg_coure A
+    where A.classId=#{classId,jdbcType=INTEGER} and  A.teacherId=#{teaId,jdbcType=INTEGER}
+
+  </select>
 
 </mapper>
