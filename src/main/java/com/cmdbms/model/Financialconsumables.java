@@ -1,5 +1,6 @@
 package com.cmdbms.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Financialconsumables {
@@ -37,7 +38,7 @@ public class Financialconsumables {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
-    private Date matStartTime;
+    private Timestamp matStartTime;
 
     /**
      *
@@ -46,7 +47,7 @@ public class Financialconsumables {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
-    private Date matEndTime;
+    private Timestamp matEndTime;
 
     /**
      *
@@ -63,7 +64,7 @@ public class Financialconsumables {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
-    public Financialconsumables(Integer matId, String matName, String matNumber, Date matStartTime, Date matEndTime, String matLossMoney) {
+    public Financialconsumables(Integer matId, String matName, String matNumber, Timestamp matStartTime, Timestamp matEndTime, String matLossMoney) {
         this.matId = matId;
         this.matName = matName;
         this.matNumber = matNumber;
@@ -162,7 +163,7 @@ public class Financialconsumables {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
-    public Date getMatStartTime() {
+    public Timestamp getMatStartTime() {
         return matStartTime;
     }
 
@@ -174,7 +175,7 @@ public class Financialconsumables {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
-    public void setMatStartTime(Date matStartTime) {
+    public void setMatStartTime(Timestamp matStartTime) {
         this.matStartTime = matStartTime;
     }
 
@@ -186,7 +187,7 @@ public class Financialconsumables {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
-    public Date getMatEndTime() {
+    public Timestamp getMatEndTime() {
         return matEndTime;
     }
 
@@ -198,7 +199,7 @@ public class Financialconsumables {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
-    public void setMatEndTime(Date matEndTime) {
+    public void setMatEndTime(Timestamp matEndTime) {
         this.matEndTime = matEndTime;
     }
 

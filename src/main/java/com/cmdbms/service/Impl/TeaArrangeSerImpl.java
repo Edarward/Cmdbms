@@ -59,7 +59,6 @@ public class TeaArrangeSerImpl implements TeaArrangeSer {
     public int updateOne(Teaarrange teaarrange){
         int teaId = teaarrange.getTeacherId();
         int classId = teaarrange.getClassId();
-        System.out.println("222222222");
         System.out.println(teaarrange.getClassId()+"123231");
 
         int temTeaId = teaarrangeMapper.selectTeaIdById(teaarrange.getId());
@@ -68,7 +67,6 @@ public class TeaArrangeSerImpl implements TeaArrangeSer {
         List<Argcoure> list = argcoureMapper.seleByClasAndTea(temTeaId,temClassId);
         Argcoure argcoure = list.get(0);
         System.out.println(argcoure.getCourseTime());
-        System.out.println("222222222");
         argcoure.setTeacherId(teaId);
         argcoure.setClassId(classId);
 
