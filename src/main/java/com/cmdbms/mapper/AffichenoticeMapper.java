@@ -1,6 +1,7 @@
 package com.cmdbms.mapper;
 
 import com.cmdbms.model.Affichenotice;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,11 +14,16 @@ public interface AffichenoticeMapper {
     int insert(Affichenotice record);
 
 
-    Affichenotice selectByPrimaryKey(Integer notId);
+    List<Affichenotice> selectByPrimaryKey(Integer notStatetype);
 
 
     List<Affichenotice> selectAll();
 
 
-    int updateByPrimaryKey(Affichenotice record);
+    int updateByPrimaryKey(@Param(value = "notId")Integer notId,
+                           @Param(value = "notType")String notType,
+                           @Param(value = "notWriter") String notWriter,
+                           @Param(value = "notReleaser")String notReleaser,
+                           @Param(value = "notState")Integer notState,
+                           @Param(value = "notStatetype")Integer notStatetype);
 }

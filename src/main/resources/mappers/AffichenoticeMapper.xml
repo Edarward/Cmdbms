@@ -22,10 +22,10 @@
   <insert id="insert" parameterType="com.cmdbms.model.Affichenotice">
 
     insert into t_affiche_notice (notId, notType, notWriter, 
-      notWritetime, notReleaser, notReleasetime, 
+      notReleaser,
       notState, notStatetype)
     values (#{notId,jdbcType=INTEGER}, #{notType,jdbcType=VARCHAR}, #{notWriter,jdbcType=VARCHAR}, 
-      #{notWritetime,jdbcType=TIMESTAMP}, #{notReleaser,jdbcType=VARCHAR}, #{notReleasetime,jdbcType=TIMESTAMP}, 
+       #{notReleaser,jdbcType=VARCHAR},
       #{notState,jdbcType=INTEGER}, #{notStatetype,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Affichenotice">
@@ -33,9 +33,7 @@
     update t_affiche_notice
     set notType = #{notType,jdbcType=VARCHAR},
       notWriter = #{notWriter,jdbcType=VARCHAR},
-      notWritetime = #{notWritetime,jdbcType=TIMESTAMP},
       notReleaser = #{notReleaser,jdbcType=VARCHAR},
-      notReleasetime = #{notReleasetime,jdbcType=TIMESTAMP},
       notState = #{notState,jdbcType=INTEGER},
       notStatetype = #{notStatetype,jdbcType=INTEGER}
     where notId = #{notId,jdbcType=INTEGER}
@@ -45,7 +43,7 @@
     select notId, notType, notWriter, notWritetime, notReleaser, notReleasetime, notState, 
     notStatetype
     from t_affiche_notice
-    where notId = #{notId,jdbcType=INTEGER}
+    where notStatetype = #{notStatetype,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 
