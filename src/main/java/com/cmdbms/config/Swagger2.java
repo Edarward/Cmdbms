@@ -30,7 +30,7 @@ public class Swagger2 {
                 .description("")
                 .termsOfServiceUrl("")
                 .contact("zhaofanyi")
-                .version("1.0")
+                .version("1.2.1")
                 .build();
     }
 

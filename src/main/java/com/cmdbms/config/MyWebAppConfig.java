@@ -3,6 +3,7 @@ package com.cmdbms.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
@@ -22,18 +23,22 @@ public class MyWebAppConfig extends WebMvcConfigurationSupport {
         //后台拦截器
         registry.addInterceptor(localInterceptor())
                 //添加拦截规则
-                .addPathPatterns("/api/**")
+                .addPathPatterns("/**")
                 //排除拦截规则
                 .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");//swagger页面放行
 
     }
 
-    /*@Override
+    /**
+     * Description: 如果出现以下错误：  No mapping for GET /api/swagger-ui.html  使用
+     * Author: Edarward
+     */
+    @Override
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }*/
+    }
 
 }
