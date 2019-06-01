@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.AfficheadminpowerMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Afficheadminpower">
+
+    <constructor>
+      <idArg column="adminPowId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="adminPowCon" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_affiche_admin_power
+    where adminPowId = #{adminPowId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Afficheadminpower">
+
+    insert into t_affiche_admin_power (adminPowId, adminPowCon)
+    values (#{adminPowId,jdbcType=INTEGER}, #{adminPowCon,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Afficheadminpower">
+
+    update t_affiche_admin_power
+    set adminPowCon = #{adminPowCon,jdbcType=INTEGER}
+    where adminPowId = #{adminPowId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select adminPowId, adminPowCon
+    from t_affiche_admin_power
+    where adminPowId = #{adminPowId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select adminPowId, adminPowCon
+    from t_affiche_admin_power
+  </select>
+</mapper>

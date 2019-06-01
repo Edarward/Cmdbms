@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.AfficheuserMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Afficheuser">
+
+    <constructor>
+      <idArg column="userId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="userName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="userUsername" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="userPassword" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_affiche_user
+    where userId = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Afficheuser">
+
+    insert into t_affiche_user (userId, userName, userUsername, 
+      userPassword)
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userUsername,jdbcType=INTEGER}, 
+      #{userPassword,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Afficheuser">
+
+    update t_affiche_user
+    set userName = #{userName,jdbcType=VARCHAR},
+      userUsername = #{userUsername,jdbcType=INTEGER},
+      userPassword = #{userPassword,jdbcType=VARCHAR}
+    where userId = #{userId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select userId, userName, userUsername, userPassword
+    from t_affiche_user
+    where userId = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select userId, userName, userUsername, userPassword
+    from t_affiche_user
+  </select>
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.AffichenoticeMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Affichenotice">
+
+    <constructor>
+      <idArg column="notId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="notType" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="notWriter" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="notWritetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="notReleaser" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="notReleasetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="notState" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="notStatetype" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_affiche_notice
+    where notId = #{notId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Affichenotice">
+
+    insert into t_affiche_notice (notId, notType, notWriter, 
+      notWritetime, notReleaser, notReleasetime, 
+      notState, notStatetype)
+    values (#{notId,jdbcType=INTEGER}, #{notType,jdbcType=VARCHAR}, #{notWriter,jdbcType=VARCHAR}, 
+      #{notWritetime,jdbcType=TIMESTAMP}, #{notReleaser,jdbcType=VARCHAR}, #{notReleasetime,jdbcType=TIMESTAMP}, 
+      #{notState,jdbcType=INTEGER}, #{notStatetype,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Affichenotice">
+
+    update t_affiche_notice
+    set notType = #{notType,jdbcType=VARCHAR},
+      notWriter = #{notWriter,jdbcType=VARCHAR},
+      notWritetime = #{notWritetime,jdbcType=TIMESTAMP},
+      notReleaser = #{notReleaser,jdbcType=VARCHAR},
+      notReleasetime = #{notReleasetime,jdbcType=TIMESTAMP},
+      notState = #{notState,jdbcType=INTEGER},
+      notStatetype = #{notStatetype,jdbcType=INTEGER}
+    where notId = #{notId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select notId, notType, notWriter, notWritetime, notReleaser, notReleasetime, notState, 
+    notStatetype
+    from t_affiche_notice
+    where notId = #{notId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select notId, notType, notWriter, notWritetime, notReleaser, notReleasetime, notState, 
+    notStatetype
+    from t_affiche_notice
+  </select>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.AfficheadminMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Afficheadmin">
+
+    <constructor>
+      <idArg column="adminId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="adminName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="adminUsername" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="adminPassword" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_affiche_admin
+    where adminId = #{adminId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Afficheadmin">
+
+    insert into t_affiche_admin (adminId, adminName, adminUsername, 
+      adminPassword)
+    values (#{adminId,jdbcType=INTEGER}, #{adminName,jdbcType=VARCHAR}, #{adminUsername,jdbcType=INTEGER}, 
+      #{adminPassword,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Afficheadmin">
+
+    update t_affiche_admin
+    set adminName = #{adminName,jdbcType=VARCHAR},
+      adminUsername = #{adminUsername,jdbcType=INTEGER},
+      adminPassword = #{adminPassword,jdbcType=VARCHAR}
+    where adminId = #{adminId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select adminId, adminName, adminUsername, adminPassword
+    from t_affiche_admin
+    where adminId = #{adminId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select adminId, adminName, adminUsername, adminPassword
+    from t_affiche_admin
+  </select>
+</mapper>

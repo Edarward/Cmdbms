@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.AfficheusercommentMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Afficheusercomment">
+
+    <constructor>
+      <idArg column="userComId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="notId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="userId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="userComCon" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="userComTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_affiche_user_Comment
+    where userComId = #{userComId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Afficheusercomment">
+
+    insert into t_affiche_user_Comment (userComId, notId, userId, 
+      userComCon, userComTime)
+    values (#{userComId,jdbcType=INTEGER}, #{notId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{userComCon,jdbcType=VARCHAR}, #{userComTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Afficheusercomment">
+
+    update t_affiche_user_Comment
+    set notId = #{notId,jdbcType=INTEGER},
+      userId = #{userId,jdbcType=INTEGER},
+      userComCon = #{userComCon,jdbcType=VARCHAR},
+      userComTime = #{userComTime,jdbcType=TIMESTAMP}
+    where userComId = #{userComId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select userComId, notId, userId, userComCon, userComTime
+    from t_affiche_user_Comment
+    where userComId = #{userComId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select userComId, notId, userId, userComCon, userComTime
+    from t_affiche_user_Comment
+  </select>
+</mapper>
