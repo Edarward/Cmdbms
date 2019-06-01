@@ -26,13 +26,13 @@ import java.util.Map;
 public class ChooseCourseSerImpl implements ChooseCourseSer {
 
     @Autowired
-    ChoosecourseMapper choosecourseMapper;
+    private ChoosecourseMapper choosecourseMapper;
 
     @Autowired
-    CourseMapper courseMapper;
+    private CourseMapper courseMapper;
 
     @Autowired
-    ChoocheckMapper choocheckMapper;
+    private ChoocheckMapper choocheckMapper;
 
 
     /*插入选课信息*/

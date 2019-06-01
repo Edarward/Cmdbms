@@ -13,15 +13,15 @@ import java.util.*;
 public class ArrangeCourseSerImpl implements ArrangeCourseSer{
 
     @Autowired
-    ArgcoureMapper argcoureMapper;
+    private ArgcoureMapper argcoureMapper;
     @Autowired
-    CourseMapper courseMapper ;
+    private CourseMapper courseMapper ;
     @Autowired
-    StaffmsgMapper staffmsgMapper;
+    private StaffmsgMapper staffmsgMapper;
     @Autowired
-    TeaarrangeMapper teaarrangeMapper;
+    private TeaarrangeMapper teaarrangeMapper;
     @Autowired
-    TeaarghisMapper teaarghisMapper;
+    private TeaarghisMapper teaarghisMapper;
 
     @Override
     public int insertOne(Argcoure argcoure){

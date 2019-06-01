@@ -17,7 +17,7 @@ import java.util.Map;
 public class FinStudentSerImpl implements FinStudentSer {
 
     @Autowired
-    FinancialstudentMapper financialstudentMapper;
+    private FinancialstudentMapper financialstudentMapper;
 
     public int insertOne(Financialstudent financialstudent){
         return  financialstudentMapper.insert(financialstudent);

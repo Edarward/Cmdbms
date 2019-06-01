@@ -1,7 +1,6 @@
 package com.cmdbms.model;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Staffmsg {
 
@@ -9,7 +8,7 @@ public class Staffmsg {
 
     private String name;
 
-    private byte[] gender;
+    private byte gender;
 
     private Integer birthday;
 
@@ -27,9 +26,12 @@ public class Staffmsg {
 
     private String politicalStatus;
 
-    private String salaryLevel;
+    private Integer salaryLevel;
 
-    public Staffmsg(Integer id, String name, byte[] gender, Integer birthday, String idCard, String eduBackground, String phone, String mail, String address, Timestamp entryTime, String politicalStatus, String salaryLevel) {
+    public Staffmsg(Integer id, String name, byte gender, Integer birthday,
+                    String idCard, String eduBackground, String phone,
+                    String mail, String address, Timestamp entryTime,
+                    String politicalStatus, Integer salaryLevel) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -65,11 +67,11 @@ public class Staffmsg {
         this.name = name == null ? null : name.trim();
     }
 
-    public byte[] getGender() {
+    public Byte getGender() {
         return gender;
     }
 
-    public void setGender(byte[] gender) {
+    public void setGender(byte gender) {
         this.gender = gender;
     }
 
@@ -140,11 +142,11 @@ public class Staffmsg {
         this.politicalStatus = politicalStatus == null ? null : politicalStatus.trim();
     }
 
-    public String getSalaryLevel() {
+    public Integer getSalaryLevel() {
         return salaryLevel;
     }
 
-    public void setSalaryLevel(String salaryLevel) {
-        this.salaryLevel = salaryLevel == null ? null : salaryLevel.trim();
+    public void setSalaryLevel(Integer salaryLevel) {
+        this.salaryLevel = salaryLevel;
     }
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class FinSubsidySerImpl implements FinSubsidySer {
 
     @Autowired
-    FinancialsubsidiesMapper financialsubsidiesMapper;
+    private FinancialsubsidiesMapper financialsubsidiesMapper;
 
     public int insertOne(Financialsubsidies record){
 

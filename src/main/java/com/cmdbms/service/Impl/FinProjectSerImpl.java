@@ -13,7 +13,7 @@ import java.util.List;
 public class FinProjectSerImpl implements FinProjectSer {
 
     @Autowired
-    FinancialprojectMapper financialprojectMapper;
+    private FinancialprojectMapper financialprojectMapper;
 
     public int insertOne(Financialproject financialproject){
 

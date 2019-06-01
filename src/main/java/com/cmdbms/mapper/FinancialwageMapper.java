@@ -21,6 +21,8 @@ public interface FinancialwageMapper {
      *
      * @mbg.generated Wed May 29 11:15:17 CST 2019
      */
+    int insertWage(Financialwage record);
+
     int insert(Financialwage record);
 
     /**
