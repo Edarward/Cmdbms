@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.AffichepictureMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Affichepicture">
+
+    <constructor>
+      <idArg column="picId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="picAddress" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="picReleaser" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="picReleasetime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_affiche_picture
+    where picId = #{picId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Affichepicture">
+
+    insert into t_affiche_picture (picId, picAddress, picReleaser, 
+      picReleasetime)
+    values (#{picId,jdbcType=INTEGER}, #{picAddress,jdbcType=VARCHAR}, #{picReleaser,jdbcType=VARCHAR}, 
+      #{picReleasetime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Affichepicture">
+
+    update t_affiche_picture
+    set picAddress = #{picAddress,jdbcType=VARCHAR},
+      picReleaser = #{picReleaser,jdbcType=VARCHAR},
+      picReleasetime = #{picReleasetime,jdbcType=TIMESTAMP}
+    where picId = #{picId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select picId, picAddress, picReleaser, picReleasetime
+    from t_affiche_picture
+    where picId = #{picId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select picId, picAddress, picReleaser, picReleasetime
+    from t_affiche_picture
+  </select>
+</mapper>

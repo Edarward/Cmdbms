@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.AffichewriterMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Affichewriter">
+
+    <constructor>
+      <idArg column="wriId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="wriName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="wriPhone" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="wriUsername" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="wriPassword" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_affiche_writer
+    where wriId = #{wriId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Affichewriter">
+
+    insert into t_affiche_writer (wriId, wriName, wriPhone, 
+      wriUsername, wriPassword)
+    values (#{wriId,jdbcType=INTEGER}, #{wriName,jdbcType=VARCHAR}, #{wriPhone,jdbcType=INTEGER}, 
+      #{wriUsername,jdbcType=INTEGER}, #{wriPassword,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Affichewriter">
+
+    update t_affiche_writer
+    set wriName = #{wriName,jdbcType=VARCHAR},
+      wriPhone = #{wriPhone,jdbcType=INTEGER},
+      wriUsername = #{wriUsername,jdbcType=INTEGER},
+      wriPassword = #{wriPassword,jdbcType=VARCHAR}
+    where wriId = #{wriId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select wriId, wriName, wriPhone, wriUsername, wriPassword
+    from t_affiche_writer
+    where wriId = #{wriId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select wriId, wriName, wriPhone, wriUsername, wriPassword
+    from t_affiche_writer
+  </select>
+</mapper>

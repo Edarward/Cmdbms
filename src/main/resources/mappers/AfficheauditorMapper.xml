@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.AfficheauditorMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Afficheauditor">
+
+    <constructor>
+      <idArg column="audId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="audName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="audPhone" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="audUsername" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="audPassword" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_affiche_auditor
+    where audId = #{audId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Afficheauditor">
+
+    insert into t_affiche_auditor (audId, audName, audPhone, 
+      audUsername, audPassword)
+    values (#{audId,jdbcType=INTEGER}, #{audName,jdbcType=VARCHAR}, #{audPhone,jdbcType=INTEGER}, 
+      #{audUsername,jdbcType=INTEGER}, #{audPassword,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Afficheauditor">
+
+    update t_affiche_auditor
+    set audName = #{audName,jdbcType=VARCHAR},
+      audPhone = #{audPhone,jdbcType=INTEGER},
+      audUsername = #{audUsername,jdbcType=INTEGER},
+      audPassword = #{audPassword,jdbcType=VARCHAR}
+    where audId = #{audId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select audId, audName, audPhone, audUsername, audPassword
+    from t_affiche_auditor
+    where audId = #{audId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select audId, audName, audPhone, audUsername, audPassword
+    from t_affiche_auditor
+  </select>
+</mapper>
