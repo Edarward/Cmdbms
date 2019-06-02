@@ -13,7 +13,7 @@ public interface ExamclassroomuseMapper {
     int insert(Examclassroomuse record);
 
 
-    Examclassroomuse selectByPrimaryKey(Integer id);
+    List<Examclassroomuse> selectByPrimaryKey(Integer useThrough);
 
 
     List<Examclassroomuse> selectAll();

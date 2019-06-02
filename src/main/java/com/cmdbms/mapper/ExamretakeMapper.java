@@ -13,7 +13,7 @@ public interface ExamretakeMapper {
     int insert(Examretake record);
 
 
-    Examretake selectByPrimaryKey(Integer id);
+    List<Examretake> selectByPrimaryKey(Integer exuseThrough);
 
 
     List<Examretake> selectAll();

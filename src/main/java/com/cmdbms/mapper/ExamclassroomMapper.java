@@ -13,7 +13,7 @@ public interface ExamclassroomMapper {
     int insert(Examclassroom record);
 
 
-    Examclassroom selectByPrimaryKey(Integer id);
+    List<Examclassroom> selectByPrimaryKey(Integer clrType);
 
 
     List<Examclassroom> selectAll();
