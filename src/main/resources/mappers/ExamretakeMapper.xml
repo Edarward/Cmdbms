@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.ExamretakeMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Examretake">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="exuseSubname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="exuseStuId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="exuseTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="exuseAuditTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="exuseThrough" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_exam_retake
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Examretake">
+
+    insert into t_exam_retake (id, exuseSubname, exuseStuId, 
+      exuseTime, exuseAuditTime, exuseThrough
+      )
+    values (#{id,jdbcType=INTEGER}, #{exuseSubname,jdbcType=VARCHAR}, #{exuseStuId,jdbcType=INTEGER}, 
+      #{exuseTime,jdbcType=TIMESTAMP}, #{exuseAuditTime,jdbcType=TIMESTAMP}, #{exuseThrough,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examretake">
+
+    update t_exam_retake
+    set exuseSubname = #{exuseSubname,jdbcType=VARCHAR},
+      exuseStuId = #{exuseStuId,jdbcType=INTEGER},
+      exuseTime = #{exuseTime,jdbcType=TIMESTAMP},
+      exuseAuditTime = #{exuseAuditTime,jdbcType=TIMESTAMP},
+      exuseThrough = #{exuseThrough,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, exuseSubname, exuseStuId, exuseTime, exuseAuditTime, exuseThrough
+    from t_exam_retake
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, exuseSubname, exuseStuId, exuseTime, exuseAuditTime, exuseThrough
+    from t_exam_retake
+  </select>
+</mapper>

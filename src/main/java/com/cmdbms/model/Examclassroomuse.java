@@ -2,7 +2,7 @@ package com.cmdbms.model;
 
 import java.util.Date;
 
-public class Classroomuse {
+public class Examclassroomuse {
 
     private Integer id;
 
@@ -10,25 +10,25 @@ public class Classroomuse {
     private Integer useClrId;
 
 
-    private Date useApplyTime;
+    private Date useTime;
 
 
-    private Date useClrTime;
+    private Integer useClrTime;
 
 
     private Date useAuditTime;
 
 
-    private Boolean useThrough;
+    private Integer useThrough;
 
 
     private String useClrName;
 
 
-    public Classroomuse(Integer id, Integer useClrId, Date useApplyTime, Date useClrTime, Date useAuditTime, Boolean useThrough, String useClrName) {
+    public Examclassroomuse(Integer id, Integer useClrId, Date useTime, Integer useClrTime, Date useAuditTime, Integer useThrough, String useClrName) {
         this.id = id;
         this.useClrId = useClrId;
-        this.useApplyTime = useApplyTime;
+        this.useTime = useTime;
         this.useClrTime = useClrTime;
         this.useAuditTime = useAuditTime;
         this.useThrough = useThrough;
@@ -36,7 +36,7 @@ public class Classroomuse {
     }
 
 
-    public Classroomuse() {
+    public Examclassroomuse() {
         super();
     }
 
@@ -61,22 +61,22 @@ public class Classroomuse {
     }
 
 
-    public Date getUseApplyTime() {
-        return useApplyTime;
+    public Date getUseTime() {
+        return useTime;
     }
 
 
-    public void setUseApplyTime(Date useApplyTime) {
-        this.useApplyTime = useApplyTime;
+    public void setUseTime(Date useTime) {
+        this.useTime = useTime;
     }
 
 
-    public Date getUseClrTime() {
+    public Integer getUseClrTime() {
         return useClrTime;
     }
 
 
-    public void setUseClrTime(Date useClrTime) {
+    public void setUseClrTime(Integer useClrTime) {
         this.useClrTime = useClrTime;
     }
 
@@ -91,12 +91,12 @@ public class Classroomuse {
     }
 
 
-    public Boolean getUseThrough() {
+    public Integer getUseThrough() {
         return useThrough;
     }
 
 
-    public void setUseThrough(Boolean useThrough) {
+    public void setUseThrough(Integer useThrough) {
         this.useThrough = useThrough;
     }
 

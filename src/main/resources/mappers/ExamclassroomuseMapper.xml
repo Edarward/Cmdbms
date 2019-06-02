@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.ExamclassroomuseMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Examclassroomuse">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="useClrId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="useTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="useClrTime" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="useAuditTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="useThrough" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="useClrName" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_exam_classroom_use
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Examclassroomuse">
+
+    insert into t_exam_classroom_use (id, useClrId, useTime, 
+      useClrTime, useAuditTime, useThrough, 
+      useClrName)
+    values (#{id,jdbcType=INTEGER}, #{useClrId,jdbcType=INTEGER}, #{useTime,jdbcType=TIMESTAMP}, 
+      #{useClrTime,jdbcType=INTEGER}, #{useAuditTime,jdbcType=TIMESTAMP}, #{useThrough,jdbcType=INTEGER}, 
+      #{useClrName,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examclassroomuse">
+
+    update t_exam_classroom_use
+    set useClrId = #{useClrId,jdbcType=INTEGER},
+      useTime = #{useTime,jdbcType=TIMESTAMP},
+      useClrTime = #{useClrTime,jdbcType=INTEGER},
+      useAuditTime = #{useAuditTime,jdbcType=TIMESTAMP},
+      useThrough = #{useThrough,jdbcType=INTEGER},
+      useClrName = #{useClrName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, useClrId, useTime, useClrTime, useAuditTime, useThrough, useClrName
+    from t_exam_classroom_use
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, useClrId, useTime, useClrTime, useAuditTime, useThrough, useClrName
+    from t_exam_classroom_use
+  </select>
+</mapper>

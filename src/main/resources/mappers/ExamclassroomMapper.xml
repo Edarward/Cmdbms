@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.ExamclassroomMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Examclassroom">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clrName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="clrType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clrSize" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="clrState" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_exam_classroom
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Examclassroom">
+
+    insert into t_exam_classroom (id, clrName, clrType, 
+      clrSize, clrState)
+    values (#{id,jdbcType=INTEGER}, #{clrName,jdbcType=VARCHAR}, #{clrType,jdbcType=INTEGER}, 
+      #{clrSize,jdbcType=VARCHAR}, #{clrState,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examclassroom">
+
+    update t_exam_classroom
+    set clrName = #{clrName,jdbcType=VARCHAR},
+      clrType = #{clrType,jdbcType=INTEGER},
+      clrSize = #{clrSize,jdbcType=VARCHAR},
+      clrState = #{clrState,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, clrName, clrType, clrSize, clrState
+    from t_exam_classroom
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, clrName, clrType, clrSize, clrState
+    from t_exam_classroom
+  </select>
+</mapper>
