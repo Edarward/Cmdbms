@@ -20,10 +20,10 @@
   <insert id="insert" parameterType="com.cmdbms.model.Examretake">
 
     insert into t_exam_retake (id, exuseSubname, exuseStuId, 
-      exuseTime, exuseAuditTime, exuseThrough
+      exuseThrough
       )
     values (#{id,jdbcType=INTEGER}, #{exuseSubname,jdbcType=VARCHAR}, #{exuseStuId,jdbcType=INTEGER}, 
-      #{exuseTime,jdbcType=TIMESTAMP}, #{exuseAuditTime,jdbcType=TIMESTAMP}, #{exuseThrough,jdbcType=INTEGER}
+       #{exuseThrough,jdbcType=INTEGER}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examretake">
@@ -31,8 +31,6 @@
     update t_exam_retake
     set exuseSubname = #{exuseSubname,jdbcType=VARCHAR},
       exuseStuId = #{exuseStuId,jdbcType=INTEGER},
-      exuseTime = #{exuseTime,jdbcType=TIMESTAMP},
-      exuseAuditTime = #{exuseAuditTime,jdbcType=TIMESTAMP},
       exuseThrough = #{exuseThrough,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -40,7 +38,7 @@
 
     select id, exuseSubname, exuseStuId, exuseTime, exuseAuditTime, exuseThrough
     from t_exam_retake
-    where id = #{id,jdbcType=INTEGER}
+    where exuseThrough = #{exuseThrough,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

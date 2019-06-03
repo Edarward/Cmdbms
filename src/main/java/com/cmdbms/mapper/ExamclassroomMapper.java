@@ -1,8 +1,10 @@
 package com.cmdbms.mapper;
 
 import com.cmdbms.model.Examclassroom;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+@Repository
 public interface ExamclassroomMapper {
 
     int deleteByPrimaryKey(Integer id);
@@ -11,7 +13,7 @@ public interface ExamclassroomMapper {
     int insert(Examclassroom record);
 
 
-    Examclassroom selectByPrimaryKey(Integer id);
+    List<Examclassroom> selectByPrimaryKey(Integer clrType);
 
 
     List<Examclassroom> selectAll();

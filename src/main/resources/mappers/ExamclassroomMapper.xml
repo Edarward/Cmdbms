@@ -32,11 +32,11 @@
       clrState = #{clrState,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
 
     select id, clrName, clrType, clrSize, clrState
     from t_exam_classroom
-    where id = #{id,jdbcType=INTEGER}
+    where clrType = #{clrType,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

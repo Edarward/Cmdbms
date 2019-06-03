@@ -32,7 +32,6 @@
 
     update t_exam_classroom_use
     set useClrId = #{useClrId,jdbcType=INTEGER},
-      useTime = #{useTime,jdbcType=TIMESTAMP},
       useClrTime = #{useClrTime,jdbcType=INTEGER},
       useClrDate = #{useClrDate,jdbcType=DATE},
       useAuditTime = #{useAuditTime,jdbcType=TIMESTAMP},
@@ -40,11 +39,11 @@
       useClrName = #{useClrName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap">
 
     select id, useClrId, useTime, useClrTime, useClrDate, useAuditTime, useThrough, useClrName
     from t_exam_classroom_use
-    where id = #{id,jdbcType=INTEGER}
+    where useThrough = #{useThrough,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 
