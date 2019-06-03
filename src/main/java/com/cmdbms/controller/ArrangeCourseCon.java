@@ -7,10 +7,7 @@ import com.cmdbms.vo.ResultVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -25,7 +22,7 @@ public class ArrangeCourseCon {
     /***********测试ing**********/
     @ApiOperation(value = "添加课表")
     @PostMapping("/addArgCourse")
-    public ResultVO addArgCourse (Argcoure argcoure) {
+    public ResultVO addArgCourse (@RequestBody Argcoure argcoure) {
         try {
             return ResultUtils.success(arrangeCourseSer.insertOne(argcoure));
         } catch (Exception e) {
