@@ -63,6 +63,7 @@ public class ArrangeCourseSerImpl implements ArrangeCourseSer{
             temMap.put("classroomId",argcoure.getClassroomId());
             temMap.put("coureDate",argcoure.getCoureDate());
             temMap.put("courseTime",argcoure.getCourseTime());
+            temMap.put("degree",argcoure.getDegree());
             resList.add(temMap);
         }
         return resList;
