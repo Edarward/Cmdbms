@@ -12,7 +12,7 @@ spring:
     serialization:
       fail_on_empty_beans: false
       indent_output: true
-    time-zone: GTM+8
+    time-zone: GMT+8
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     tomcat:
