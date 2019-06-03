@@ -25,7 +25,7 @@ public class ArrangeCourseCon {
     /***********测试ing**********/
     @ApiOperation(value = "添加课表")
     @PostMapping("/addArgCourse")
-    public ResultVO addCourse (Argcoure argcoure) {
+    public ResultVO addArgCourse (Argcoure argcoure) {
         try {
             return ResultUtils.success(arrangeCourseSer.insertOne(argcoure));
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class ArrangeCourseCon {
     /***********测试成功************/
     @ApiOperation(value = "修改课表")
     @PostMapping("/updateArgCourse")
-    public ResultVO updateCourse (Argcoure argcoure) {
+    public ResultVO updateArgCourse (Argcoure argcoure) {
         try {
             return ResultUtils.success(arrangeCourseSer.updateOne(argcoure));
         } catch (Exception e) {
@@ -47,7 +47,7 @@ public class ArrangeCourseCon {
 
     @ApiOperation(value = "删除课表")
     @PostMapping("/delArgCourse")
-    public ResultVO delCourse (int id) {
+    public ResultVO delArgCourse (int id) {
         try {
             return ResultUtils.success(arrangeCourseSer.deleteOne(id));
         } catch (Exception e) {
@@ -59,7 +59,7 @@ public class ArrangeCourseCon {
     /*测试成功*/
     @ApiOperation(value = "查询课表")
     @GetMapping("/selectArgCourse")
-    public ResultVO selectCourse () {
+    public ResultVO selectArgCourse () {
         try {
             return ResultUtils.success(arrangeCourseSer.selectOne());
         } catch (Exception e) {
