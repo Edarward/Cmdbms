@@ -1,32 +1,35 @@
 package com.cmdbms.config;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * Description: 拦截器注册
  * Author: Edarward
  */
 @Configuration
-public class MyWebAppConfig extends WebMvcConfigurationSupport {
+public class MyWebAppConfig implements WebMvcConfigurer {
 
-    @Bean
+    /*@Bean
     MyInterceptor localInterceptor(){
         return new MyInterceptor();
-    }
+    }*/
+
+    @Autowired
+    private MyInterceptor myInterceptorl;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //后台拦截器
-        registry.addInterceptor(localInterceptor())
+        registry.addInterceptor(myInterceptorl)
                 //添加拦截规则
                 .addPathPatterns("/**")
                 //排除拦截规则
                 .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");//swagger页面放行
-
+        WebMvcConfigurer.super.addInterceptors(registry);
     }
 
     /**
@@ -34,7 +37,7 @@ public class MyWebAppConfig extends WebMvcConfigurationSupport {
      * Author: Edarward
      */
     @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
