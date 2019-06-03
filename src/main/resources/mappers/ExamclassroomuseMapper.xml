@@ -8,6 +8,7 @@
       <arg column="useClrId" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="useTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="useClrTime" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="useClrDate" javaType="java.util.Date" jdbcType="DATE" />
       <arg column="useAuditTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="useThrough" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="useClrName" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -21,11 +22,11 @@
   <insert id="insert" parameterType="com.cmdbms.model.Examclassroomuse">
 
     insert into t_exam_classroom_use (id, useClrId, useTime, 
-      useClrTime, useAuditTime, useThrough, 
-      useClrName)
+      useClrTime, useClrDate, useAuditTime, 
+      useThrough, useClrName)
     values (#{id,jdbcType=INTEGER}, #{useClrId,jdbcType=INTEGER}, #{useTime,jdbcType=TIMESTAMP}, 
-      #{useClrTime,jdbcType=INTEGER}, #{useAuditTime,jdbcType=TIMESTAMP}, #{useThrough,jdbcType=INTEGER}, 
-      #{useClrName,jdbcType=VARCHAR})
+      #{useClrTime,jdbcType=INTEGER}, #{useClrDate,jdbcType=DATE}, #{useAuditTime,jdbcType=TIMESTAMP}, 
+      #{useThrough,jdbcType=INTEGER}, #{useClrName,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examclassroomuse">
 
@@ -33,6 +34,7 @@
     set useClrId = #{useClrId,jdbcType=INTEGER},
       useTime = #{useTime,jdbcType=TIMESTAMP},
       useClrTime = #{useClrTime,jdbcType=INTEGER},
+      useClrDate = #{useClrDate,jdbcType=DATE},
       useAuditTime = #{useAuditTime,jdbcType=TIMESTAMP},
       useThrough = #{useThrough,jdbcType=INTEGER},
       useClrName = #{useClrName,jdbcType=VARCHAR}
@@ -40,13 +42,13 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 
-    select id, useClrId, useTime, useClrTime, useAuditTime, useThrough, useClrName
+    select id, useClrId, useTime, useClrTime, useClrDate, useAuditTime, useThrough, useClrName
     from t_exam_classroom_use
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 
-    select id, useClrId, useTime, useClrTime, useAuditTime, useThrough, useClrName
+    select id, useClrId, useTime, useClrTime, useClrDate, useAuditTime, useThrough, useClrName
     from t_exam_classroom_use
   </select>
 </mapper>

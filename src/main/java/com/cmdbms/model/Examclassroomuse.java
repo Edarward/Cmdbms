@@ -16,6 +16,9 @@ public class Examclassroomuse {
     private Integer useClrTime;
 
 
+    private Date useClrDate;
+
+
     private Date useAuditTime;
 
 
@@ -25,11 +28,12 @@ public class Examclassroomuse {
     private String useClrName;
 
 
-    public Examclassroomuse(Integer id, Integer useClrId, Date useTime, Integer useClrTime, Date useAuditTime, Integer useThrough, String useClrName) {
+    public Examclassroomuse(Integer id, Integer useClrId, Date useTime, Integer useClrTime, Date useClrDate, Date useAuditTime, Integer useThrough, String useClrName) {
         this.id = id;
         this.useClrId = useClrId;
         this.useTime = useTime;
         this.useClrTime = useClrTime;
+        this.useClrDate = useClrDate;
         this.useAuditTime = useAuditTime;
         this.useThrough = useThrough;
         this.useClrName = useClrName;
@@ -78,6 +82,16 @@ public class Examclassroomuse {
 
     public void setUseClrTime(Integer useClrTime) {
         this.useClrTime = useClrTime;
+    }
+
+
+    public Date getUseClrDate() {
+        return useClrDate;
+    }
+
+
+    public void setUseClrDate(Date useClrDate) {
+        this.useClrDate = useClrDate;
     }
 
 
