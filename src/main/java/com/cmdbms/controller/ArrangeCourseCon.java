@@ -22,7 +22,7 @@ public class ArrangeCourseCon {
     /***********测试ing**********/
     @ApiOperation(value = "添加课表")
     @PostMapping("/addArgCourse")
-    public ResultVO addArgCourse (@RequestBody Argcoure argcoure) {
+    public ResultVO addArgCourse ( Argcoure argcoure) {
         try {
             return ResultUtils.success(arrangeCourseSer.insertOne(argcoure));
         } catch (Exception e) {
