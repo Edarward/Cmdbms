@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -48,9 +49,9 @@ public class ClassroomCon {
     }
 
     @PostMapping("/insertClruse")
-    public ResultVO insertClruse(Examclassroomuse examclassroomuse){
+    public ResultVO insertClruse(Integer id,Integer useClrId,Integer useClrTime, String useClrDate,Integer useThrough, String useClrName){
         try {
-            return ResultUtils.success(classroomSer.insertClruse(examclassroomuse));
+            return ResultUtils.success(classroomSer.insertClruse(id,useClrId,useClrTime,useClrDate,useThrough,useClrName));
         }catch (Exception e){
             System.out.println(e);
             return ResultUtils.error(-1,"失败");
@@ -58,10 +59,11 @@ public class ClassroomCon {
     }
 
     @PostMapping("/updateClruse")
-    public ResultVO updateClruse(Examclassroomuse examclassroomuse){
+    public ResultVO updateClruse(Integer id,Integer useThrough){
         try {
-            return ResultUtils.success(classroomSer.updateClruse(examclassroomuse));
+            return ResultUtils.success(classroomSer.updateClruse(id,useThrough));
         }catch (Exception e){
+            System.out.println(e);
             return ResultUtils.error(-1,"失败");
         }
     }
@@ -71,6 +73,17 @@ public class ClassroomCon {
         try {
             return ResultUtils.success(classroomSer.selectClruse(useThrough));
         }catch (Exception e){
+            System.out.println(e);
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @GetMapping("/selectClrusetwo")
+    public ResultVO selectClrusetwo(String useClrDate){
+        try {
+            return ResultUtils.success(classroomSer.selectClrusetwo(useClrDate));
+        }catch (Exception e){
+            System.out.println(e);
             return ResultUtils.error(-1,"失败");
         }
     }

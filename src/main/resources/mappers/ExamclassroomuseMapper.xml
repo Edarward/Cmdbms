@@ -21,22 +21,17 @@
   </delete>
   <insert id="insert" parameterType="com.cmdbms.model.Examclassroomuse">
 
-    insert into t_exam_classroom_use (id, useClrId, useTime, 
-      useClrTime, useClrDate, useAuditTime, 
+    insert into t_exam_classroom_use (id, useClrId,
+      useClrTime, useClrDate,
       useThrough, useClrName)
-    values (#{id,jdbcType=INTEGER}, #{useClrId,jdbcType=INTEGER}, #{useTime,jdbcType=TIMESTAMP}, 
-      #{useClrTime,jdbcType=INTEGER}, #{useClrDate,jdbcType=DATE}, #{useAuditTime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=INTEGER}, #{useClrId,jdbcType=INTEGER},
+      #{useClrTime,jdbcType=INTEGER}, #{useClrDate,jdbcType=DATE},
       #{useThrough,jdbcType=INTEGER}, #{useClrName,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examclassroomuse">
 
     update t_exam_classroom_use
-    set useClrId = #{useClrId,jdbcType=INTEGER},
-      useClrTime = #{useClrTime,jdbcType=INTEGER},
-      useClrDate = #{useClrDate,jdbcType=DATE},
-      useAuditTime = #{useAuditTime,jdbcType=TIMESTAMP},
-      useThrough = #{useThrough,jdbcType=INTEGER},
-      useClrName = #{useClrName,jdbcType=VARCHAR}
+    set   useThrough = #{useThrough,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey"  resultMap="BaseResultMap">
@@ -44,6 +39,12 @@
     select id, useClrId, useTime, useClrTime, useClrDate, useAuditTime, useThrough, useClrName
     from t_exam_classroom_use
     where useThrough = #{useThrough,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKeytwo"  resultMap="BaseResultMap">
+
+    select id, useClrId, useTime, useClrTime, useClrDate, useAuditTime, useThrough, useClrName
+    from t_exam_classroom_use
+    where #{useClrDate,jdbcType=DATE}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

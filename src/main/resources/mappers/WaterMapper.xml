@@ -40,10 +40,11 @@
 
     select watId, watPlace, watQuantity, watMonth, watYear, watPlaceType
     from t_water
-    where watPlace = #{watPlace,jdbcType=VARCHAR} and
-    watMonth = #{watMonth,jdbcType=INTEGER} and
-    watYear = #{watYear,jdbcType=INTEGER} and
-    watPlaceType = #{watPlaceType,jdbcType=VARCHAR}
+    <where><if test="watPlace!=0" >watPlace = #{watPlace,jdbcType=VARCHAR} and</if>
+      <if test="watMonth!=0" >watMonth = #{watMonth,jdbcType=INTEGER} and</if>
+      <if test="watYear!=0" >watYear = #{watYear,jdbcType=INTEGER} and</if>
+        watPlaceType = #{watPlaceType,jdbcType=VARCHAR}
+    </where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

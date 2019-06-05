@@ -40,10 +40,11 @@
 
         select eleId, elePlace, eleQuantity, eleMonth, eleYear, elePlaceType
         from t_electric
-        where elePlace = #{elePlace,jdbcType=INTEGER} and
-        eleMonth = #{eleMonth,jdbcType=INTEGER} and
-        eleYear = #{eleYear,jdbcType=INTEGER} and
-        elePlaceType = #{elePlaceType,jdbcType=VARCHAR}
+      <where><if test="elePlace!=0" >elePlace = #{elePlace,jdbcType=INTEGER} and</if>
+        <if test="eleMonth!=0" >eleMonth = #{eleMonth,jdbcType=INTEGER} and</if>
+        <if test="eleYear!=0" >eleYear = #{eleYear,jdbcType=INTEGER} and</if>
+          elePlaceType = #{elePlaceType,jdbcType=VARCHAR}
+          </where>
     </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

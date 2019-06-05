@@ -34,6 +34,7 @@ public class EnergyCon {
         }
     }
 
+    @ApiOperation(value = "删除用水信息")
     @PostMapping("/delWater")
     public ResultVO delWater (Integer id){
         try {
@@ -43,6 +44,8 @@ public class EnergyCon {
             return ResultUtils.error(-1,"失败");
         }
     }
+
+    @ApiOperation(value = "此接口无用，当时写多了")
     @PostMapping("/updateWater")
     public ResultVO updateWater (Water water){
         try {
@@ -51,6 +54,8 @@ public class EnergyCon {
             return ResultUtils.error(-1,"失败");
         }
     }
+
+    @ApiOperation(value = "查询用水信息")
     @GetMapping("/selectWater")
     public ResultVO selectWater (String watPlace,Integer watMonth,Integer watYear,String watPlaceType){
         try {
@@ -59,6 +64,8 @@ public class EnergyCon {
             return ResultUtils.error(-1,"失败");
         }
     }
+
+    @ApiOperation(value = "添加用电信息")
     @PostMapping("/insertElectricity")
     public ResultVO insertElectricity (Electric electric){
         try {
@@ -68,6 +75,8 @@ public class EnergyCon {
             return ResultUtils.error(-1,"失败");
         }
     }
+
+    @ApiOperation(value = "删除用电信息")
     @PostMapping("/delElectricity")
     public ResultVO delElectricity (Integer id){
         try {
@@ -76,6 +85,8 @@ public class EnergyCon {
             return ResultUtils.error(-1,"失败");
         }
     }
+
+    @ApiOperation(value = "查询用电信息")
     @GetMapping("/selectElectricity")
     public ResultVO selectElectricity (Integer elePlace,Integer eleMonth,Integer eleYear,String elePlaceType){
         try {

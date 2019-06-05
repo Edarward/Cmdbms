@@ -5,6 +5,8 @@ import com.cmdbms.service.EnergySer;
 import com.cmdbms.service.EquipmentSer;
 import com.cmdbms.util.ResultUtils;
 import com.cmdbms.vo.ResultVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,11 +17,12 @@ import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/equipment")
-
+@Api("器材管理模块")
 public class EquipmentCon {
     @Autowired
     private EquipmentSer equipmentSer;
 
+    @ApiOperation(value = "查询耗材记录")
     @GetMapping("/selectSpo")
     public ResultVO selectSpo (){
         try {
@@ -29,6 +32,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "添加耗材记录")
     @PostMapping("/insertSpo")
     public ResultVO insertSpo(Spoilage spoilage){
         try {
@@ -39,6 +43,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "修改耗材记录")
     @PostMapping("/updateSpo")
     public ResultVO updateSpo(Spoilage spoilage){
         try {
@@ -48,6 +53,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "查询出库记录")
     @GetMapping("/selectOut")
     public ResultVO selectOut(){
         try {
@@ -57,6 +63,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "添加出库记录")
     @PostMapping("/insertOut")
     public ResultVO insertOut(Output output){
         try {
@@ -66,6 +73,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "查询库存信息")
     @GetMapping("/selectStock")
     public ResultVO selectStock(String stockEquipment){
         try {
@@ -75,6 +83,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "添加库存信息")
     @PostMapping("/insertStock")
     public ResultVO insertStock(Stock stock){
         try {
@@ -84,6 +93,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "更新库存信息")
     @PostMapping("/updateStock")
     public ResultVO updateStock(Stock stock){
         try {
@@ -93,6 +103,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "删除库存信息")
     @PostMapping("/deleteStock")
     public ResultVO deleteStock(Integer stockId){
         try {
@@ -103,6 +114,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "查询采购申请")
     @GetMapping("/selectPur")
     public ResultVO selectPur(Boolean purAuditing){
         try {
@@ -113,6 +125,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "添加采购申请")
     @PostMapping("/insertPur")
     public ResultVO insertPur(Integer purId,String purEquipment,String purProName,String purTime,Integer purAmount,
                               BigDecimal purPrice,String purMan,Boolean purAuditing){
@@ -123,6 +136,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "查询检查记录")
     @GetMapping("/selectChe")
     public ResultVO selectChe(){
         try {
@@ -133,6 +147,7 @@ public class EquipmentCon {
         }
     }
 
+    @ApiOperation(value = "添加检查记录")
     @PostMapping("/insertChe")
     public ResultVO insertChe(Check check){
         try {
