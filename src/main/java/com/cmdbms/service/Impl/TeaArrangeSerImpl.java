@@ -46,6 +46,7 @@ public class TeaArrangeSerImpl implements TeaArrangeSer {
             System.out.println(argcoure.getClassroomId());
             System.out.println(argcoure.getCoureDate());
             System.out.println("____________________________");
+            temMap.put("id",argcoure.getId());
             temMap.put("teaName",teaName);
             temMap.put("className",className);
             temMap.put("courseTime",argcoure.getCourseTime());
