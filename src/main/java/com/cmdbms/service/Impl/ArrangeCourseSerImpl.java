@@ -36,11 +36,20 @@ public class ArrangeCourseSerImpl implements ArrangeCourseSer{
         System.out.println(argcoure.getCoureDate());
         //为老师设置课程，向教师排课表内添加数据
         Teaarrange teaarrange = new Teaarrange(null,argcoure.getClassId(),argcoure.getTeacherId());
-        //向老师排课历史表内插入数据
         Teaarghis teaarghis = new Teaarghis(null,argcoure.getClassId(),argcoure.getTeacherId(),
                 argcoure.getCourseTime(), argcoure.getCourseTime());
+        System.out.println(teaarrange.getClassId()+"++++"+teaarrange.getTeacherId());
+        if (teaarrangeMapper.insert(teaarrange)==0){
+            System.out.println("dddddd");
+        }
+        System.out.println("dddddd");
+        if ((teaarghisMapper.insert(teaarghis)==0)){
+            System.out.println("dsadsdasd");
+        }
+        System.out.println("dsadsdasd");
+            //向老师排课历史表内插入数
 
-        return  (argcoureMapper.insert(argcoure)==0)&&(teaarrangeMapper.insert(teaarrange)==0)&&(teaarghisMapper.insert(teaarghis)==0)?0:1;
+        return  argcoureMapper.insert(argcoure);
     }
     /**********测试成功*********/
     @Override
@@ -93,6 +102,11 @@ public class ArrangeCourseSerImpl implements ArrangeCourseSer{
 
     @Override
     public int deleteOne(int id){
+        Argcoure argcoure = argcoureMapper.selectByPrimaryKey(id);
+        int classId = argcoure.getClassId();
+        int teacherId = argcoure.getTeacherId();
+        int temId = teaarrangeMapper.selectIdByTeaAndClassId(teacherId,classId);
+        teaarrangeMapper.deleteByPrimaryKey(temId);
         return argcoureMapper.deleteByPrimaryKey(id);
     }
 

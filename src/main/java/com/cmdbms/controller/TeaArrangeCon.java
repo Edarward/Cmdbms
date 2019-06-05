@@ -49,7 +49,7 @@ public class TeaArrangeCon {
         try {
             return ResultUtils.success(teaArrangeSer.deleteOne(id));
         } catch (Exception e) {
-            return ResultUtils.error(-1,"查询失败！");
+            return ResultUtils.error(-1,"删除失败！");
         }
     }
 }

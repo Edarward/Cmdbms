@@ -7,6 +7,7 @@ import com.cmdbms.mapper.TeaevaluateMapper;
 import com.cmdbms.model.Argcoure;
 import com.cmdbms.model.Teaarrange;
 import com.cmdbms.service.TeaArrangeSer;
+import org.apache.ibatis.annotations.Arg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,20 +34,28 @@ public class TeaArrangeSerImpl implements TeaArrangeSer {
     @Override
     public List selectOne(){
 
-        List<Argcoure> teaArgList = argcoureMapper.selectAll();
+        List<Teaarrange> teaArgList = teaarrangeMapper.selectAll();
         List resList = new ArrayList();
-        for (int inn =0;inn<teaArgList.size();inn++){
-            Argcoure argcoure = teaArgList.get(inn);
+        for (int i =0;i<teaArgList.size();i++){
+            System.out.println("____________________________");
+            Teaarrange teaarrange = teaArgList.get(i);
             Map temMap = new HashMap();
-            String className    = argcoureMapper.selectClassNameById(argcoure.getClassId());
-            String teaName      = argcoureMapper.selectTeaNameById(argcoure.getTeacherId());
+            System.out.println("____________________________");
+            String className    = argcoureMapper.selectClassNameById(teaarrange.getClassId());
+            String teaName      = argcoureMapper.selectTeaNameById(teaarrange.getTeacherId());
             System.out.println(teaName);
             System.out.println(className);
+            System.out.println("____________________________");
+            List<Argcoure> argList = argcoureMapper.seleByClasAndTea(teaarrange.getTeacherId(),teaarrange.getClassId());
+            System.out.println("____________________________");
+            Argcoure argcoure = argList.get(0);
+            System.out.println("____________________________");
+
             System.out.println(argcoure.getCourseTime());
             System.out.println(argcoure.getClassroomId());
             System.out.println(argcoure.getCoureDate());
             System.out.println("____________________________");
-            temMap.put("id",argcoure.getId());
+            temMap.put("id",teaarrange.getId());
             temMap.put("teaName",teaName);
             temMap.put("className",className);
             temMap.put("courseTime",argcoure.getCourseTime());
@@ -78,6 +87,13 @@ public class TeaArrangeSerImpl implements TeaArrangeSer {
 
     @Override
     public int deleteOne(int id){
+        Teaarrange teaarrange = teaarrangeMapper.selectByPrimaryKey(id);
+        int classId = teaarrange.getClassId();
+        int teacherId = teaarrange.getTeacherId();
+        List<Argcoure> temList = argcoureMapper.seleByClasAndTea(teacherId,classId);
+        Argcoure argcoure = temList.get(0);
+        argcoure.setTeacherId(null);
+        //argcoureMapper.updateByPrimaryKey(argcoure);
         return teaarrangeMapper.deleteByPrimaryKey(id);
     }
 

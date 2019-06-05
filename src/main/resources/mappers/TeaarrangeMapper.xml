@@ -16,9 +16,9 @@
   </delete>
   <insert id="insert" parameterType="com.cmdbms.model.Teaarrange">
 
-    insert into t_tea_arrange (id, classId, teacherId
+    insert into t_tea_arrange ( classId, teacherId
     )
-    values (#{id,jdbcType=INTEGER}, #{classId,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}
+    values (#{classId,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}
     )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Teaarrange">
@@ -66,4 +66,10 @@
     WHERE A.id = #{id,jdbcType=INTEGER}
   </select>
 
+
+  <select id="selectIdByTeaAndClassId" resultType="int">
+    SELECT A.id
+    FROM t_tea_arrange A
+    WHERE A.teacherId = #{teacherId,jdbcType=INTEGER} and A.classId = #{classId,jdbcType=INTEGER}
+  </select>
 </mapper>
