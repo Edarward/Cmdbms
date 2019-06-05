@@ -18,9 +18,9 @@
   </delete>
   <insert id="insert" parameterType="com.cmdbms.model.Teaarghis">
 
-    insert into t_tea_arg_his (id, classId, teacherId,
+    insert into t_tea_arg_his ( classId, teacherId,
     cordYear, collegeTime)
-    values (#{id,jdbcType=INTEGER}, #{classId,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER},
+    values ( #{classId,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER},
     #{cordYear,jdbcType=TIMESTAMP}, #{collegeTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Teaarghis">

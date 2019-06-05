@@ -25,4 +25,6 @@ public interface TeaarrangeMapper {
 
     int selectTeaIdById(int id);
     int selectClassIdById(int id);
+    int  selectIdByTeaAndClassId(int teacherId,int classId);
+
 }
