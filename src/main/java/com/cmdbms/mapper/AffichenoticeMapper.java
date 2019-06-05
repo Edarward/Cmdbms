@@ -22,6 +22,7 @@ public interface AffichenoticeMapper {
 
     int updateByPrimaryKey(@Param(value = "notId")Integer notId,
                            @Param(value = "notType")String notType,
+                           @Param(value = "notContent") String notContent,
                            @Param(value = "notWriter") String notWriter,
                            @Param(value = "notReleaser")String notReleaser,
                            @Param(value = "notState")Integer notState,

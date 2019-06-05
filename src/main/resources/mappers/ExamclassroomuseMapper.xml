@@ -44,7 +44,7 @@
 
     select id, useClrId, useTime, useClrTime, useClrDate, useAuditTime, useThrough, useClrName
     from t_exam_classroom_use
-    where #{useClrDate,jdbcType=DATE}
+    where useClrDate = #{useClrDate,jdbcType=DATE}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

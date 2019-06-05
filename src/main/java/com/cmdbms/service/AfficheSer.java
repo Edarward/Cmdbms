@@ -9,5 +9,5 @@ public interface AfficheSer {
 
     String insertNotice(Affichenotice affichenotice);
 
-    String updateNotice(Integer notId, String notType, String notWriter, String notReleaser, Integer notState, Integer notStatetype);
+    String updateNotice(Integer notId, String notType, String notContent,String notWriter, String notReleaser, Integer notState, Integer notStatetype);
 }

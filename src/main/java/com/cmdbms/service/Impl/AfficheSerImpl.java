@@ -30,7 +30,7 @@ public class AfficheSerImpl implements AfficheSer {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public String updateNotice(Integer notId, String notType, String notWriter, String notReleaser, Integer notState, Integer notStatetype){
+    public String updateNotice(Integer notId, String notType, String notContent,String notWriter, String notReleaser, Integer notState, Integer notStatetype){
 
         switch (notState){
             case 1:
@@ -52,7 +52,7 @@ public class AfficheSerImpl implements AfficheSer {
                  break;
 
         }
-        Integer record = affichenoticeMapper.updateByPrimaryKey(notId,notType,notWriter,notReleaser,notState,notStatetype);
+        Integer record = affichenoticeMapper.updateByPrimaryKey(notId,notType,notContent,notWriter,notReleaser,notState,notStatetype);
         return record.toString();
     }
 }

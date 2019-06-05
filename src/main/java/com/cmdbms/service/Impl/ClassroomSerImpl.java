@@ -71,8 +71,9 @@ public class ClassroomSerImpl implements ClassroomSer {
     public List<Examclassroomuse> selectClrusetwo(String useClrDate) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date newuseClrDate = sdf.parse(useClrDate);
-        System.out.println(newuseClrDate.toString());
+        System.out.println(newuseClrDate);
         List<Examclassroomuse> examclassroomuseList = examclassroomuseMapper.selectByPrimaryKeytwo(newuseClrDate);
+
         return examclassroomuseList;
     }
 }

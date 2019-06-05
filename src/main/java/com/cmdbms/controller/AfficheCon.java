@@ -41,9 +41,9 @@ public class AfficheCon {
 
     @ApiOperation(value = "更新公告信息")
     @PostMapping("/updeteNotice")
-    public ResultVO updeteNotice(Integer notId, String notType, String notWriter, String notReleaser, Integer notState, Integer notStatetype){
+    public ResultVO updeteNotice(Integer notId, String notType, String notContent, String notWriter, String notReleaser, Integer notState, Integer notStatetype){
         try {
-            return ResultUtils.success(afficheSer.updateNotice(notId,notType,notWriter,notReleaser,notState,notStatetype));
+            return ResultUtils.success(afficheSer.updateNotice(notId,notType,notContent,notWriter,notReleaser,notState,notStatetype));
         }catch (Exception e){
             return ResultUtils.error(-1,"失败");
         }
