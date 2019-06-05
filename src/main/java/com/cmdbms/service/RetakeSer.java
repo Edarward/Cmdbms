@@ -9,5 +9,9 @@ public interface RetakeSer {
 
     String updateRetake(Examretake examretake);
 
+    String deleteRetake(Integer id);
+
     List selectRetake(Integer exuseThrough);
+
+    List selectRetaketwo(Integer exuseStuId);
 }

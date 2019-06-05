@@ -16,6 +16,9 @@ public interface ExamretakeMapper {
     List<Examretake> selectByPrimaryKey(Integer exuseThrough);
 
 
+    List<Examretake> selectByPrimaryKeytwo(Integer exuseStuId);
+
+
     List<Examretake> selectAll();
 
 

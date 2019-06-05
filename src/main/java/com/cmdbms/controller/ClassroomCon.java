@@ -5,6 +5,8 @@ import com.cmdbms.model.Examclassroomuse;
 import com.cmdbms.service.ClassroomSer;
 import com.cmdbms.util.ResultUtils;
 import com.cmdbms.vo.ResultVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,10 +18,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/classroom")
+@Api("教室管理模块")
 public class ClassroomCon {
     @Autowired
     private ClassroomSer classroomSer;
 
+    @ApiOperation(value = "添加教室信息")
     @PostMapping("/insertClassroom")
     public ResultVO insertClassroom(Examclassroom examclassroom){
         try {
@@ -30,6 +34,7 @@ public class ClassroomCon {
         }
     }
 
+    @ApiOperation(value = "修改教室信息")
     @PostMapping("/updateClassroom")
     public ResultVO updateClassroom(Examclassroom examclassroom){
         try {
@@ -39,6 +44,7 @@ public class ClassroomCon {
         }
     }
 
+    @ApiOperation(value = "查询教室信息")
     @GetMapping("/selectClassroom")
     public ResultVO selectClassroom(Integer clrType){
         try {
@@ -48,6 +54,7 @@ public class ClassroomCon {
         }
     }
 
+    @ApiOperation(value = "添加教室使用申请")
     @PostMapping("/insertClruse")
     public ResultVO insertClruse(Integer id,Integer useClrId,Integer useClrTime, String useClrDate,Integer useThrough, String useClrName){
         try {
@@ -58,6 +65,7 @@ public class ClassroomCon {
         }
     }
 
+    @ApiOperation(value = "修改教室使用申请")
     @PostMapping("/updateClruse")
     public ResultVO updateClruse(Integer id,Integer useThrough){
         try {
@@ -68,6 +76,7 @@ public class ClassroomCon {
         }
     }
 
+    @ApiOperation(value = "查询教室使用申请（根据审核状态）")
     @GetMapping("/selectClruse")
     public ResultVO selectClruse(Integer useThrough){
         try {
@@ -78,6 +87,7 @@ public class ClassroomCon {
         }
     }
 
+    @ApiOperation(value = "查询教室使用信息（根据日期）")
     @GetMapping("/selectClrusetwo")
     public ResultVO selectClrusetwo(String useClrDate){
         try {

@@ -40,6 +40,12 @@
     from t_exam_retake
     where exuseThrough = #{exuseThrough,jdbcType=INTEGER}
   </select>
+  <select id="selectByPrimaryKeytwo" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, exuseSubname, exuseStuId, exuseTime, exuseAuditTime, exuseThrough
+     from t_exam_retake
+    where exuseStuId = #{exuseStuId,jdbcType=INTEGER}
+  </select>
   <select id="selectAll" resultMap="BaseResultMap">
 
     select id, exuseSubname, exuseStuId, exuseTime, exuseAuditTime, exuseThrough

@@ -30,8 +30,22 @@ public class RetakeSerImpl implements RetakeSer {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
+    public String deleteRetake(Integer id){
+        Integer record = examretakeMapper.deleteByPrimaryKey(id);
+        return record.toString();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
     public List<Examretake> selectRetake(Integer exuseThrough){
         List<Examretake> examretakeList = examretakeMapper.selectByPrimaryKey(exuseThrough);
+        return examretakeList;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public List<Examretake> selectRetaketwo(Integer exuseStuId){
+        List<Examretake> examretakeList = examretakeMapper.selectByPrimaryKeytwo(exuseStuId);
         return examretakeList;
     }
 }
