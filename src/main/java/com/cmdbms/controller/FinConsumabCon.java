@@ -56,6 +56,17 @@ public class FinConsumabCon {
         }
     }
 
+    @ApiOperation(value = "修改下发工资")
+    @PostMapping("/teacherUpdateSalary")
+    public ResultVO teacherUpdateSalary (Financialwage record) {
+        try {
+            return ResultUtils.success(finConsumbSer.teacherUpdateSalary(record));
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"添加失败！");
+        }
+    }
+
+
     @ApiOperation(value = "查询工资")
     @GetMapping("/selectTeacSalary")
     public ResultVO selectTeacSalary () {

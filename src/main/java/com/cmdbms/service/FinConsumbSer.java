@@ -18,5 +18,7 @@ public interface FinConsumbSer {
 
     int insertTeacherSalary(Financialwage record);
 
+    int teacherUpdateSalary(Financialwage record);
+
     List selectTeaSal();
 }
