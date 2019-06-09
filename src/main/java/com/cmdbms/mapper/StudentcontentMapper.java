@@ -1,8 +1,10 @@
 package com.cmdbms.mapper;
 
 import com.cmdbms.model.Studentcontent;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+@Repository
 public interface StudentcontentMapper {
 
     int deleteByPrimaryKey(Integer id);
