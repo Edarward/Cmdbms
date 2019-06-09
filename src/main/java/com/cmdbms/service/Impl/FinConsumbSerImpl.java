@@ -32,12 +32,15 @@ public class FinConsumbSerImpl implements FinConsumbSer {
 
 
     public int insertOne(Financialconsumables record){
-
+        System.out.println("222222");
         Financialexpend expendCord = new Financialexpend();
+        System.out.println("222222");
         expendCord.setFinMoney(record.getMatLossMoney());
         expendCord.setFinName(record.getMatName());
+        System.out.println("222222");
         finExpandMapper.insert(expendCord);
-
+        System.out.println(expendCord);
+        System.out.println("222222");
         return finComMapper.insert(record);
     }
 

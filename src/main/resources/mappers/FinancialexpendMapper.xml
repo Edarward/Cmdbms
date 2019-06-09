@@ -16,7 +16,7 @@
   </delete>
   <insert id="insert" parameterType="com.cmdbms.model.Financialexpend">
 
-    insert into t_financial_expend (finId, finName, finMoney
+    insert into t_financial_expend (finName, finMoney
       )
     values (#{finName,jdbcType=VARCHAR}, #{finMoney,jdbcType=VARCHAR}
       )
