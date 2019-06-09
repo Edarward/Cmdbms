@@ -101,7 +101,9 @@ public class FinConsumbSerImpl implements FinConsumbSer {
             int teaId = temWage.getTeaId();
             String teaName = staffmsgMapper.selectNamefromId(teaId);
             temMap.put("id",temWage.getId());
+            System.out.println("Id"+temWage.getId());
             temMap.put("teaId",temWage.getTeaId());
+            System.out.println("teaId"+temWage.getTeaId());
             temMap.put("teaName",teaName);
             temMap.put("teaState",temWage.getTeaState());
             temMap.put("teaMoney",temWage.getTeaMoney());

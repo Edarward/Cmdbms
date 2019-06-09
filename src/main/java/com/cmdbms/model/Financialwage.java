@@ -10,7 +10,7 @@ public class Financialwage {
 
     private String teaState;
 
-    public Financialwage(Integer teaId,Integer id, String teaMoney, String teaState) {
+    public Financialwage(Integer id,Integer teaId, String teaMoney, String teaState) {
         this.teaId = teaId;
         this.id = id;
         this.teaMoney = teaMoney;
