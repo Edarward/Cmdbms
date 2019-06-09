@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.ExamunpassMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Examunpass">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <idArg column="unpassStuId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="unpassSubId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="unpassGradeStu" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="unpassVio" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="unpassSubName" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+
+    delete from t_exam_unpass
+    where id = #{id,jdbcType=INTEGER}
+      and unpassStuId = #{unpassStuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Examunpass">
+
+    insert into t_exam_unpass (id, unpassStuId, unpassSubId, 
+      unpassGradeStu, unpassVio, unpassSubName
+      )
+    values (#{id,jdbcType=INTEGER}, #{unpassStuId,jdbcType=INTEGER}, #{unpassSubId,jdbcType=INTEGER}, 
+      #{unpassGradeStu,jdbcType=INTEGER}, #{unpassVio,jdbcType=INTEGER}, #{unpassSubName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examunpass">
+
+    update t_exam_unpass
+    set unpassSubId = #{unpassSubId,jdbcType=INTEGER},
+      unpassGradeStu = #{unpassGradeStu,jdbcType=INTEGER},
+      unpassVio = #{unpassVio,jdbcType=INTEGER},
+      unpassSubName = #{unpassSubName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+      and unpassStuId = #{unpassStuId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+
+    select id, unpassStuId, unpassSubId, unpassGradeStu, unpassVio, unpassSubName
+    from t_exam_unpass
+    where id = #{id,jdbcType=INTEGER}
+      and unpassStuId = #{unpassStuId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, unpassStuId, unpassSubId, unpassGradeStu, unpassVio, unpassSubName
+    from t_exam_unpass
+  </select>
+</mapper>

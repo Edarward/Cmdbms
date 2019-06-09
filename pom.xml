@@ -17,7 +17,7 @@
 
     <groupId>Cmdbms</groupId>
     <artifactId>Cmdbms</artifactId>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.3-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

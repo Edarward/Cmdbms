@@ -5,11 +5,12 @@
 
     <constructor>
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="examName" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="examSubId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="examTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="examDate" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="examTime" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="examClassroomId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="examTeacherId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="examClrName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="examSubName" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -19,32 +20,33 @@
   </delete>
   <insert id="insert" parameterType="com.cmdbms.model.Examarrange">
 
-    insert into t_exam_arrange (id, examName, examSubId, 
-      examTime, examClassroomId, examTeacherId
-      )
-    values (#{id,jdbcType=INTEGER}, #{examName,jdbcType=VARCHAR}, #{examSubId,jdbcType=INTEGER}, 
-      #{examTime,jdbcType=TIMESTAMP}, #{examClassroomId,jdbcType=INTEGER}, #{examTeacherId,jdbcType=INTEGER}
-      )
+    insert into t_exam_arrange (id, examSubId, examDate, 
+      examTime, examClassroomId, examClrName, 
+      examSubName)
+    values (#{id,jdbcType=INTEGER}, #{examSubId,jdbcType=INTEGER}, #{examDate,jdbcType=DATE}, 
+      #{examTime,jdbcType=INTEGER}, #{examClassroomId,jdbcType=INTEGER}, #{examClrName,jdbcType=VARCHAR}, 
+      #{examSubName,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examarrange">
 
     update t_exam_arrange
-    set examName = #{examName,jdbcType=VARCHAR},
-      examSubId = #{examSubId,jdbcType=INTEGER},
-      examTime = #{examTime,jdbcType=TIMESTAMP},
+    set examSubId = #{examSubId,jdbcType=INTEGER},
+      examDate = #{examDate,jdbcType=DATE},
+      examTime = #{examTime,jdbcType=INTEGER},
       examClassroomId = #{examClassroomId,jdbcType=INTEGER},
-      examTeacherId = #{examTeacherId,jdbcType=INTEGER}
+      examClrName = #{examClrName,jdbcType=VARCHAR},
+      examSubName = #{examSubName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 
-    select id, examName, examSubId, examTime, examClassroomId, examTeacherId
+    select id, examSubId, examDate, examTime, examClassroomId, examClrName, examSubName
     from t_exam_arrange
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 
-    select id, examName, examSubId, examTime, examClassroomId, examTeacherId
+    select id, examSubId, examDate, examTime, examClassroomId, examClrName, examSubName
     from t_exam_arrange
   </select>
 </mapper>

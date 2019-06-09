@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.ExamstuarrangeMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Examstuarrange">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <idArg column="stuexamStuId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stuexamSubId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stuexamClrId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stuexamDate" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="stuexamTime" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stuexamClrName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="stuexamSubName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="stuexamId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+
+    delete from t_exam_stuarrange
+    where id = #{id,jdbcType=INTEGER}
+      and stuexamStuId = #{stuexamStuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Examstuarrange">
+
+    insert into t_exam_stuarrange (id, stuexamStuId, stuexamSubId, 
+      stuexamClrId, stuexamDate, stuexamTime, 
+      stuexamClrName, stuexamSubName, stuexamId
+      )
+    values (#{id,jdbcType=INTEGER}, #{stuexamStuId,jdbcType=INTEGER}, #{stuexamSubId,jdbcType=INTEGER}, 
+      #{stuexamClrId,jdbcType=INTEGER}, #{stuexamDate,jdbcType=DATE}, #{stuexamTime,jdbcType=INTEGER}, 
+      #{stuexamClrName,jdbcType=VARCHAR}, #{stuexamSubName,jdbcType=VARCHAR}, #{stuexamId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examstuarrange">
+
+    update t_exam_stuarrange
+    set stuexamSubId = #{stuexamSubId,jdbcType=INTEGER},
+      stuexamClrId = #{stuexamClrId,jdbcType=INTEGER},
+      stuexamDate = #{stuexamDate,jdbcType=DATE},
+      stuexamTime = #{stuexamTime,jdbcType=INTEGER},
+      stuexamClrName = #{stuexamClrName,jdbcType=VARCHAR},
+      stuexamSubName = #{stuexamSubName,jdbcType=VARCHAR},
+      stuexamId = #{stuexamId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+      and stuexamStuId = #{stuexamStuId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+
+    select id, stuexamStuId, stuexamSubId, stuexamClrId, stuexamDate, stuexamTime, stuexamClrName, 
+    stuexamSubName, stuexamId
+    from t_exam_stuarrange
+    where id = #{id,jdbcType=INTEGER}
+      and stuexamStuId = #{stuexamStuId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, stuexamStuId, stuexamSubId, stuexamClrId, stuexamDate, stuexamTime, stuexamClrName, 
+    stuexamSubName, stuexamId
+    from t_exam_stuarrange
+  </select>
+</mapper>

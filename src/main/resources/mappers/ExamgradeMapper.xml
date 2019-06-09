@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.ExamgradeMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Examgrade">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <idArg column="gradeStuId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="gradeSubId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="gradeStu" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="gradeSubName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="gradeLimit" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="gradeJudge" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="gradeAlterTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="gradeViolate" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="gradeReview" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+
+    delete from t_exam_grade
+    where id = #{id,jdbcType=INTEGER}
+      and gradeStuId = #{gradeStuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Examgrade">
+
+    insert into t_exam_grade (id, gradeStuId, gradeSubId, 
+      gradeStu, gradeSubName, gradeLimit, 
+      gradeJudge, gradeAlterTime, gradeViolate, 
+      gradeReview)
+    values (#{id,jdbcType=INTEGER}, #{gradeStuId,jdbcType=INTEGER}, #{gradeSubId,jdbcType=INTEGER}, 
+      #{gradeStu,jdbcType=INTEGER}, #{gradeSubName,jdbcType=VARCHAR}, #{gradeLimit,jdbcType=DATE}, 
+      #{gradeJudge,jdbcType=INTEGER}, #{gradeAlterTime,jdbcType=TIMESTAMP}, #{gradeViolate,jdbcType=INTEGER}, 
+      #{gradeReview,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examgrade">
+
+    update t_exam_grade
+    set gradeSubId = #{gradeSubId,jdbcType=INTEGER},
+      gradeStu = #{gradeStu,jdbcType=INTEGER},
+      gradeSubName = #{gradeSubName,jdbcType=VARCHAR},
+      gradeLimit = #{gradeLimit,jdbcType=DATE},
+      gradeJudge = #{gradeJudge,jdbcType=INTEGER},
+      gradeAlterTime = #{gradeAlterTime,jdbcType=TIMESTAMP},
+      gradeViolate = #{gradeViolate,jdbcType=INTEGER},
+      gradeReview = #{gradeReview,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+      and gradeStuId = #{gradeStuId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+
+    select id, gradeStuId, gradeSubId, gradeStu, gradeSubName, gradeLimit, gradeJudge, 
+    gradeAlterTime, gradeViolate, gradeReview
+    from t_exam_grade
+    where id = #{id,jdbcType=INTEGER}
+      and gradeStuId = #{gradeStuId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, gradeStuId, gradeSubId, gradeStu, gradeSubName, gradeLimit, gradeJudge, 
+    gradeAlterTime, gradeViolate, gradeReview
+    from t_exam_grade
+  </select>
+</mapper>

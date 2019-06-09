@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.StudentcontentMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Studentcontent">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stuId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stuTeacherid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stuCourseid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stuQuestionid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stuType" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="stuContent" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_student_content
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Studentcontent">
+
+    insert into t_student_content (id, stuId, stuTeacherid, 
+      stuCourseid, stuQuestionid, stuType, 
+      stuContent)
+    values (#{id,jdbcType=INTEGER}, #{stuId,jdbcType=INTEGER}, #{stuTeacherid,jdbcType=INTEGER}, 
+      #{stuCourseid,jdbcType=INTEGER}, #{stuQuestionid,jdbcType=INTEGER}, #{stuType,jdbcType=VARCHAR}, 
+      #{stuContent,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Studentcontent">
+
+    update t_student_content
+    set stuId = #{stuId,jdbcType=INTEGER},
+      stuTeacherid = #{stuTeacherid,jdbcType=INTEGER},
+      stuCourseid = #{stuCourseid,jdbcType=INTEGER},
+      stuQuestionid = #{stuQuestionid,jdbcType=INTEGER},
+      stuType = #{stuType,jdbcType=VARCHAR},
+      stuContent = #{stuContent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, stuId, stuTeacherid, stuCourseid, stuQuestionid, stuType, stuContent
+    from t_student_content
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, stuId, stuTeacherid, stuCourseid, stuQuestionid, stuType, stuContent
+    from t_student_content
+  </select>
+</mapper>

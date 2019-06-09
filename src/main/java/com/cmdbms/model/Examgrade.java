@@ -2,7 +2,7 @@ package com.cmdbms.model;
 
 import java.util.Date;
 
-public class Stugrade {
+public class Examgrade {
 
     private Integer id;
 
@@ -16,31 +16,39 @@ public class Stugrade {
     private Integer gradeStu;
 
 
+    private String gradeSubName;
+
+
     private Date gradeLimit;
 
 
-    private Boolean gradeJudge;
+    private Integer gradeJudge;
 
 
     private Date gradeAlterTime;
 
 
-    private Boolean gradeViolate;
+    private Integer gradeViolate;
 
 
-    public Stugrade(Integer id, Integer gradeStuId, Integer gradeSubId, Integer gradeStu, Date gradeLimit, Boolean gradeJudge, Date gradeAlterTime, Boolean gradeViolate) {
+    private Integer gradeReview;
+
+
+    public Examgrade(Integer id, Integer gradeStuId, Integer gradeSubId, Integer gradeStu, String gradeSubName, Date gradeLimit, Integer gradeJudge, Date gradeAlterTime, Integer gradeViolate, Integer gradeReview) {
         this.id = id;
         this.gradeStuId = gradeStuId;
         this.gradeSubId = gradeSubId;
         this.gradeStu = gradeStu;
+        this.gradeSubName = gradeSubName;
         this.gradeLimit = gradeLimit;
         this.gradeJudge = gradeJudge;
         this.gradeAlterTime = gradeAlterTime;
         this.gradeViolate = gradeViolate;
+        this.gradeReview = gradeReview;
     }
 
 
-    public Stugrade() {
+    public Examgrade() {
         super();
     }
 
@@ -85,6 +93,16 @@ public class Stugrade {
     }
 
 
+    public String getGradeSubName() {
+        return gradeSubName;
+    }
+
+
+    public void setGradeSubName(String gradeSubName) {
+        this.gradeSubName = gradeSubName == null ? null : gradeSubName.trim();
+    }
+
+
     public Date getGradeLimit() {
         return gradeLimit;
     }
@@ -95,12 +113,12 @@ public class Stugrade {
     }
 
 
-    public Boolean getGradeJudge() {
+    public Integer getGradeJudge() {
         return gradeJudge;
     }
 
 
-    public void setGradeJudge(Boolean gradeJudge) {
+    public void setGradeJudge(Integer gradeJudge) {
         this.gradeJudge = gradeJudge;
     }
 
@@ -115,12 +133,22 @@ public class Stugrade {
     }
 
 
-    public Boolean getGradeViolate() {
+    public Integer getGradeViolate() {
         return gradeViolate;
     }
 
 
-    public void setGradeViolate(Boolean gradeViolate) {
+    public void setGradeViolate(Integer gradeViolate) {
         this.gradeViolate = gradeViolate;
+    }
+
+
+    public Integer getGradeReview() {
+        return gradeReview;
+    }
+
+
+    public void setGradeReview(Integer gradeReview) {
+        this.gradeReview = gradeReview;
     }
 }

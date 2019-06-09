@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.StudentquestionMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Studentquestion">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stuQuestion" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_student_question
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Studentquestion">
+
+    insert into t_student_question (id, stuQuestion)
+    values (#{id,jdbcType=INTEGER}, #{stuQuestion,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Studentquestion">
+
+    update t_student_question
+    set stuQuestion = #{stuQuestion,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, stuQuestion
+    from t_student_question
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, stuQuestion
+    from t_student_question
+  </select>
+</mapper>

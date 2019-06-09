@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.ExamviolentMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Examviolent">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <idArg column="vioStuId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="vioBehavior" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="vioContent" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="vioLevel" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="vioRegTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+
+    delete from t_exam_violent
+    where id = #{id,jdbcType=INTEGER}
+      and vioStuId = #{vioStuId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Examviolent">
+
+    insert into t_exam_violent (id, vioStuId, vioBehavior, 
+      vioContent, vioLevel, vioRegTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{vioStuId,jdbcType=INTEGER}, #{vioBehavior,jdbcType=VARCHAR}, 
+      #{vioContent,jdbcType=VARCHAR}, #{vioLevel,jdbcType=INTEGER}, #{vioRegTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examviolent">
+
+    update t_exam_violent
+    set vioBehavior = #{vioBehavior,jdbcType=VARCHAR},
+      vioContent = #{vioContent,jdbcType=VARCHAR},
+      vioLevel = #{vioLevel,jdbcType=INTEGER},
+      vioRegTime = #{vioRegTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+      and vioStuId = #{vioStuId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+
+    select id, vioStuId, vioBehavior, vioContent, vioLevel, vioRegTime
+    from t_exam_violent
+    where id = #{id,jdbcType=INTEGER}
+      and vioStuId = #{vioStuId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, vioStuId, vioBehavior, vioContent, vioLevel, vioRegTime
+    from t_exam_violent
+  </select>
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.StudentcodeMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Studentcode">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stuInstitution" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="stuMajor" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="stuClass" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="stuEnteredtime" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="stuSource" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_student_code
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Studentcode">
+
+    insert into t_student_code (id, stuInstitution, stuMajor, 
+      stuClass, stuEnteredtime, stuSource
+      )
+    values (#{id,jdbcType=INTEGER}, #{stuInstitution,jdbcType=VARCHAR}, #{stuMajor,jdbcType=VARCHAR}, 
+      #{stuClass,jdbcType=VARCHAR}, #{stuEnteredtime,jdbcType=DATE}, #{stuSource,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Studentcode">
+
+    update t_student_code
+    set stuInstitution = #{stuInstitution,jdbcType=VARCHAR},
+      stuMajor = #{stuMajor,jdbcType=VARCHAR},
+      stuClass = #{stuClass,jdbcType=VARCHAR},
+      stuEnteredtime = #{stuEnteredtime,jdbcType=DATE},
+      stuSource = #{stuSource,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, stuInstitution, stuMajor, stuClass, stuEnteredtime, stuSource
+    from t_student_code
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, stuInstitution, stuMajor, stuClass, stuEnteredtime, stuSource
+    from t_student_code
+  </select>
+</mapper>

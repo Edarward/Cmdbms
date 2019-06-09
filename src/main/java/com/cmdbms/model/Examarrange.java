@@ -7,28 +7,32 @@ public class Examarrange {
     private Integer id;
 
 
-    private String examName;
-
-
     private Integer examSubId;
 
 
-    private Date examTime;
+    private Date examDate;
+
+
+    private Integer examTime;
 
 
     private Integer examClassroomId;
 
 
-    private Integer examTeacherId;
+    private String examClrName;
 
 
-    public Examarrange(Integer id, String examName, Integer examSubId, Date examTime, Integer examClassroomId, Integer examTeacherId) {
+    private String examSubName;
+
+
+    public Examarrange(Integer id, Integer examSubId, Date examDate, Integer examTime, Integer examClassroomId, String examClrName, String examSubName) {
         this.id = id;
-        this.examName = examName;
         this.examSubId = examSubId;
+        this.examDate = examDate;
         this.examTime = examTime;
         this.examClassroomId = examClassroomId;
-        this.examTeacherId = examTeacherId;
+        this.examClrName = examClrName;
+        this.examSubName = examSubName;
     }
 
 
@@ -47,16 +51,6 @@ public class Examarrange {
     }
 
 
-    public String getExamName() {
-        return examName;
-    }
-
-
-    public void setExamName(String examName) {
-        this.examName = examName == null ? null : examName.trim();
-    }
-
-
     public Integer getExamSubId() {
         return examSubId;
     }
@@ -67,12 +61,22 @@ public class Examarrange {
     }
 
 
-    public Date getExamTime() {
+    public Date getExamDate() {
+        return examDate;
+    }
+
+
+    public void setExamDate(Date examDate) {
+        this.examDate = examDate;
+    }
+
+
+    public Integer getExamTime() {
         return examTime;
     }
 
 
-    public void setExamTime(Date examTime) {
+    public void setExamTime(Integer examTime) {
         this.examTime = examTime;
     }
 
@@ -87,12 +91,22 @@ public class Examarrange {
     }
 
 
-    public Integer getExamTeacherId() {
-        return examTeacherId;
+    public String getExamClrName() {
+        return examClrName;
     }
 
 
-    public void setExamTeacherId(Integer examTeacherId) {
-        this.examTeacherId = examTeacherId;
+    public void setExamClrName(String examClrName) {
+        this.examClrName = examClrName == null ? null : examClrName.trim();
+    }
+
+
+    public String getExamSubName() {
+        return examSubName;
+    }
+
+
+    public void setExamSubName(String examSubName) {
+        this.examSubName = examSubName == null ? null : examSubName.trim();
     }
 }
