@@ -28,10 +28,8 @@ public class Examstuarrange {
     private String stuexamSubName;
 
 
-    private Integer stuexamId;
 
-
-    public Examstuarrange(Integer id, Integer stuexamStuId, Integer stuexamSubId, Integer stuexamClrId, Date stuexamDate, Integer stuexamTime, String stuexamClrName, String stuexamSubName, Integer stuexamId) {
+    public Examstuarrange(Integer id, Integer stuexamStuId, Integer stuexamSubId, Integer stuexamClrId, Date stuexamDate, Integer stuexamTime, String stuexamClrName, String stuexamSubName) {
         this.id = id;
         this.stuexamStuId = stuexamStuId;
         this.stuexamSubId = stuexamSubId;
@@ -40,7 +38,6 @@ public class Examstuarrange {
         this.stuexamTime = stuexamTime;
         this.stuexamClrName = stuexamClrName;
         this.stuexamSubName = stuexamSubName;
-        this.stuexamId = stuexamId;
     }
 
 
@@ -128,13 +125,4 @@ public class Examstuarrange {
         this.stuexamSubName = stuexamSubName == null ? null : stuexamSubName.trim();
     }
 
-
-    public Integer getStuexamId() {
-        return stuexamId;
-    }
-
-
-    public void setStuexamId(Integer stuexamId) {
-        this.stuexamId = stuexamId;
-    }
 }

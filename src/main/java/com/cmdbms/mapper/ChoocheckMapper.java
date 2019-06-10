@@ -31,4 +31,6 @@ public interface ChoocheckMapper {
 
     List selectInfoByStuId(int stuId);
 
+    //考试管理使用
+    List<Integer> selectstuId(Integer clasId);
 }
