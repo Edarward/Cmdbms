@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping("/exam")
 @Api("考试管理模块")
@@ -64,4 +66,16 @@ public class ExamCon {
             return ResultUtils.error(-1,"失败");
         }
     }
+
+    @ApiOperation(value = "修改成绩信息")
+    @PostMapping("/updateGrade")
+    public ResultVO updateGrade(Integer id, Integer gradeStuId, Integer gradeStu, String gradeLimit, Integer gradeJudge, Integer gradeViolate, Integer gradeReview){
+        try {
+            return ResultUtils.success(examSer.updateGrade(id,gradeStuId,gradeStu,gradeLimit,gradeJudge,gradeViolate,gradeReview));
+        }catch (Exception e){
+            System.out.println(e);
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+    
 }

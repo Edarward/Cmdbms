@@ -11,7 +11,12 @@ public interface ExamunpassMapper {
     int deleteByPrimaryKey(@Param("id") Integer id, @Param("unpassStuId") Integer unpassStuId);
 
 
-    int insert(Examunpass record);
+    int insert(@Param(value = "id") Integer id,
+               @Param(value = "unpassSubId")Integer unpassSubId,
+               @Param(value = "unpassStuId")Integer unpassStuId,
+               @Param(value = "unpassGradeStu") Integer unpassGradeStu,
+               @Param(value = "unpassVio")Integer unpassVio,
+               @Param(value = "unpassSubName")String unpassSubName);
 
 
     Examunpass selectByPrimaryKey(@Param("id") Integer id, @Param("unpassStuId") Integer unpassStuId);

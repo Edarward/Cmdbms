@@ -1,10 +1,9 @@
 package com.cmdbms.service.Impl;
 
-import com.cmdbms.mapper.ChoocheckMapper;
-import com.cmdbms.mapper.ExamarrangeMapper;
-import com.cmdbms.mapper.ExamstuarrangeMapper;
+import com.cmdbms.mapper.*;
 import com.cmdbms.model.Examarrange;
 import com.cmdbms.service.ExamSer;
+import com.cmdbms.service.SalaryLevelSer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +24,15 @@ public class ExamSerImpl implements ExamSer {
     @Autowired
     private ExamstuarrangeMapper examstuarrangeMapper;
 
+    @Autowired
+    private ExamgradeMapper examgradeMapper;
+
+    @Autowired
+    private ExamunpassMapper examunpassMapper;
+
+    @Autowired
+    private ExamviolentMapper examviolentMapper;
+
     @Override
     @Transactional(rollbackFor = Exception.class)
     public String insertArrange(Integer id,
@@ -42,6 +50,7 @@ public class ExamSerImpl implements ExamSer {
             Integer stuexamStuId = integerList.get(i);
             System.out.println(stuexamStuId.toString());
             Integer integer = examstuarrangeMapper.insert(id,stuexamStuId,examClassroomId,examSubId,newexamDate,examTime,examClrName,examSubName);
+            Integer integer1 = examgradeMapper.insert(id,stuexamStuId,examSubId,examSubName);
         }
         return record.toString();
     }
@@ -72,6 +81,29 @@ public class ExamSerImpl implements ExamSer {
         Date newexamDate = sdf.parse(examDate);
         Integer record = examarrangeMapper.updateByPrimaryKey(id,examSubId,newexamDate,examTime,examClassroomId,examClrName,examSubName);
         Integer integer = examstuarrangeMapper.updateByPrimaryKey(id,examClassroomId,examSubId,newexamDate,examTime,examClrName,examSubName);
+        return record.toString();
+    }
+
+    public String updateGrade(Integer id,
+                              Integer gradeStuId,
+                              Integer gradeStu,
+                              String gradeLimit,
+                              Integer gradeJudge,
+                              Integer gradeViolate,
+                              Integer gradeReview) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date newgradeLimit = sdf.parse(gradeLimit);
+        Integer record = examgradeMapper.updateByPrimaryKey(id,gradeStuId,gradeStu,newgradeLimit,gradeJudge,gradeViolate,gradeReview);
+        List<Integer> integerList = examgradeMapper.selectgradeSub(id,gradeStuId);
+        Integer gradeSubId = integerList.get(0);
+        List<String> stringList = examgradeMapper.selectgradeSubName(id,gradeStuId);
+        String gradeSubName = stringList.get(0);
+        if (gradeStu<60){
+            examunpassMapper.insert(id,gradeSubId,gradeStuId,gradeStu,gradeViolate,gradeSubName);
+        }
+        if (gradeViolate == 0){
+            examviolentMapper.insert(id,gradeStuId);
+        }
         return record.toString();
     }
 }

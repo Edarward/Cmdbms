@@ -13,4 +13,6 @@ public interface ExamSer {
     int deleteArrang(Integer id);
 
     String updateArrange(Integer id, Integer examSubId, String examDate, Integer examTime, Integer examClassroomId, String examClrName, String examSubName) throws ParseException;
+
+    String updateGrade(Integer id, Integer gradeStuId, Integer gradeStu, String gradeLimit, Integer gradeJudge, Integer gradeViolate, Integer gradeReview) throws ParseException;
 }

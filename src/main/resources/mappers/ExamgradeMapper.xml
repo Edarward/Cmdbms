@@ -25,23 +25,17 @@
   <insert id="insert" parameterType="com.cmdbms.model.Examgrade">
 
     insert into t_exam_grade (id, gradeStuId, gradeSubId, 
-      gradeStu, gradeSubName, gradeLimit, 
-      gradeJudge, gradeAlterTime, gradeViolate, 
-      gradeReview)
+      gradeSubName
+      )
     values (#{id,jdbcType=INTEGER}, #{gradeStuId,jdbcType=INTEGER}, #{gradeSubId,jdbcType=INTEGER}, 
-      #{gradeStu,jdbcType=INTEGER}, #{gradeSubName,jdbcType=VARCHAR}, #{gradeLimit,jdbcType=DATE}, 
-      #{gradeJudge,jdbcType=INTEGER}, #{gradeAlterTime,jdbcType=TIMESTAMP}, #{gradeViolate,jdbcType=INTEGER}, 
-      #{gradeReview,jdbcType=INTEGER})
+      #{gradeSubName,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examgrade">
 
     update t_exam_grade
-    set gradeSubId = #{gradeSubId,jdbcType=INTEGER},
-      gradeStu = #{gradeStu,jdbcType=INTEGER},
-      gradeSubName = #{gradeSubName,jdbcType=VARCHAR},
+    set   gradeStu = #{gradeStu,jdbcType=INTEGER},
       gradeLimit = #{gradeLimit,jdbcType=DATE},
       gradeJudge = #{gradeJudge,jdbcType=INTEGER},
-      gradeAlterTime = #{gradeAlterTime,jdbcType=TIMESTAMP},
       gradeViolate = #{gradeViolate,jdbcType=INTEGER},
       gradeReview = #{gradeReview,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
@@ -60,5 +54,18 @@
     select id, gradeStuId, gradeSubId, gradeStu, gradeSubName, gradeLimit, gradeJudge, 
     gradeAlterTime, gradeViolate, gradeReview
     from t_exam_grade
+  </select>
+  <select id="selectgradeSub" parameterType="map" resultType="java.lang.Integer">
+    select gradeSubId
+    from t_exam_grade
+    where id = #{id,jdbcType=INTEGER}
+      and gradeStuId = #{gradeStuId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectgradeSubName" parameterType="map" resultType="java.lang.String">
+    select gradeSubName
+    from t_exam_grade
+    where id = #{id,jdbcType=INTEGER}
+      and gradeStuId = #{gradeStuId,jdbcType=INTEGER}
   </select>
 </mapper>
