@@ -25,7 +25,7 @@
   </delete>
   <insert id="insert" parameterType="com.cmdbms.model.Studentmsg">
 
-    insert into t_student_msg (id, name, grade, 
+    insert into t_student_msg (id, `name`, grade,
       sex, birthday, nativePlace, 
       idType, idNunber, phone, 
       parentPhone, folk, politicalSt
@@ -54,14 +54,14 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 
-    select id, name, grade, sex, birthday, nativePlace, idType, idNunber, phone, parentPhone, 
+    select id, `name`, grade, sex, birthday, nativePlace, idType, idNunber, phone, parentPhone,
     folk, politicalSt
     from t_student_msg
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 
-    select id, name, grade, sex, birthday, nativePlace, idType, idNunber, phone, parentPhone, 
+    select id, `name`, grade, sex, birthday, nativePlace, idType, idNunber, phone, parentPhone,
     folk, politicalSt
     from t_student_msg
   </select>
