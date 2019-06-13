@@ -9,7 +9,7 @@ public interface StudentsSer {
 
     String updateStudents(Studentmsg studentmsg);
 
-    List selectStudents(Integer id);
+    Studentmsg selectStudents(Integer id);
 
     int deleteStudents(Integer id);
 }

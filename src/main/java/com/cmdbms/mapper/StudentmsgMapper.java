@@ -14,7 +14,7 @@ public interface StudentmsgMapper {
     int insert(Studentmsg record);
 
 
-    List<Studentmsg> selectByPrimaryKey(Integer id);
+    Studentmsg selectByPrimaryKey(Integer id);
 
 
     List<Studentmsg> selectAll();

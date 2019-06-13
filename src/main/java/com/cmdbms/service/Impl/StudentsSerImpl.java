@@ -30,8 +30,8 @@ public class StudentsSerImpl implements StudentsSer {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public List<Studentmsg> selectStudents(Integer id){
-        List<Studentmsg> studentmsgList = studentmsgMapper.selectByPrimaryKey(id);
+    public Studentmsg selectStudents(Integer id){
+        Studentmsg studentmsgList = studentmsgMapper.selectByPrimaryKey(id);
         return studentmsgList;
     }
 
