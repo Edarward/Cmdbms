@@ -74,4 +74,10 @@
     WHERE A.stuId = #{stuId,jdbcType=INTEGER} and A.pass=0
   </select>
 
+  <select id="selectstuId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select stuId
+    from t_choo_check
+    where clasId = #{clasId,jdbcType=INTEGER}
+  </select>
+
 </mapper>

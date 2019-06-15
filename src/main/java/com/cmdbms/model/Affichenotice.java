@@ -1,5 +1,8 @@
 package com.cmdbms.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Affichenotice {
@@ -15,13 +18,15 @@ public class Affichenotice {
 
     private String notWriter;
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date notWritetime;
 
 
     private String notReleaser;
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date notReleasetime;
 
 

@@ -8,10 +8,12 @@ import java.util.List;
 @Repository
 public interface ExamviolentMapper {
 
-    int deleteByPrimaryKey(@Param("id") Integer id, @Param("vioStuId") Integer vioStuId);
+    int deleteByPrimaryKey(@Param("id") Integer id,
+                           @Param("vioStuId") Integer vioStuId);
 
 
-    int insert(Examviolent record);
+    int insert(@Param(value = "id") Integer id,
+               @Param(value = "vioStuId") Integer vioStuId);
 
 
     Examviolent selectByPrimaryKey(@Param("id") Integer id, @Param("vioStuId") Integer vioStuId);

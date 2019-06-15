@@ -4,14 +4,22 @@ import com.cmdbms.model.Examstuarrange;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 @Repository
 public interface ExamstuarrangeMapper {
 
-    int deleteByPrimaryKey(@Param("id") Integer id, @Param("stuexamStuId") Integer stuexamStuId);
+    int deleteByPrimaryKey(@Param("id") Integer id);
 
 
-    int insert(Examstuarrange record);
+    int insert(@Param(value = "id")Integer id,
+               @Param(value = "stuexamStuId")Integer stuexamStuId,
+               @Param(value = "stuexamClrId")Integer stuexamClrId,
+               @Param(value = "stuexamSubId")Integer stuexamSubId,
+               @Param(value = "stuexamDate")Date stuexamDate,
+               @Param(value = "stuexamTime")Integer stuexamTime,
+               @Param(value = "stuexamClrName")String stuexamClrName,
+               @Param(value = "stuexamSubName")String stuexamSubName);
 
 
     Examstuarrange selectByPrimaryKey(@Param("id") Integer id, @Param("stuexamStuId") Integer stuexamStuId);
@@ -20,5 +28,11 @@ public interface ExamstuarrangeMapper {
     List<Examstuarrange> selectAll();
 
 
-    int updateByPrimaryKey(Examstuarrange record);
+    int updateByPrimaryKey(@Param(value = "id")Integer id,
+                           @Param(value = "stuexamClrId")Integer stuexamClrId,
+                           @Param(value = "stuexamSubId")Integer stuexamSubId,
+                           @Param(value = "stuexamDate")Date stuexamDate,
+                           @Param(value = "stuexamTime")Integer stuexamTime,
+                           @Param(value = "stuexamClrName")String stuexamClrName,
+                           @Param(value = "stuexamSubName")String stuexamSubName);
 }

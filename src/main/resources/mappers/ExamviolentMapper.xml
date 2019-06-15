@@ -20,11 +20,9 @@
   </delete>
   <insert id="insert" parameterType="com.cmdbms.model.Examviolent">
 
-    insert into t_exam_violent (id, vioStuId, vioBehavior, 
-      vioContent, vioLevel, vioRegTime
+    insert into t_exam_violent (id, vioStuId
       )
-    values (#{id,jdbcType=INTEGER}, #{vioStuId,jdbcType=INTEGER}, #{vioBehavior,jdbcType=VARCHAR}, 
-      #{vioContent,jdbcType=VARCHAR}, #{vioLevel,jdbcType=INTEGER}, #{vioRegTime,jdbcType=TIMESTAMP}
+    values (#{id,jdbcType=INTEGER}, #{vioStuId,jdbcType=INTEGER}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examviolent">
