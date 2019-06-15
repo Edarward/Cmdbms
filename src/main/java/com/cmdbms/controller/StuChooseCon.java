@@ -159,4 +159,15 @@ public class StuChooseCon {
             return ResultUtils.error(-1,"审核失败！");
         }
     }
+
+    @ApiOperation(value = "（审核）管理员查看审核信息")
+    @GetMapping("/selectCheckQuitInfo")
+    public ResultVO selectCheckQuitInfo () {
+        try {
+            return ResultUtils.success(chooseCourseSer.selectCheckQuitInfo());
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"查询失败！");
+        }
+    }
+
 }

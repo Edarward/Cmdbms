@@ -3,9 +3,11 @@ package com.cmdbms.service.Impl;
 import com.cmdbms.mapper.ChoocheckMapper;
 import com.cmdbms.mapper.ChoosecourseMapper;
 import com.cmdbms.mapper.CourseMapper;
+import com.cmdbms.mapper.QuitcheckMapper;
 import com.cmdbms.model.Choocheck;
 import com.cmdbms.model.Choosecourse;
 import com.cmdbms.model.Course;
+import com.cmdbms.model.Quitcheck;
 import com.cmdbms.service.ChooseCourseSer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +36,36 @@ public class ChooseCourseSerImpl implements ChooseCourseSer {
     @Autowired
     private ChoocheckMapper choocheckMapper;
 
+    private QuitcheckMapper quitcheckMapper;
 
+    public List selectCheckQuitInfo(){
+        List resList = new ArrayList();
+        System.out.println("12345678");
+        List<Quitcheck> quitcheckList = quitcheckMapper.selectAll();
+        for (int i = 0;i<quitcheckList.size();i++){
+            Quitcheck temChooCheck = quitcheckList.get(i);
+            System.out.println("12345678");
+            int stuId = temChooCheck.getStuId();
+            int classId = temChooCheck.getClassId();
+            System.out.println("12345678");
+            Map temMap = new HashMap();
+            String stuName = courseMapper.selectStuNamefromId(stuId);
+            String className = courseMapper.selectNamefromId(classId);
+            System.out.println("12345678");
+            temMap.put("id",temChooCheck.getId());
+            temMap.put("stuId",stuId);
+            temMap.put("stuName",stuName);
+            temMap.put("classId",classId);
+            temMap.put("className",className);
+            temMap.put("applyTime",temChooCheck.getApplyTime());
+            temMap.put("pass",temChooCheck.getPass());
+            System.out.println("12345678");
+            resList.add(temMap);
+        }
+
+        return resList;
+
+    }
     public  List selectCheckChooseInfo(){
         List resList = new ArrayList();
         List<Choocheck> choocheckList = choocheckMapper.selectAll();

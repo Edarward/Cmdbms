@@ -10,6 +10,8 @@ public interface ChooseCourseSer {
 
     List selectCheckChooseInfo();
 
+    List selectCheckQuitInfo();
+
 
     //使用此方法进行选课
     int stuChooseApply(Choosecourse choosecourse);
