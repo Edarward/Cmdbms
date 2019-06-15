@@ -94,6 +94,16 @@ public class StuChooseCon {
     }
 
 
+    @ApiOperation(value = "（审核）管理员查看审核信息")
+    @GetMapping("/selectCheckChooseInfo")
+    public ResultVO selectCheckChooseInfo () {
+        try {
+            return ResultUtils.success(chooseCourseSer.selectCheckChooseInfo());
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"审核失败！");
+        }
+    }
+
 
 
 /****************************************退课阶段*****************************************************************/

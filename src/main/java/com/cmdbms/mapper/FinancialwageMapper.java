@@ -21,7 +21,7 @@ public interface FinancialwageMapper {
     int insert(Financialwage record);
 
 
-    Financialwage selectByPrimaryKey(Integer teaId);
+    Financialwage selectByPrimaryKey(Integer id);
 
 
     List<Financialwage> selectAll();

@@ -62,7 +62,7 @@ public class FinConsumabCon {
         try {
             return ResultUtils.success(finConsumbSer.teacherUpdateSalary(record));
         } catch (Exception e) {
-            return ResultUtils.error(-1,"添加失败！");
+            return ResultUtils.error(-1,"修改失败！");
         }
     }
 

@@ -58,13 +58,13 @@ public class FinSubsidyCon {
         }
     }
 
-    @ApiOperation(value = "管理员助学金审核")
+    @ApiOperation(value = "管理员助学金修改")
     @PostMapping("/CheckFinSalary")
     public ResultVO CheckFinSalary (Financialsubsidies record) {
         try {
             return ResultUtils.success(finSubsidySer.updateOne(record));
         } catch (Exception e) {
-            return ResultUtils.error(-1,"查询失败！");
+            return ResultUtils.error(-1,"修改失败！");
         }
     }
 }

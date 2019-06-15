@@ -36,7 +36,7 @@
 
     update t_financial_wage
     set
-      teaId = #{teaId,jdbcType=INTEGER}
+      teaId = #{teaId,jdbcType=INTEGER},
       teaMoney = #{teaMoney,jdbcType=VARCHAR},
       teaState = #{teaState,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
@@ -45,7 +45,7 @@
 
     select id, teaId, teaMoney, teaState
     from t_financial_wage
-    where teaId = #{teaId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

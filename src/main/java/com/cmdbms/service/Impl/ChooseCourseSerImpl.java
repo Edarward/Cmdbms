@@ -35,6 +35,30 @@ public class ChooseCourseSerImpl implements ChooseCourseSer {
     private ChoocheckMapper choocheckMapper;
 
 
+    public  List selectCheckChooseInfo(){
+        List resList = new ArrayList();
+        List<Choocheck> choocheckList = choocheckMapper.selectAll();
+        for (int i = 0;i<choocheckList.size();i++){
+            Choocheck temChooCheck = choocheckList.get(i);
+            int stuId = temChooCheck.getStuId();
+            int clasId = temChooCheck.getClasId();
+            Map temMap = new HashMap();
+            String stuName = courseMapper.selectStuNamefromId(stuId);
+            String className = courseMapper.selectNamefromId(clasId);
+            temMap.put("id",temChooCheck.getId());
+            temMap.put("stuId",stuId);
+            temMap.put("stuName",stuName);
+            temMap.put("classId",clasId);
+            temMap.put("className",className);
+            temMap.put("applyTime",temChooCheck.getApplyTime());
+            temMap.put("pass",temChooCheck.getPass());
+
+            resList.add(temMap);
+        }
+
+        return resList;
+    }
+
     /*插入选课信息*/
     @Override
     public int stuChooseApply(Choosecourse choosecourse){
@@ -121,10 +145,13 @@ public class ChooseCourseSerImpl implements ChooseCourseSer {
 
     /*插入选课审核信息*/
     public int checkChooseInfo(Choocheck choocheck){
+        System.out.println("dasdasdasd");
         Timestamp applyTime = choocheckMapper.
                 selApplTimeByClaIdAndStuId(choocheck.getClasId(),choocheck.getStuId());
+        System.out.println("dasdasdasd");
         int chooseCourseId = choocheckMapper.
-                selChoCourIdByClaIdAndStuId(choocheck.getClasId(),choocheck.getStuId());
+                selChooseIdByClaIdAndStuId(choocheck.getClasId(),choocheck.getStuId());
+        System.out.println("dasdasdasd");
         choocheck.setApplyTime(applyTime);
         choosecourseMapper.deleteByPrimaryKey(chooseCourseId);
         System.out.println("删除这个：：：-----》》》》"+chooseCourseId);

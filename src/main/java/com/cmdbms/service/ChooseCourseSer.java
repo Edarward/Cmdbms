@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface ChooseCourseSer {
 
+
+    List selectCheckChooseInfo();
+
+
     //使用此方法进行选课
     int stuChooseApply(Choosecourse choosecourse);
 

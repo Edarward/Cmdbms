@@ -79,15 +79,21 @@ public class FinConsumbSerImpl implements FinConsumbSer {
 
 
     public int teacherUpdateSalary(Financialwage record){
+        System.out.println("1dsadasdas");
+        System.out.println(record.getId());
         Financialwage temFin = financialwageMapper.selectByPrimaryKey(record.getId());
-
+        System.out.println(record.getTeaMoney()+"++++"+record.getTeaState()+"++++"+record.getTeaId()+"++++"+record.getId());
+        System.out.println(temFin.getTeaMoney()+"++++"+temFin.getTeaState()+"++++"+temFin.getTeaId()+"++++"+temFin.getId());
         if (record.getTeaMoney()==null)
             record.setTeaMoney(temFin.getTeaMoney());
-
+        System.out.println("3dsadasdas");
         if (record.getTeaId()==null)
             record.setTeaId(temFin.getTeaId());
+        System.out.println("4dsadasdas");
         if (record.getTeaState()==null)
             record.setTeaState(temFin.getTeaState());
+        System.out.println("5dsadasdas");
+        System.out.println(record.getTeaMoney()+"++++"+record.getTeaState()+"++++"+record.getTeaId()+"++++"+record.getId());
         return financialwageMapper.updateByPrimaryKey(record);
     }
 

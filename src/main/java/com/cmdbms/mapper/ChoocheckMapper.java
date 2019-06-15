@@ -26,6 +26,7 @@ public interface ChoocheckMapper {
 
     Timestamp selApplTimeByClaIdAndStuId(int classId,int StudentId);
 
+    int selChooseIdByClaIdAndStuId(int classId,int StudentId);
 
     int selChoCourIdByClaIdAndStuId(int classId,int StudentId);
 
