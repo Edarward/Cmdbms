@@ -166,6 +166,7 @@ public class StuChooseCon {
         try {
             return ResultUtils.success(chooseCourseSer.selectCheckQuitInfo());
         } catch (Exception e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"查询失败！");
         }
     }

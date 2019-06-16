@@ -38,12 +38,22 @@
     from t_quit_check
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+
   <select id="selectAll" resultMap="BaseResultMap">
 
     select id, classId, stuId, applyTime, pass
     from t_quit_check
   </select>
 
+
+
+
+  <select id="selectAllIn" resultMap="BaseResultMap">
+
+    select *
+    from t_quit_check
+  </select>
 
   <select id="selApplTimeByClaIdAndStuId" parameterType="java.lang.Integer"  resultType="java.sql.Timestamp">
 

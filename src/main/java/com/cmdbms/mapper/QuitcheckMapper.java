@@ -18,6 +18,8 @@ public interface QuitcheckMapper {
     Quitcheck selectByPrimaryKey(Integer id);
 
 
+    List<Quitcheck> selectAllIn();
+
     List<Quitcheck> selectAll();
 
 

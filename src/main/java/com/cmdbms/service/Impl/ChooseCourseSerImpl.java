@@ -35,13 +35,13 @@ public class ChooseCourseSerImpl implements ChooseCourseSer {
 
     @Autowired
     private ChoocheckMapper choocheckMapper;
-
+    @Autowired
     private QuitcheckMapper quitcheckMapper;
 
     public List selectCheckQuitInfo(){
         List resList = new ArrayList();
         System.out.println("12345678");
-        List<Quitcheck> quitcheckList = quitcheckMapper.selectAll();
+        List<Quitcheck> quitcheckList = quitcheckMapper.selectAllIn();
         for (int i = 0;i<quitcheckList.size();i++){
             Quitcheck temChooCheck = quitcheckList.get(i);
             System.out.println("12345678");
