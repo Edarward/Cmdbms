@@ -39,6 +39,7 @@ public class Affichenotice {
     public Affichenotice(Integer notId, String notType, String notContent,String notWriter, Date notWritetime, String notReleaser, Date notReleasetime, Integer notState, Integer notStatetype) {
         this.notId = notId;
         this.notType = notType;
+        this.notContent = notContent;
         this.notWriter = notWriter;
         this.notWritetime = notWritetime;
         this.notReleaser = notReleaser;
@@ -79,6 +80,8 @@ public class Affichenotice {
     public void setNotContent(String notContent){
         this.notContent = notContent == null ? null : notContent.trim();
     }
+
+
     public String getNotWriter() {
         return notWriter;
     }
