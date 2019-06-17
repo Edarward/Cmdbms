@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.ClubmanagerMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Clubmanager">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="number" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="declarationTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="studentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clubStatus" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ClubListMap" type="com.cmdbms.model.Clubmanager">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_club_manager
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Clubmanager">
+
+    insert into t_club_manager (id, `name`, `number`,
+      declarationTime, createTime, studentId, 
+      clubStatus)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
+      #{declarationTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{studentId,jdbcType=INTEGER}, 
+      #{clubStatus,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Clubmanager">
+
+    update t_club_manager
+    set name = #{name,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      declarationTime = #{declarationTime,jdbcType=TIMESTAMP},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      studentId = #{studentId,jdbcType=INTEGER},
+      clubStatus = #{clubStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, `name`, `number`, declarationTime, createTime, studentId, clubStatus
+    from t_club_manager
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, `name`, `number`, declarationTime, createTime, studentId, clubStatus
+    from t_club_manager
+  </select>
+  <select id="selectByClubStatus" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, `name`,`number`, declarationTime, createTime, studentId, clubStatus
+    from t_club_manager
+    <if test="clubStatus!=0">
+      <where>
+        clubStatus = #{clubStatus,jdbcType=INTEGER}
+      </where>
+    </if>
+  </select>
+</mapper>

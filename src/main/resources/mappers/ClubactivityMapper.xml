@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.ClubactivityMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Clubactivity">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clubId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="actDescription" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="actLocation" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="actStartTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="actStopTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="actStatus" javaType="java.lang.Boolean" jdbcType="BIT" />
+      <arg column="reviewStatus" javaType="java.lang.Boolean" jdbcType="BIT" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_club_activity
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Clubactivity">
+
+    insert into t_club_activity (id, clubId, actDescription, 
+      actLocation, actStartTime, actStopTime, 
+      actStatus, reviewStatus)
+    values (#{id,jdbcType=INTEGER}, #{clubId,jdbcType=INTEGER}, #{actDescription,jdbcType=VARCHAR}, 
+      #{actLocation,jdbcType=VARCHAR}, #{actStartTime,jdbcType=TIMESTAMP}, #{actStopTime,jdbcType=TIMESTAMP}, 
+      #{actStatus,jdbcType=BIT}, #{reviewStatus,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Clubactivity">
+
+    update t_club_activity
+    set clubId = #{clubId,jdbcType=INTEGER},
+      actDescription = #{actDescription,jdbcType=VARCHAR},
+      actLocation = #{actLocation,jdbcType=VARCHAR},
+      actStartTime = #{actStartTime,jdbcType=TIMESTAMP},
+      actStopTime = #{actStopTime,jdbcType=TIMESTAMP},
+      actStatus = #{actStatus,jdbcType=BIT},
+      reviewStatus = #{reviewStatus,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, clubId, actDescription, actLocation, actStartTime, actStopTime, actStatus, 
+    reviewStatus
+    from t_club_activity
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, clubId, actDescription, actLocation, actStartTime, actStopTime, actStatus, 
+    reviewStatus
+    from t_club_activity
+  </select>
+</mapper>

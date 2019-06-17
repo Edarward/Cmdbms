@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.ClubmessageMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Clubmessage">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clubActivityId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="studentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="contentStatus" javaType="java.lang.Boolean" jdbcType="BIT" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_club_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Clubmessage">
+
+    insert into t_club_message (id, clubActivityId, content, 
+      studentId, contentStatus)
+    values (#{id,jdbcType=INTEGER}, #{clubActivityId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{studentId,jdbcType=INTEGER}, #{contentStatus,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Clubmessage">
+
+    update t_club_message
+    set clubActivityId = #{clubActivityId,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      studentId = #{studentId,jdbcType=INTEGER},
+      contentStatus = #{contentStatus,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, clubActivityId, content, studentId, contentStatus
+    from t_club_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, clubActivityId, content, studentId, contentStatus
+    from t_club_message
+  </select>
+</mapper>

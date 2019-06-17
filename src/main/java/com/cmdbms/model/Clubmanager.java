@@ -2,7 +2,7 @@ package com.cmdbms.model;
 
 import java.util.Date;
 
-public class Cludmanger {
+public class Clubmanager {
 
     private Integer id;
 
@@ -16,23 +16,27 @@ public class Cludmanger {
     private Date declarationTime;
 
 
+    private Date createTime;
+
+
     private Integer studentId;
 
 
-    private Integer cludStatus;
+    private Integer clubStatus;
 
 
-    public Cludmanger(Integer id, String name, Integer number, Date declarationTime, Integer studentId, Integer cludStatus) {
+    public Clubmanager(Integer id, String name, Integer number, Date declarationTime, Date createTime, Integer studentId, Integer clubStatus) {
         this.id = id;
         this.name = name;
         this.number = number;
         this.declarationTime = declarationTime;
+        this.createTime = createTime;
         this.studentId = studentId;
-        this.cludStatus = cludStatus;
+        this.clubStatus = clubStatus;
     }
 
 
-    public Cludmanger() {
+    public Clubmanager() {
         super();
     }
 
@@ -77,6 +81,16 @@ public class Cludmanger {
     }
 
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+
     public Integer getStudentId() {
         return studentId;
     }
@@ -87,12 +101,12 @@ public class Cludmanger {
     }
 
 
-    public Integer getCludStatus() {
-        return cludStatus;
+    public Integer getClubStatus() {
+        return clubStatus;
     }
 
 
-    public void setCludStatus(Integer cludStatus) {
-        this.cludStatus = cludStatus;
+    public void setClubStatus(Integer clubStatus) {
+        this.clubStatus = clubStatus;
     }
 }

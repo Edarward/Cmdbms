@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cmdbms.mapper.ClubappraisingMapper">
+  <resultMap id="BaseResultMap" type="com.cmdbms.model.Clubappraising">
+
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="year" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clubId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="appraisingStart" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="appraisingResult" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="studentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
+    delete from t_club_appraising
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cmdbms.model.Clubappraising">
+
+    insert into t_club_appraising (id, year, clubId, 
+      appraisingStart, appraisingResult, studentId
+      )
+    values (#{id,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, #{clubId,jdbcType=INTEGER}, 
+      #{appraisingStart,jdbcType=TINYINT}, #{appraisingResult,jdbcType=TINYINT}, #{studentId,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Clubappraising">
+
+    update t_club_appraising
+    set year = #{year,jdbcType=INTEGER},
+      clubId = #{clubId,jdbcType=INTEGER},
+      appraisingStart = #{appraisingStart,jdbcType=TINYINT},
+      appraisingResult = #{appraisingResult,jdbcType=TINYINT},
+      studentId = #{studentId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, year, clubId, appraisingStart, appraisingResult, studentId
+    from t_club_appraising
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+
+    select id, year, clubId, appraisingStart, appraisingResult, studentId
+    from t_club_appraising
+  </select>
+</mapper>
