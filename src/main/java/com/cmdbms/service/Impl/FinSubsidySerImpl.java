@@ -36,8 +36,13 @@ public class FinSubsidySerImpl implements FinSubsidySer {
     }
 
     public int updateOne(Financialsubsidies record){
-
-        return financialsubsidiesMapper.updateByPrimaryKey(record);
+        int stuId = record.getStuId();
+        Financialsubsidies temRecord = financialsubsidiesMapper.selectByPrimaryKey(stuId);
+        if (record.getStiState()!=null)
+            temRecord.setStiState(record.getStiState());
+        if (record.getStiGrade()!=null)
+            temRecord.setStiGrade(record.getStiGrade());
+        return financialsubsidiesMapper.updateByPrimaryKey(temRecord);
     }
 
     public int deleteOne(int id){
