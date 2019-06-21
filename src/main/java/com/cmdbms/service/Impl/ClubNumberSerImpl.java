@@ -32,6 +32,7 @@ public class ClubNumberSerImpl implements ClubNumberSer {
     @Autowired
     private ClubpositionMapper clubpositionMapper;
 
+
     @Override
     public List<Object> numberList (Integer studentId) throws ParseException {
         List<Object> numberList = new ArrayList<>();
@@ -49,7 +50,7 @@ public class ClubNumberSerImpl implements ClubNumberSer {
             recording.put("joinTime", DateFormatUtil.DateFormat(clubnumber.getJoinTime().toString(),"yyyy-MM-dd"));
             //判断是否退出社团
             if (clubnumber.getExitApplication()){
-                recording.put("exitTime",DateFormatUtil.DateFormat(clubnumber.getExitTime().toString()));
+                recording.put("exitTime",DateFormatUtil.DateFormat(clubnumber.getExitTime().toString(),"yyyy-MM-dd"));
             } else {
                 recording.put("exitTime","暂无");
             }
@@ -63,6 +64,53 @@ public class ClubNumberSerImpl implements ClubNumberSer {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int updateClubNumber (Integer id,Integer clubId,Integer clubPositionId) {
-        return clubnumberMapper.updateById(id,clubId,clubPositionId);
+        clubnumberMapper.updateById(id,clubId,clubPositionId);
+        return id;
+    }
+
+    @Override
+    public List<Object> applicationList (Integer appState) {
+        List<Object> applicationList = new ArrayList<>();
+        List<Clubnumber> clubnumberList = clubnumberMapper.ApplicationList(appState);
+        for (Clubnumber clubnumber : clubnumberList) {
+            String applicationResult = "申请中";
+            String studentSex = "";
+            Map<String,Object> recording = new HashMap<>(10);
+            Integer studentId = clubnumber.getStudentId();
+            Studentmsg studentmsg = studentmsgMapper.selectByPrimaryKey(studentId);
+            recording.put("id",clubnumber.getId());
+            recording.put("studentId",studentId);
+            recording.put("studentName",studentmsg.getName());
+            if (studentmsg.getSex()=="0"){
+                studentSex="女";
+            }else { studentSex="男"; }
+            recording.put("studentSex",studentSex);
+            recording.put("studentFolk",studentmsg.getFolk());
+            recording.put("studentGrade",studentmsg.getGrade());
+            recording.put("studentPhone",studentmsg.getPhone());
+            Integer clubId = clubnumber.getClubId();
+            Clubmanager clubmanager = clubmanagerMapper.selectByPrimaryKey(clubId);
+            recording.put("clubId",clubId);
+            recording.put("clubName",clubmanager.getName());
+            if (appState==1) {
+                recording.put("joinApplication",applicationResult);
+            } else {
+                recording.put("exitApplication",applicationResult);
+            }
+            applicationList.add(recording);
+        }
+        return applicationList;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int auditing(Integer appState,Integer id) {
+        if (appState==1){
+            //入社审核 修改
+            return clubnumberMapper.joinAuditing(id);
+        } else {
+            //退社审核 修改
+            return clubnumberMapper.exitAuditing(id);
+        }
     }
 }

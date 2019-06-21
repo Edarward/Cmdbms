@@ -8,6 +8,11 @@ import java.util.List;
 @Repository
 public interface ClubnumberMapper {
 
+    /**
+     * Description: 退社审核 删除记录
+     * Author: Edarward
+     * Date: 2019/6/18
+     */
     int deleteByPrimaryKey(Integer id);
 
 
@@ -34,7 +39,29 @@ public interface ClubnumberMapper {
      * Author: Edarward
      * Date: 2019/6/14
      */
-    int updateById(@Param(value = "id") Integer id,
+    Integer updateById(@Param(value = "id") Integer id,
                    @Param(value = "clubId") Integer clubId,
-                   @Param(value = "clubId") Integer clubPositionId);
+                   @Param(value = "clubPositionId") Integer clubPositionId);
+
+    /**
+     * Description: 查询 入社（退社）申请
+     * Param: appState   0为退社申请   1为入社申请
+     * Author: Edarward
+     * Date: 2019/6/18
+     */
+    List<Clubnumber> ApplicationList(@Param(value = "appState")Integer appState);
+
+    /**
+     * Description: 入社审核 更改状态
+     * Author: Edarward
+     * Date: 2019/6/18
+     */
+    int joinAuditing(@Param(value = "Id")Integer Id);
+
+    /**
+     * Description: 退社审核 更改状态
+     * Author: Edarward
+     * Date: 2019/6/18
+     */
+    int exitAuditing(@Param(value = "Id")Integer Id);
 }

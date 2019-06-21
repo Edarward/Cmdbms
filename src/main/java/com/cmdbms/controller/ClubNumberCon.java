@@ -2,6 +2,7 @@ package com.cmdbms.controller;
 
 import com.cmdbms.service.ClubManagerSer;
 import com.cmdbms.service.ClubNumberSer;
+import com.cmdbms.service.ClubPositionSer;
 import com.cmdbms.util.ResultUtils;
 import com.cmdbms.vo.ResultVO;
 import io.swagger.annotations.Api;
@@ -21,9 +22,11 @@ public class ClubNumberCon {
     private ClubNumberSer clubNumberSer;
     @Autowired
     private ClubManagerSer clubManagerSer;
+    @Autowired
+    private ClubPositionSer clubPositionSer;
 
     @ApiOperation(value = "社团成员信息列表")
-    @GetMapping("/selectClubNumber")
+    @GetMapping("/selClubNumber")
     public ResultVO selectClubNumber (Integer studentId) {
         try {
             return ResultUtils.success(clubNumberSer.numberList(studentId));
@@ -39,12 +42,13 @@ public class ClubNumberCon {
         try {
             return ResultUtils.success(clubNumberSer.updateClubNumber(id,clubId,clubPositionId));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
 
     @ApiOperation(value = "成员信息修改—显示社团编号")
-    @GetMapping("/selectClubId")
+    @GetMapping("/selClubId")
     public ResultVO selectClubId (Integer clubStatus) {
         try {
             return ResultUtils.success(clubManagerSer.clubNameList(clubStatus));
@@ -54,10 +58,30 @@ public class ClubNumberCon {
     }
 
     @ApiOperation(value = "成员信息修改—显示社团职位")
-    @GetMapping("/selectClubPositionId")
-    public ResultVO selectClubPositionId (Integer clubStatus) {
+    @GetMapping("/selClubPosId")
+    public ResultVO selectClubPositionId () {
         try {
-            return ResultUtils.success(clubManagerSer.clubNameList(clubStatus));
+            return ResultUtils.success(clubPositionSer.positionList());
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @ApiOperation(value = "成员申请审核—入社(退社)申请显示")
+    @GetMapping("appList")
+    public ResultVO applicationList (Integer appState) {
+        try {
+            return ResultUtils.success(clubNumberSer.applicationList(appState));
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @ApiOperation(value = "成员申请审核—入社(退社)审核")
+    @PostMapping("auditingList")
+    public ResultVO auditingList (Integer appState,Integer Id) {
+        try {
+            return ResultUtils.success(clubNumberSer.auditing(appState,Id));
         } catch (Exception e) {
             return ResultUtils.error(-1,"失败");
         }

@@ -68,13 +68,42 @@
       </where>
     </if>
   </select>
-  <select id="updateById" resultMap="BaseResultMap">
+  <select id="updateById" resultType="java.lang.Integer">
 
     update t_club_number
     <set>
-      <if test="clubId != null">clubId = #{clubId,jdbcType=INTEGER},</if>
-      <if test="clubPositionId != null">clubPositionId = #{clubPositionId,jdbcType=INTEGER}</if>
+      clubId = #{clubId,jdbcType=INTEGER},
+      clubPositionId = #{clubPositionId,jdbcType=INTEGER}
     </set>
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="ApplicationList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, studentId, clubId, joinTime, exitTime, clubPositionId, joinApplication,
+    exitApplication, voteStatus
+    from t_club_number
+    <if test="appState == 0">
+      <where>
+        joinApplication = 1 and exitApplication = 1
+      </where>
+    </if>
+    <if test="appState == 1">
+      <where>
+        joinApplication = 0 and exitApplication = 0
+      </where>
+    </if>
+  </select>
+  <update id="joinAuditing" parameterType="java.lang.Integer">
+
+    update t_club_number
+    set joinApplication = 1
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="exitAuditing" parameterType="java.lang.Integer">
+
+    update t_club_number
+    set joinApplication = 0
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

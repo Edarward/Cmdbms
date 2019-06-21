@@ -18,4 +18,20 @@ public interface ClubNumberSer {
      * Date: 2019/6/13
      */
     int updateClubNumber (Integer id,Integer clubId,Integer clubPositionId);
+
+    /**
+     * Description: 入社（退社）申请显示
+     * Param: appState   0为退社申请   1为入社申请
+     * Author: Edarward
+     * Date: 2019/6/18
+     */
+    List<Object> applicationList (Integer appState);
+
+    /**
+     * Description: 入社（退社）审核
+     * Param: appState   0为退社申请   1为入社申请
+     * Author: Edarward
+     * Date: 2019/6/18
+     */
+    int auditing(Integer appState,Integer Id);
 }
