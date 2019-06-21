@@ -1,8 +1,10 @@
 package com.cmdbms.mapper;
 
 import com.cmdbms.model.Studentcode;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+@Repository
 public interface StudentcodeMapper {
 
     int deleteByPrimaryKey(Integer id);
@@ -11,7 +13,7 @@ public interface StudentcodeMapper {
     int insert(Studentcode record);
 
 
-    Studentcode selectByPrimaryKey(Integer id);
+    List<Studentcode> selectByPrimaryKey(Integer id);
 
 
     List<Studentcode> selectAll();

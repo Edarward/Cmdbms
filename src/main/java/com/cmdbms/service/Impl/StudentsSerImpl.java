@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -35,6 +36,10 @@ public class StudentsSerImpl implements StudentsSer {
 
     @Autowired
     private StudentquestionMapper studentquestionMapper;
+
+    @Autowired
+    private StudentcodeMapper studentcodeMapper;
+
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -112,5 +117,22 @@ public class StudentsSerImpl implements StudentsSer {
     public List<Examstuarrange> selectStuexam(Integer stuexamStuId){
         List<Examstuarrange> examstuarrangeList = examstuarrangeMapper.selectStuexam(stuexamStuId);
         return examstuarrangeList;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public List<Studentcode> selectCode(Integer stuId){
+        Boolean pass = true;
+        List<Studentcode> studentcodeList = new ArrayList<>();
+        List<Studentcode> studentcodeList1 = new ArrayList<>();
+        List<Integer> integerList = choocheckMapper.selectAlls(stuId,pass);
+        System.out.println("integerList"+integerList);
+        for (int i = 0;i<integerList.size();i++) {
+            Integer integer = integerList.get(i);
+            studentcodeList = studentcodeMapper.selectByPrimaryKey(integer);
+            studentcodeList1.add(studentcodeList.get(0));
+            System.out.println(studentcodeList);
+        }
+        return studentcodeList1;
     }
 }

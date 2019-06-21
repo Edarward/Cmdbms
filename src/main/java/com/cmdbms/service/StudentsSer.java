@@ -27,4 +27,6 @@ public interface StudentsSer {
 
     List selectStuexam(Integer stuexamStuId);
 
+    List selectCode(Integer stuId);
+
 }

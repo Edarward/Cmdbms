@@ -95,4 +95,10 @@
     where stuId = #{stuId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectAlls" parameterType="map" resultType="java.lang.Integer">
+    select clasId
+    from t_choo_check
+    where stuId = #{stuId,jdbcType=INTEGER} and
+    pass = #{pass,jdbcType=BIT}
+  </select>
 </mapper>

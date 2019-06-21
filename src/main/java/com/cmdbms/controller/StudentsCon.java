@@ -122,4 +122,14 @@ public class StudentsCon {
             return ResultUtils.error(-1,"失败");
         }
     }
+
+    @ApiOperation(value = "查询课程信息信息")
+    @GetMapping("/selectCode")
+    public ResultVO selectCode(Integer stuId){
+        try {
+            return ResultUtils.success(studentsSer.selectCode(stuId));
+        }catch (Exception e){
+            return ResultUtils.error(-1,"失败");
+        }
+    }
 }
