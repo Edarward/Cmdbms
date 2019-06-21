@@ -13,7 +13,7 @@ public interface StudentevaluationstateMapper {
     int insert(Studentevaluationstate record);
 
 
-    Studentevaluationstate selectByPrimaryKey(Integer id);
+    String selectByPrimaryKey(Integer stuId);
 
 
     List<Studentevaluationstate> selectAll();

@@ -1,5 +1,8 @@
 package com.cmdbms.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Examgrade {
@@ -18,13 +21,15 @@ public class Examgrade {
 
     private String gradeSubName;
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date gradeLimit;
 
 
     private Integer gradeJudge;
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date gradeAlterTime;
 
 
@@ -34,7 +39,13 @@ public class Examgrade {
     private Integer gradeReview;
 
 
-    public Examgrade(Integer id, Integer gradeStuId, Integer gradeSubId, Integer gradeStu, String gradeSubName, Date gradeLimit, Integer gradeJudge, Date gradeAlterTime, Integer gradeViolate, Integer gradeReview) {
+    private String gradeMajor;
+
+
+    private Integer gradeYear;
+
+
+    public Examgrade(Integer id, Integer gradeStuId, Integer gradeSubId, Integer gradeStu, String gradeSubName, Date gradeLimit, Integer gradeJudge, Date gradeAlterTime, Integer gradeViolate, Integer gradeReview, String gradeMajor, Integer gradeYear) {
         this.id = id;
         this.gradeStuId = gradeStuId;
         this.gradeSubId = gradeSubId;
@@ -45,6 +56,8 @@ public class Examgrade {
         this.gradeAlterTime = gradeAlterTime;
         this.gradeViolate = gradeViolate;
         this.gradeReview = gradeReview;
+        this.gradeMajor = gradeMajor;
+        this.gradeYear = gradeYear;
     }
 
 
@@ -151,4 +164,16 @@ public class Examgrade {
     public void setGradeReview(Integer gradeReview) {
         this.gradeReview = gradeReview;
     }
+
+
+    public String getGradeMajor(){return gradeMajor;}
+
+
+    public void setGradeMajor(String gradeMajor){
+        this.gradeMajor = gradeMajor == null ? null : gradeMajor.trim();
+    }
+
+    public Integer getGradeYear(){return gradeYear;}
+
+    public void setGradeYear(Integer gradeYear){this.gradeYear = gradeYear;}
 }

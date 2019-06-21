@@ -33,19 +33,19 @@ public class AfficheSerImpl implements AfficheSer {
     public String updateNotice(Integer notId, String notType, String notContent,String notWriter, String notReleaser, Integer notState, Integer notStatetype){
 
         switch (notState){
-            case 1:
+            case 1://保存
                 notStatetype = 1;
                 break;
-            case 2:
+            case 2://审核未通过
                 notStatetype = 1;
                 break;
-            case 3:
+            case 3://未审核
                 notStatetype = 2;
                 break;
-            case 4:
+            case 4://未发布
                 notStatetype = 3;
                 break;
-            case 5:
+            case 5://发布
                 notStatetype = 3;
                 break;
              default:

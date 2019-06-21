@@ -11,6 +11,7 @@
       <arg column="examClassroomId" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="examClrName" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="examSubName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="examYear" javaType="java.lang.Integer" jdbcType="INTEGER"/>
     </constructor>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -22,31 +23,29 @@
 
     insert into t_exam_arrange (id, examSubId, examDate, 
       examTime, examClassroomId, examClrName, 
-      examSubName)
+      examSubName,examYear)
     values (#{id,jdbcType=INTEGER}, #{examSubId,jdbcType=INTEGER}, #{examDate,jdbcType=DATE}, 
       #{examTime,jdbcType=INTEGER}, #{examClassroomId,jdbcType=INTEGER}, #{examClrName,jdbcType=VARCHAR}, 
-      #{examSubName,jdbcType=VARCHAR})
+      #{examSubName,jdbcType=VARCHAR},#{examYear,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examarrange">
 
     update t_exam_arrange
-    set examSubId = #{examSubId,jdbcType=INTEGER},
-      examDate = #{examDate,jdbcType=DATE},
+    set examDate = #{examDate,jdbcType=DATE},
       examTime = #{examTime,jdbcType=INTEGER},
       examClassroomId = #{examClassroomId,jdbcType=INTEGER},
-      examClrName = #{examClrName,jdbcType=VARCHAR},
-      examSubName = #{examSubName,jdbcType=VARCHAR}
+      examClrName = #{examClrName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 
-    select id, examSubId, examDate, examTime, examClassroomId, examClrName, examSubName
+    select id, examSubId, examDate, examTime, examClassroomId, examClrName, examSubName,examYear
     from t_exam_arrange
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 
-    select id, examSubId, examDate, examTime, examClassroomId, examClrName, examSubName
+    select id, examSubId, examDate, examTime, examClassroomId, examClrName, examSubName,examYear
     from t_exam_arrange
   </select>
 </mapper>

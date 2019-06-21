@@ -41,8 +41,7 @@
 
     select id, unpassStuId, unpassSubId, unpassGradeStu, unpassVio, unpassSubName
     from t_exam_unpass
-    where id = #{id,jdbcType=INTEGER}
-      and unpassStuId = #{unpassStuId,jdbcType=INTEGER}
+    where unpassStuId = #{unpassStuId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

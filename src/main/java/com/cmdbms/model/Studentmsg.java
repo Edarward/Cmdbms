@@ -44,7 +44,10 @@ public class Studentmsg {
     private String politicalSt;
 
 
-    public Studentmsg(Integer id, String name, Integer grade, String sex, Date birthday, String nativePlace, String idType, String idNunber, String phone, String parentPhone, String folk, String politicalSt) {
+    private String major;
+
+
+    public Studentmsg(Integer id, String name, Integer grade, String sex, Date birthday, String nativePlace, String idType, String idNunber, String phone, String parentPhone, String folk, String politicalSt,String major) {
         this.id = id;
         this.name = name;
         this.grade = grade;
@@ -57,6 +60,7 @@ public class Studentmsg {
         this.parentPhone = parentPhone;
         this.folk = folk;
         this.politicalSt = politicalSt;
+        this.major = major;
     }
 
 
@@ -182,5 +186,11 @@ public class Studentmsg {
 
     public void setPoliticalSt(String politicalSt) {
         this.politicalSt = politicalSt == null ? null : politicalSt.trim();
+    }
+
+    public String getMajor(){return major;}
+
+    public void setMajor(String major){
+        this.major = major == null ? null : major.trim();
     }
 }

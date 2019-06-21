@@ -19,7 +19,7 @@ public interface ExamunpassMapper {
                @Param(value = "unpassSubName")String unpassSubName);
 
 
-    Examunpass selectByPrimaryKey(@Param("id") Integer id, @Param("unpassStuId") Integer unpassStuId);
+   List<Examunpass> selectByPrimaryKey(@Param("unpassStuId") Integer unpassStuId);
 
 
     List<Examunpass> selectAll();

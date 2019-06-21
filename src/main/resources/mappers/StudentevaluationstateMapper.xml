@@ -28,11 +28,11 @@
       stuMajor = #{stuMajor,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="java.lang.String">
 
-    select id, stuId, stuMajor
+    select stuMajor
     from t_student_evaluation_state
-    where id = #{id,jdbcType=INTEGER}
+    where stuId = #{stuId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

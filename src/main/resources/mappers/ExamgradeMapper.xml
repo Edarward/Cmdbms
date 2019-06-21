@@ -14,21 +14,22 @@
       <arg column="gradeAlterTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="gradeViolate" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="gradeReview" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="gradeMajor" javaType="java.lang.String" jdbcType="VARCHAR"/>
+      <arg column="gradeYear" javaType="java.lang.Integer" jdbcType="INTEGER"/>
     </constructor>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="map">
 
     delete from t_exam_grade
     where id = #{id,jdbcType=INTEGER}
-      and gradeStuId = #{gradeStuId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.cmdbms.model.Examgrade">
 
     insert into t_exam_grade (id, gradeStuId, gradeSubId, 
-      gradeSubName
+      gradeSubName, gradeMajor, gradeYear
       )
     values (#{id,jdbcType=INTEGER}, #{gradeStuId,jdbcType=INTEGER}, #{gradeSubId,jdbcType=INTEGER}, 
-      #{gradeSubName,jdbcType=VARCHAR})
+      #{gradeSubName,jdbcType=VARCHAR}, #{gradeMajor,jdbcType=VARCHAR}, #{gradeYear,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examgrade">
 
@@ -44,7 +45,7 @@
   <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
 
     select id, gradeStuId, gradeSubId, gradeStu, gradeSubName, gradeLimit, gradeJudge, 
-    gradeAlterTime, gradeViolate, gradeReview
+    gradeAlterTime, gradeViolate, gradeReview, gradeMajor, gradeYear
     from t_exam_grade
     where id = #{id,jdbcType=INTEGER}
       and gradeStuId = #{gradeStuId,jdbcType=INTEGER}
@@ -52,9 +53,10 @@
   <select id="selectAll" resultMap="BaseResultMap">
 
     select id, gradeStuId, gradeSubId, gradeStu, gradeSubName, gradeLimit, gradeJudge, 
-    gradeAlterTime, gradeViolate, gradeReview
+    gradeAlterTime, gradeViolate, gradeReview, gradeMajor, gradeYear
     from t_exam_grade
   </select>
+
   <select id="selectgradeSub" parameterType="map" resultType="java.lang.Integer">
     select gradeSubId
     from t_exam_grade
@@ -67,5 +69,21 @@
     from t_exam_grade
     where id = #{id,jdbcType=INTEGER}
       and gradeStuId = #{gradeStuId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectstugrade"  resultMap="BaseResultMap">
+    select id, gradeStuId, gradeSubId, gradeStu, gradeSubName, gradeLimit, gradeJudge,
+    gradeAlterTime, gradeViolate, gradeReview, gradeMajor, gradeYear
+    from t_exam_grade
+    <where><if test="gradeStuId != null and gradeStuId !=''">gradeStuId = #{gradeStuId,jdbcType=INTEGER}</if> </where>
+  </select>
+  <select id="selectgrade" parameterType="map" resultMap="BaseResultMap">
+    select id, gradeStuId, gradeSubId, gradeStu, gradeSubName, gradeLimit, gradeJudge,
+    gradeAlterTime, gradeViolate, gradeReview, gradeMajor, gradeYear
+    from t_exam_grade
+     <where> gradeStuId = #{gradeStuId,jdbcType=INTEGER}
+       <if test="gradeMajor!=0">and gradeMajor = #{gradeMajor,jdbcType=VARCHAR} </if>
+       <if test="gradeYear!= null and gradeYear!=''">and gradeYear = #{gradeYear,jdbcType=INTEGER}</if>
+      </where>
   </select>
 </mapper>

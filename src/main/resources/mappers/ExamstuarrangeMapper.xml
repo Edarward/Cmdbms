@@ -12,6 +12,7 @@
       <arg column="stuexamTime" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="stuexamClrName" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="stuexamSubName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="stuexamYear" javaType="java.lang.Integer" jdbcType="INTEGER"/>
     </constructor>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="map">
@@ -23,28 +24,26 @@
 
     insert into t_exam_stuarrange (id, stuexamStuId, stuexamSubId, 
       stuexamClrId, stuexamDate, stuexamTime, 
-      stuexamClrName, stuexamSubName
+      stuexamClrName, stuexamSubName,stuexamYear
       )
     values (#{id,jdbcType=INTEGER}, #{stuexamStuId,jdbcType=INTEGER}, #{stuexamSubId,jdbcType=INTEGER}, 
       #{stuexamClrId,jdbcType=INTEGER}, #{stuexamDate,jdbcType=DATE}, #{stuexamTime,jdbcType=INTEGER}, 
-      #{stuexamClrName,jdbcType=VARCHAR}, #{stuexamSubName,jdbcType=VARCHAR}
+      #{stuexamClrName,jdbcType=VARCHAR}, #{stuexamSubName,jdbcType=VARCHAR}, #{stuexamYear,jdbcType=INTEGER}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examstuarrange">
 
     update t_exam_stuarrange
-    set stuexamSubId = #{stuexamSubId,jdbcType=INTEGER},
-      stuexamClrId = #{stuexamClrId,jdbcType=INTEGER},
+    set stuexamClrId = #{stuexamClrId,jdbcType=INTEGER},
       stuexamDate = #{stuexamDate,jdbcType=DATE},
       stuexamTime = #{stuexamTime,jdbcType=INTEGER},
-      stuexamClrName = #{stuexamClrName,jdbcType=VARCHAR},
-      stuexamSubName = #{stuexamSubName,jdbcType=VARCHAR}
+      stuexamClrName = #{stuexamClrName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
 
     select id, stuexamStuId, stuexamSubId, stuexamClrId, stuexamDate, stuexamTime, stuexamClrName, 
-    stuexamSubName
+    stuexamSubName, stuexamYear
     from t_exam_stuarrange
     where id = #{id,jdbcType=INTEGER}
       and stuexamStuId = #{stuexamStuId,jdbcType=INTEGER}
@@ -52,7 +51,14 @@
   <select id="selectAll" resultMap="BaseResultMap">
 
     select id, stuexamStuId, stuexamSubId, stuexamClrId, stuexamDate, stuexamTime, stuexamClrName, 
-    stuexamSubName
+    stuexamSubName, stuexamYear
     from t_exam_stuarrange
+  </select>
+
+  <select id="selectStuexam" parameterType="map" resultMap="BaseResultMap">
+    select id, stuexamStuId, stuexamSubId, stuexamClrId, stuexamDate, stuexamTime, stuexamClrName,
+    stuexamSubName, stuexamYear
+    from t_exam_stuarrange
+    where stuexamStuId = #{stuexamStuId,jdbcType=INTEGER}
   </select>
 </mapper>

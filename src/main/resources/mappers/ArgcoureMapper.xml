@@ -74,4 +74,11 @@
 
   </select>
 
+  <select id="selectTeaId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    SELECT teacherId
+    FROM t_arg_coure A
+    where classId=#{classId,jdbcType=INTEGER}
+
+  </select>
+
 </mapper>

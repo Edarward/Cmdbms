@@ -37,4 +37,7 @@ public interface ChoocheckMapper {
 
     //学生管理用
     List<Choocheck> selectpass(Integer stuId);
+
+    //学生管理用
+    List<Integer> selectclasId(Integer stuId);
 }

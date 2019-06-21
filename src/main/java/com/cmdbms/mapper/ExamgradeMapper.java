@@ -9,13 +9,15 @@ import java.util.List;
 @Repository
 public interface ExamgradeMapper {
 
-    int deleteByPrimaryKey(@Param("id") Integer id, @Param("gradeStuId") Integer gradeStuId);
+    int deleteByPrimaryKey(@Param("id") Integer id);
 
 
     int insert(@Param(value = "id")Integer id,
                @Param(value = "gradeStuId")Integer gradeStuId,
                @Param(value = "gradeSubId")Integer gradeSubId,
-               @Param(value = "gradeSubName")String gradeSubName);
+               @Param(value = "gradeSubName")String gradeSubName,
+               @Param(value = "gradeMajor")String gradeMajor,
+               @Param(value = "gradeYear")Integer gradeYear);
 
 
     Examgrade selectByPrimaryKey(@Param("id") Integer id, @Param("gradeStuId") Integer gradeStuId);
@@ -37,4 +39,12 @@ public interface ExamgradeMapper {
 
     List<String> selectgradeSubName(@Param(value = "id")Integer id,
                                     @Param(value = "gradeStuId")Integer gradeStuId);
+
+
+    List<Examgrade> selectstugrade(@Param(value = "gradeStuId")Integer gradeStuId);
+
+    //学生管理用
+    List<Examgrade> selectgrade(@Param(value = "gradeStuId")Integer gradeStuId,
+                                @Param(value = "gradeMajor")String gradeMajor,
+                                @Param(value = "gradeYear")Integer gradeYear);
 }

@@ -17,6 +17,9 @@ public interface StudentmsgMapper {
     Studentmsg selectByPrimaryKey(Integer id);
 
 
+    String selectmajor(Integer id);
+
+
     List<Studentmsg> selectAll();
 
 

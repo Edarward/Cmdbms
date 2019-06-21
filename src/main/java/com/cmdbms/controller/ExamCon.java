@@ -25,9 +25,9 @@ public class ExamCon {
 
     @ApiOperation(value = "添加考试信息")
     @PostMapping("/insertArrange")
-    public ResultVO insertArrange(Integer id,Integer examSubId, String examDate, Integer examTime, Integer examClassroomId, String examClrName, String examSubName){
+    public ResultVO insertArrange(Integer id,Integer examSubId, String examDate, Integer examTime, Integer examClassroomId, String examClrName, String examSubName, Integer examYear){
         try {
-            return ResultUtils.success(examSer.insertArrange(id,examSubId,examDate,examTime,examClassroomId,examClrName,examSubName));
+            return ResultUtils.success(examSer.insertArrange(id,examSubId,examDate,examTime,examClassroomId,examClrName,examSubName,examYear));
         }catch (Exception e){
             System.out.println(e);
             return ResultUtils.error(-1,"失败");
@@ -36,9 +36,9 @@ public class ExamCon {
 
     @ApiOperation(value = "修改考试信息")
     @PostMapping("/updateArrange")
-    public ResultVO updateArrange(Integer id,Integer examSubId, String examDate, Integer examTime, Integer examClassroomId, String examClrName, String examSubName){
+    public ResultVO updateArrange(Integer id, String examDate, Integer examTime, Integer examClassroomId, String examClrName){
         try {
-            return ResultUtils.success(examSer.updateArrange(id,examSubId,examDate,examTime,examClassroomId,examClrName,examSubName));
+            return ResultUtils.success(examSer.updateArrange(id,examDate,examTime,examClassroomId,examClrName));
         }catch (Exception e){
             System.out.println(e);
             return ResultUtils.error(-1,"失败");
@@ -78,4 +78,47 @@ public class ExamCon {
         }
     }
 
+    @ApiOperation(value = "查询成绩信息")
+    @GetMapping("/selectGrade")
+    public ResultVO selectGrade(Integer gradeStuId){
+        try {
+            return ResultUtils.success(examSer.selectGrade(gradeStuId));
+        }catch (Exception e){
+            System.out.println(e);
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @ApiOperation(value = "查询不及格成绩信息")
+    @GetMapping("/selectUnpass")
+    public ResultVO selectunpass(Integer unpassStuId){
+        try {
+            return ResultUtils.success(examSer.selectunpass(unpassStuId));
+        }catch (Exception e){
+            System.out.println(e);
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @ApiOperation(value = "查询违纪信息")
+    @GetMapping("/selectViolent")
+    public ResultVO selectViolent(Integer id){
+        try {
+            return ResultUtils.success(examSer.selectViolent(id));
+        }catch (Exception e){
+            System.out.println(e);
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @ApiOperation(value = "修改违纪信息")
+    @PostMapping("/updateViolent")
+    public ResultVO updateViolent(Integer id,Integer vioStuId, String vioBehavior, String vioContent, Integer vioLevel){
+        try {
+            return ResultUtils.success(examSer.updateViolent(id,vioStuId,vioBehavior,vioContent,vioLevel));
+        }catch (Exception e){
+            System.out.println(e);
+            return ResultUtils.error(-1,"失败");
+        }
+    }
 }

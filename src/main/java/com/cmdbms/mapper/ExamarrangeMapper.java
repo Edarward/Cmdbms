@@ -18,7 +18,8 @@ public interface ExamarrangeMapper {
                @Param(value = "examTime")Integer examTime,
                @Param(value = "examClassroomId")Integer examClassroomId,
                @Param(value = "examClrName")String examClrName,
-               @Param(value = "examSubName")String examSubName);
+               @Param(value = "examSubName")String examSubName,
+               @Param(value = "examYear")Integer examYear);
 
 
     List<Examarrange> selectByPrimaryKey(Integer id);
@@ -28,10 +29,9 @@ public interface ExamarrangeMapper {
 
 
     int updateByPrimaryKey(@Param(value = "id")Integer id,
-                           @Param(value = "examSubId")Integer examSubId,
                            @Param(value = "examDate")Date examDate,
                            @Param(value = "examTime")Integer examTime,
                            @Param(value = "examClassroomId")Integer examClassroomId,
-                           @Param(value = "examClrName")String examClrName,
-                           @Param(value = "examSubName")String examSubName);
+                           @Param(value = "examClrName")String examClrName
+                           );
 }

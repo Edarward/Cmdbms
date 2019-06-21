@@ -29,7 +29,10 @@ public class Examarrange {
     private String examSubName;
 
 
-    public Examarrange(Integer id, Integer examSubId, Date examDate, Integer examTime, Integer examClassroomId, String examClrName, String examSubName) {
+    private Integer exaeYear;
+
+
+    public Examarrange(Integer id, Integer examSubId, Date examDate, Integer examTime, Integer examClassroomId, String examClrName, String examSubName, Integer exaeYear) {
         this.id = id;
         this.examSubId = examSubId;
         this.examDate = examDate;
@@ -37,6 +40,7 @@ public class Examarrange {
         this.examClassroomId = examClassroomId;
         this.examClrName = examClrName;
         this.examSubName = examSubName;
+        this.exaeYear = exaeYear;
     }
 
 
@@ -112,5 +116,11 @@ public class Examarrange {
 
     public void setExamSubName(String examSubName) {
         this.examSubName = examSubName == null ? null : examSubName.trim();
+    }
+
+    public Integer getExaeYear(){return exaeYear;}
+
+    public void setExaeYear(Integer exaeYear){
+        this.exaeYear = exaeYear;
     }
 }

@@ -30,8 +30,7 @@
     update t_exam_violent
     set vioBehavior = #{vioBehavior,jdbcType=VARCHAR},
       vioContent = #{vioContent,jdbcType=VARCHAR},
-      vioLevel = #{vioLevel,jdbcType=INTEGER},
-      vioRegTime = #{vioRegTime,jdbcType=TIMESTAMP}
+      vioLevel = #{vioLevel,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
       and vioStuId = #{vioStuId,jdbcType=INTEGER}
   </update>
@@ -40,7 +39,6 @@
     select id, vioStuId, vioBehavior, vioContent, vioLevel, vioRegTime
     from t_exam_violent
     where id = #{id,jdbcType=INTEGER}
-      and vioStuId = #{vioStuId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

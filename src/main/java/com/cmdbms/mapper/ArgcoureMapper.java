@@ -26,5 +26,7 @@ public interface ArgcoureMapper {
     String selectTeaNameById(int id);
     String selectClassNameById(int id);
 
+    //学生管理用
+    int selectTeaId(Integer classId);
 
 }

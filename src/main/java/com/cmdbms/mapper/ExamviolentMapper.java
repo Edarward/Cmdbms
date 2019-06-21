@@ -16,11 +16,16 @@ public interface ExamviolentMapper {
                @Param(value = "vioStuId") Integer vioStuId);
 
 
-    Examviolent selectByPrimaryKey(@Param("id") Integer id, @Param("vioStuId") Integer vioStuId);
+    List<Examviolent> selectByPrimaryKey(@Param("id") Integer id);
 
 
     List<Examviolent> selectAll();
 
 
-    int updateByPrimaryKey(Examviolent record);
+    int updateByPrimaryKey(@Param("id")Integer id,
+                           @Param("vioStuId")Integer vioStuId,
+                           @Param("vioBehavior")String vioBehavior,
+                           @Param("vioContent")String vioContent,
+                           @Param("vioLevel")Integer vioLevel
+                            );
 }

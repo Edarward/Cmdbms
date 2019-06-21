@@ -16,6 +16,7 @@
       <arg column="parentPhone" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="folk" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="politicalSt" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="major" javaType="java.lang.String" jdbcType="VARCHAR"/>
     </constructor>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -28,12 +29,13 @@
     insert into t_student_msg (id, `name`, grade,
       sex, birthday, nativePlace, 
       idType, idNunber, phone, 
-      parentPhone, folk, politicalSt
+      parentPhone, folk, politicalSt,major
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, 
       #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, #{nativePlace,jdbcType=VARCHAR}, 
       #{idType,jdbcType=VARCHAR}, #{idNunber,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{parentPhone,jdbcType=VARCHAR}, #{folk,jdbcType=VARCHAR}, #{politicalSt,jdbcType=VARCHAR}
+      #{parentPhone,jdbcType=VARCHAR}, #{folk,jdbcType=VARCHAR}, #{politicalSt,jdbcType=VARCHAR},
+      #{major,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Studentmsg">
@@ -49,20 +51,27 @@
       phone = #{phone,jdbcType=VARCHAR},
       parentPhone = #{parentPhone,jdbcType=VARCHAR},
       folk = #{folk,jdbcType=VARCHAR},
-      politicalSt = #{politicalSt,jdbcType=VARCHAR}
+      politicalSt = #{politicalSt,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 
     select id, `name`, grade, sex, birthday, nativePlace, idType, idNunber, phone, parentPhone,
-    folk, politicalSt
+    folk, politicalSt,major
     from t_student_msg
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 
     select id, `name`, grade, sex, birthday, nativePlace, idType, idNunber, phone, parentPhone,
-    folk, politicalSt
+    folk, politicalSt,major
     from t_student_msg
+  </select>
+  <select id="selectmajor" parameterType="java.lang.Integer" resultType="String">
+
+     select major
+    from t_student_msg
+    where id = #{id,jdbcType=INTEGER}
   </select>
 </mapper>

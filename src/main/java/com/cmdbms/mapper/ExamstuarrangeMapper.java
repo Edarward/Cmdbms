@@ -19,7 +19,8 @@ public interface ExamstuarrangeMapper {
                @Param(value = "stuexamDate")Date stuexamDate,
                @Param(value = "stuexamTime")Integer stuexamTime,
                @Param(value = "stuexamClrName")String stuexamClrName,
-               @Param(value = "stuexamSubName")String stuexamSubName);
+               @Param(value = "stuexamSubName")String stuexamSubName,
+               @Param(value = "stuexamYear")Integer stuexamYear);
 
 
     Examstuarrange selectByPrimaryKey(@Param("id") Integer id, @Param("stuexamStuId") Integer stuexamStuId);
@@ -30,9 +31,12 @@ public interface ExamstuarrangeMapper {
 
     int updateByPrimaryKey(@Param(value = "id")Integer id,
                            @Param(value = "stuexamClrId")Integer stuexamClrId,
-                           @Param(value = "stuexamSubId")Integer stuexamSubId,
                            @Param(value = "stuexamDate")Date stuexamDate,
                            @Param(value = "stuexamTime")Integer stuexamTime,
-                           @Param(value = "stuexamClrName")String stuexamClrName,
-                           @Param(value = "stuexamSubName")String stuexamSubName);
+                           @Param(value = "stuexamClrName")String stuexamClrName
+                           );
+
+
+//学生管理用
+    List<Examstuarrange> selectStuexam(Integer stuexamStuId);
 }

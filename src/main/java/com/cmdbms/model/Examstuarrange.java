@@ -1,5 +1,8 @@
 package com.cmdbms.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Examstuarrange {
@@ -15,7 +18,8 @@ public class Examstuarrange {
 
     private Integer stuexamClrId;
 
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date stuexamDate;
 
 
@@ -28,8 +32,11 @@ public class Examstuarrange {
     private String stuexamSubName;
 
 
+    private Integer stuexamYear;
 
-    public Examstuarrange(Integer id, Integer stuexamStuId, Integer stuexamSubId, Integer stuexamClrId, Date stuexamDate, Integer stuexamTime, String stuexamClrName, String stuexamSubName) {
+
+
+    public Examstuarrange(Integer id, Integer stuexamStuId, Integer stuexamSubId, Integer stuexamClrId, Date stuexamDate, Integer stuexamTime, String stuexamClrName, String stuexamSubName, Integer stuexamYear) {
         this.id = id;
         this.stuexamStuId = stuexamStuId;
         this.stuexamSubId = stuexamSubId;
@@ -38,6 +45,7 @@ public class Examstuarrange {
         this.stuexamTime = stuexamTime;
         this.stuexamClrName = stuexamClrName;
         this.stuexamSubName = stuexamSubName;
+        this.stuexamYear = stuexamYear;
     }
 
 
@@ -125,4 +133,7 @@ public class Examstuarrange {
         this.stuexamSubName = stuexamSubName == null ? null : stuexamSubName.trim();
     }
 
+    public Integer getStuexamYear(){return stuexamYear;}
+
+    public void setStuexamYear(Integer stuexamYear){this.stuexamYear = stuexamYear;}
 }
