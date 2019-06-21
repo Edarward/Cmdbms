@@ -1,7 +1,9 @@
 package com.cmdbms.service.Impl;
 
 import com.cmdbms.mapper.AffichenoticeMapper;
+import com.cmdbms.mapper.AfficheusercommentMapper;
 import com.cmdbms.model.Affichenotice;
+import com.cmdbms.model.Afficheusercomment;
 import com.cmdbms.service.AfficheSer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ import java.util.List;
 public class AfficheSerImpl implements AfficheSer {
     @Autowired
     private AffichenoticeMapper affichenoticeMapper;
+
+    @Autowired
+    private AfficheusercommentMapper afficheusercommentMapper;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -54,5 +59,33 @@ public class AfficheSerImpl implements AfficheSer {
         }
         Integer record = affichenoticeMapper.updateByPrimaryKey(notId,notType,notContent,notWriter,notReleaser,notState,notStatetype);
         return record.toString();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int deleteNotice(Integer notId){
+        Integer record = affichenoticeMapper.deleteByPrimaryKey(notId);
+        return record;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public String insertCom(Integer userComId,Integer notId,Integer userId,String userComCon){
+        Integer record = afficheusercommentMapper.insert(userComId,notId,userId,userComCon);
+        return record.toString();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int deleteCom(Integer notId){
+        Integer record = afficheusercommentMapper.deleteByPrimaryKey(notId);
+        return record;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public List<Afficheusercomment> selectCom(Integer notId){
+        List<Afficheusercomment> afficheusercommentList = afficheusercommentMapper.selectByPrimaryKey(notId);
+        return afficheusercommentList;
     }
 }

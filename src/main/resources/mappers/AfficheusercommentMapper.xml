@@ -19,9 +19,9 @@
   <insert id="insert" parameterType="com.cmdbms.model.Afficheusercomment">
 
     insert into t_affiche_user_Comment (userComId, notId, userId, 
-      userComCon, userComTime)
+      userComCon)
     values (#{userComId,jdbcType=INTEGER}, #{notId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{userComCon,jdbcType=VARCHAR}, #{userComTime,jdbcType=TIMESTAMP})
+      #{userComCon,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Afficheusercomment">
 
@@ -36,7 +36,7 @@
 
     select userComId, notId, userId, userComCon, userComTime
     from t_affiche_user_Comment
-    where userComId = #{userComId,jdbcType=INTEGER}
+    <where> <if test="userComId != null and userComId !=''">userComId = #{userComId,jdbcType=INTEGER}</if></where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

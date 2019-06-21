@@ -48,4 +48,45 @@ public class AfficheCon {
             return ResultUtils.error(-1,"失败");
         }
     }
+
+    @ApiOperation(value = "删除公告信息")
+    @PostMapping("/deleteNotice")
+    public ResultVO deleteNotice(Integer notId){
+        try {
+            return ResultUtils.success(afficheSer.deleteNotice(notId));
+        }catch (Exception e){
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @ApiOperation(value = "添加评论信息")
+    @PostMapping("/insertCom")
+    public ResultVO insertCom(Integer userComId,Integer notId,Integer userId,String userComCon){
+        try {
+            return ResultUtils.success(afficheSer.insertCom(userComId,notId,userId,userComCon));
+        }catch (Exception e){
+            System.out.println(e);
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @ApiOperation(value = "删除评论信息")
+    @PostMapping("/deleteCom")
+    public ResultVO deleteCom(Integer userComId){
+        try {
+            return ResultUtils.success(afficheSer.deleteCom(userComId));
+        }catch (Exception e){
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @ApiOperation(value = "查询评论信息")
+    @GetMapping("/selectCom")
+    public ResultVO selectCom(Integer notId){
+        try {
+            return ResultUtils.success(afficheSer.selectCom(notId));
+        }catch (Exception e){
+            return ResultUtils.error(-1,"失败");
+        }
+    }
 }
