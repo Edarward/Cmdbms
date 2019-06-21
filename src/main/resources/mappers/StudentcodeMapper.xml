@@ -11,7 +11,7 @@
     </constructor>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    
+
     delete from t_student_code
     where id = #{id,jdbcType=INTEGER}
   </delete>
