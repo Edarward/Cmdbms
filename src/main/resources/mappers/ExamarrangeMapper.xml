@@ -31,10 +31,10 @@
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examarrange">
 
     update t_exam_arrange
-    set examDate = #{examDate,jdbcType=DATE},
-      examTime = #{examTime,jdbcType=INTEGER},
-      examClassroomId = #{examClassroomId,jdbcType=INTEGER},
-      examClrName = #{examClrName,jdbcType=VARCHAR}
+    <set><if test="examDate != null"> examDate = #{examDate,jdbcType=DATE},</if>
+      <if test="examTime != null">examTime = #{examTime,jdbcType=INTEGER},</if>
+      <if test="examClassroomId != null">examClassroomId = #{examClassroomId,jdbcType=INTEGER},</if>
+      <if test="examClrName != null">examClrName = #{examClrName,jdbcType=VARCHAR}</if></set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">

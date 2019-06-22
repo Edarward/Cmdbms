@@ -29,9 +29,7 @@
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examretake">
 
     update t_exam_retake
-    set exuseSubname = #{exuseSubname,jdbcType=VARCHAR},
-      exuseStuId = #{exuseStuId,jdbcType=INTEGER},
-      exuseThrough = #{exuseThrough,jdbcType=INTEGER}
+    set  exuseThrough = #{exuseThrough,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
