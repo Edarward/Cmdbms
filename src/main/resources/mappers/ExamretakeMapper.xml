@@ -36,7 +36,7 @@
 
     select id, exuseSubname, exuseStuId, exuseTime, exuseAuditTime, exuseThrough
     from t_exam_retake
-    where exuseThrough = #{exuseThrough,jdbcType=INTEGER}
+    <where><if test="exuseThrough != null and exuseThrough !=''">exuseThrough = #{exuseThrough,jdbcType=INTEGER}</if></where>
   </select>
   <select id="selectByPrimaryKeytwo" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 
