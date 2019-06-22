@@ -1,6 +1,7 @@
 package com.cmdbms.mapper;
 
 import com.cmdbms.model.Examretake;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface ExamretakeMapper {
     int insert(Examretake record);
 
 
-    List<Examretake> selectByPrimaryKey(Integer exuseThrough);
+    List<Examretake> selectByPrimaryKey(@Param(value = "exuseThrough")Integer exuseThrough);
 
 
     List<Examretake> selectByPrimaryKeytwo(Integer exuseStuId);
