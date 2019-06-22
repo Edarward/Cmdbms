@@ -9,9 +9,11 @@ import java.util.List;
 public interface ClassroomSer {
     String insertClassroom(Examclassroom examclassroom);
 
-    List selectClassroom(Integer clrType);
+    List selectClassroom(String clrType);
 
     String updateClassroom(Examclassroom examclassroom);
+
+    int deleteClassroom(Integer id);
 
     String insertClruse(Integer id,Integer useClrId,Integer useClrTime, String useClrDate,Integer useThrough, String useClrName) throws ParseException;
 
