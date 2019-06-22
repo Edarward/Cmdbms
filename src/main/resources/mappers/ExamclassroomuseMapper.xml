@@ -38,7 +38,7 @@
 
     select id, useClrId, useTime, useClrTime, useClrDate, useAuditTime, useThrough, useClrName
     from t_exam_classroom_use
-    where useThrough = #{useThrough,jdbcType=INTEGER}
+    <where> <if test="useThrough != null and useThrough !=''">useThrough = #{useThrough,jdbcType=INTEGER}</if></where>
   </select>
   <select id="selectByPrimaryKeytwo"  resultMap="BaseResultMap">
 
