@@ -73,7 +73,7 @@ public class ExamCon {
         try {
             return ResultUtils.success(examSer.updateGrade(id,gradeStuId,gradeStu,gradeLimit,gradeJudge,gradeViolate,gradeReview));
         }catch (Exception e){
-            System.out.println(e);
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }

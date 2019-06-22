@@ -76,10 +76,11 @@
 
 
   <!--别再删了，考试管理要用-->
-  <select id="selectstuId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+  <select id="selectstuId" parameterType="map" resultType="java.lang.Integer">
     select stuId
     from t_choo_check
-    where clasId = #{clasId,jdbcType=INTEGER}
+    where clasId = #{clasId,jdbcType=INTEGER} and
+    pass = #{pass,jdbcType=BIT}
   </select>
 
   <!--学生管理用-->
