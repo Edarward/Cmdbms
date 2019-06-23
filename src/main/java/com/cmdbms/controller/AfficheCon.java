@@ -29,6 +29,16 @@ public class AfficheCon {
         }
     }
 
+    @ApiOperation(value = "查询公告信息（根据公告state）")
+    @GetMapping("/selectNoticetwo")
+    public ResultVO selectNoticetwo(Integer notState){
+        try {
+            return ResultUtils.success(afficheSer.selectNoticetwo(notState));
+        }catch (Exception e){
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
     @ApiOperation(value = "添加公告信息")
     @PostMapping("/insertNotice")
     public ResultVO insertNotice(Affichenotice affichenotice){

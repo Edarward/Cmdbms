@@ -17,6 +17,9 @@ public interface AffichenoticeMapper {
     List<Affichenotice> selectByPrimaryKey(Integer notStatetype);
 
 
+    List<Affichenotice> selectNoticetwo(Integer notState);
+
+
     List<Affichenotice> selectAll();
 
 

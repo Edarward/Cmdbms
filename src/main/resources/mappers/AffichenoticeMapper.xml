@@ -47,6 +47,16 @@
     from t_affiche_notice
     where notStatetype = #{notStatetype,jdbcType=INTEGER}
   </select>
+
+  <select id="selectNoticetwo" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select notId, notType, notContent, notWriter, notWritetime, notReleaser, notReleasetime, notState,
+    notStatetype
+    from t_affiche_notice
+    where notState = #{notState,jdbcType=INTEGER}
+  </select>
+
+
   <select id="selectAll" resultMap="BaseResultMap">
 
     select notId, notType, notWriter, notWritetime, notReleaser, notReleasetime, notState, 

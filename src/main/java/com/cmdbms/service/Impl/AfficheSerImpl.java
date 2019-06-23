@@ -28,6 +28,13 @@ public class AfficheSerImpl implements AfficheSer {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
+    public List<Affichenotice> selectNoticetwo(Integer notState){
+        List<Affichenotice> affichenoticeList = affichenoticeMapper.selectNoticetwo(notState);
+        return affichenoticeList;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
     public String insertNotice(Affichenotice affichenotice){
         Integer record = affichenoticeMapper.insert(affichenotice);
         return record.toString();
