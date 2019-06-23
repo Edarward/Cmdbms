@@ -7,7 +7,7 @@ import java.util.List;
 public interface AfficheSer {
     List selectNotice(Integer notStatetype);
 
-    List selectNoticetwo(Integer notState);
+    List selectNoticetwo(String  notWriter);
 
     String insertNotice(Affichenotice affichenotice);
 

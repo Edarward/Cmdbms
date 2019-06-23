@@ -31,10 +31,11 @@ public class AfficheCon {
 
     @ApiOperation(value = "查询公告信息（根据公告state）")
     @GetMapping("/selectNoticetwo")
-    public ResultVO selectNoticetwo(Integer notState){
+    public ResultVO selectNoticetwo(String  notWriter){
         try {
-            return ResultUtils.success(afficheSer.selectNoticetwo(notState));
+            return ResultUtils.success(afficheSer.selectNoticetwo(notWriter));
         }catch (Exception e){
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
