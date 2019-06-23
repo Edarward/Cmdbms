@@ -45,8 +45,8 @@
     select id, stuexamStuId, stuexamSubId, stuexamClrId, stuexamDate, stuexamTime, stuexamClrName, 
     stuexamSubName, stuexamYear
     from t_exam_stuarrange
-    where id = #{id,jdbcType=INTEGER}
-      and stuexamStuId = #{stuexamStuId,jdbcType=INTEGER}
+    <where><if test="id != null and id !=''"> id = #{id,jdbcType=INTEGER}</if>
+      <if test="stuexamStuId != null and stuexamStuId !=''"> and stuexamStuId = #{stuexamStuId,jdbcType=INTEGER}</if></where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

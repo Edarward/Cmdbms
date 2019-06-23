@@ -67,6 +67,18 @@ public class ExamCon {
         }
     }
 
+    @ApiOperation(value = "查询学生考试信息")
+    @GetMapping("/selectStuarrange")
+    public ResultVO selectStuarrange(Integer id,Integer stuexamStuId){
+        try {
+            return ResultUtils.success(examSer.selectStuarrange(id,stuexamStuId));
+        }catch (Exception e){
+            System.out.println(e);
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+
     @ApiOperation(value = "修改成绩信息")
     @PostMapping("/updateGrade")
     public ResultVO updateGrade(Integer id, Integer gradeStuId, Integer gradeStu, String gradeLimit, Integer gradeJudge, Integer gradeViolate, Integer gradeReview){

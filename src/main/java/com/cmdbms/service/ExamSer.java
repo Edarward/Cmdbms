@@ -23,4 +23,6 @@ public interface ExamSer {
     List selectViolent(Integer id);
 
     String updateViolent(Integer id,Integer vioStuId, String vioBehavior, String vioContent, Integer vioLevel);
+
+    List selectStuarrange(Integer id,Integer stuexamStuId);
 }

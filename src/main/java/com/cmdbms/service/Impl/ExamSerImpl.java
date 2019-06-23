@@ -1,10 +1,7 @@
 package com.cmdbms.service.Impl;
 
 import com.cmdbms.mapper.*;
-import com.cmdbms.model.Examarrange;
-import com.cmdbms.model.Examgrade;
-import com.cmdbms.model.Examunpass;
-import com.cmdbms.model.Examviolent;
+import com.cmdbms.model.*;
 import com.cmdbms.service.ExamSer;
 import com.cmdbms.service.SalaryLevelSer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -156,5 +153,12 @@ public class ExamSerImpl implements ExamSer {
     public String updateViolent(Integer id,Integer vioStuId, String vioBehavior, String vioContent, Integer vioLevel){
         Integer integer = examviolentMapper.updateByPrimaryKey(id,vioStuId,vioBehavior,vioContent,vioLevel);
         return integer.toString();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public List<Examstuarrange> selectStuarrange(Integer id, Integer stuexamStuId){
+        List<Examstuarrange> examstuarrangeList = examstuarrangeMapper.selectByPrimaryKey(id,stuexamStuId);
+        return examstuarrangeList;
     }
 }

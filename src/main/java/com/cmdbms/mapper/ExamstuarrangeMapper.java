@@ -23,7 +23,7 @@ public interface ExamstuarrangeMapper {
                @Param(value = "stuexamYear")Integer stuexamYear);
 
 
-    Examstuarrange selectByPrimaryKey(@Param("id") Integer id, @Param("stuexamStuId") Integer stuexamStuId);
+    List<Examstuarrange> selectByPrimaryKey(@Param("id") Integer id, @Param("stuexamStuId") Integer stuexamStuId);
 
 
     List<Examstuarrange> selectAll();
