@@ -41,7 +41,8 @@ public interface ExamgradeMapper {
                                     @Param(value = "gradeStuId")Integer gradeStuId);
 
 
-    List<Examgrade> selectstugrade(@Param(value = "gradeStuId")Integer gradeStuId);
+    List<Examgrade> selectstugrade(@Param(value = "gradeStuId")Integer gradeStuId,
+                                   @Param(value = "gradeReview")Integer gradeReview);
 
     //学生管理用
     List<Examgrade> selectgrade(@Param(value = "gradeStuId")Integer gradeStuId,

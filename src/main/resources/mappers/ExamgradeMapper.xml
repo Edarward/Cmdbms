@@ -74,7 +74,8 @@
     select id, gradeStuId, gradeSubId, gradeStu, gradeSubName, gradeLimit, gradeJudge,
     gradeAlterTime, gradeViolate, gradeReview, gradeMajor, gradeYear
     from t_exam_grade
-    <where><if test="gradeStuId != null and gradeStuId !=''">gradeStuId = #{gradeStuId,jdbcType=INTEGER}</if> </where>
+    <where><if test="gradeStuId != null and gradeStuId !=''">gradeStuId = #{gradeStuId,jdbcType=INTEGER}</if>
+            <if test="gradeReview != null and gradeStuId !=''"> gradeReview = #{gradeReview,jdbcType=INTEGER}</if></where>
   </select>
   <select id="selectgrade" parameterType="map" resultMap="BaseResultMap">
     select id, gradeStuId, gradeSubId, gradeStu, gradeSubName, gradeLimit, gradeJudge,

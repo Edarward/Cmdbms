@@ -41,7 +41,7 @@
 
     select id, examSubId, examDate, examTime, examClassroomId, examClrName, examSubName,examYear
     from t_exam_arrange
-    where id = #{id,jdbcType=INTEGER}
+    <where><if test="id != null and id !=''"> id = #{id,jdbcType=INTEGER}</if></where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

@@ -22,7 +22,7 @@ public interface ExamarrangeMapper {
                @Param(value = "examYear")Integer examYear);
 
 
-    List<Examarrange> selectByPrimaryKey(Integer id);
+    List<Examarrange> selectByPrimaryKey(@Param(value = "id")Integer id);
 
 
     List<Examarrange> selectAll();

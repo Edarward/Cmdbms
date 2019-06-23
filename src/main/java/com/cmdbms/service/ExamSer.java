@@ -16,7 +16,7 @@ public interface ExamSer {
 
     String updateGrade(Integer id, Integer gradeStuId, Integer gradeStu, String gradeLimit, Integer gradeJudge, Integer gradeViolate, Integer gradeReview) throws ParseException;
 
-    List selectGrade(Integer gradeStuId);
+    List selectGrade(Integer gradeStuId,Integer gradeReview);
 
     List selectunpass(Integer unpassStuId);
 

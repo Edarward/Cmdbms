@@ -132,8 +132,8 @@ public class ExamSerImpl implements ExamSer {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public List<Examgrade> selectGrade(Integer gradeStuId){
-        List<Examgrade> examgradeList = examgradeMapper.selectstugrade(gradeStuId);
+    public List<Examgrade> selectGrade(Integer gradeStuId,Integer gradeReview){
+        List<Examgrade> examgradeList = examgradeMapper.selectstugrade(gradeStuId,gradeReview);
         return examgradeList;
     }
 

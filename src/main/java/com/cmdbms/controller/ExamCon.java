@@ -80,9 +80,9 @@ public class ExamCon {
 
     @ApiOperation(value = "查询成绩信息")
     @GetMapping("/selectGrade")
-    public ResultVO selectGrade(Integer gradeStuId){
+    public ResultVO selectGrade(Integer gradeStuId,Integer gradeReview){
         try {
-            return ResultUtils.success(examSer.selectGrade(gradeStuId));
+            return ResultUtils.success(examSer.selectGrade(gradeStuId,gradeReview));
         }catch (Exception e){
             System.out.println(e);
             return ResultUtils.error(-1,"失败");
