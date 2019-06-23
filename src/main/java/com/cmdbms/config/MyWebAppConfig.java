@@ -42,6 +42,8 @@ public class MyWebAppConfig implements WebMvcConfigurer {
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
+        //静态路径配置
+        registry.addResourceHandler("/image/**").addResourceLocations("file:D://OTA/");
     }
 
 }

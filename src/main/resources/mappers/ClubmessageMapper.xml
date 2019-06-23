@@ -43,4 +43,28 @@
     select id, clubActivityId, content, studentId, contentStatus
     from t_club_message
   </select>
+  <select id="ActCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+
+    select COUNT(*)
+    from t_club_message
+    where clubActivityId = #{clubActivityId,jdbcType=INTEGER}
+  </select>
+  <update id="clubMessageDown" parameterType="java.lang.Integer" >
+
+    update t_club_message
+    set  contentStatus = false
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selClubMessage" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, clubActivityId, content, studentId, contentStatus
+    from t_club_message
+    where clubActivityId = #{clubActivityId,jdbcType=INTEGER}
+  </select>
+  <select id="selClubByStuId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, clubActivityId, content, studentId, contentStatus
+    from t_club_message
+    where studentId = #{studentId,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -5,10 +5,10 @@
 
     <constructor>
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="year" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="term" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="clubId" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="appraisingStart" javaType="java.lang.Byte" jdbcType="TINYINT" />
-      <arg column="appraisingResult" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="appraisingStart" javaType="java.lang.Boolean" jdbcType="TINYINT" />
+      <arg column="appraisingResult" javaType="java.lang.Boolean" jdbcType="TINYINT" />
       <arg column="studentId" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
@@ -19,17 +19,17 @@
   </delete>
   <insert id="insert" parameterType="com.cmdbms.model.Clubappraising">
 
-    insert into t_club_appraising (id, year, clubId, 
+    insert into t_club_appraising (id, term, clubId,
       appraisingStart, appraisingResult, studentId
       )
-    values (#{id,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, #{clubId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{term,jdbcType=INTEGER}, #{clubId,jdbcType=INTEGER},
       #{appraisingStart,jdbcType=TINYINT}, #{appraisingResult,jdbcType=TINYINT}, #{studentId,jdbcType=INTEGER}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Clubappraising">
 
     update t_club_appraising
-    set year = #{year,jdbcType=INTEGER},
+    set `term` = #{term,jdbcType=INTEGER},
       clubId = #{clubId,jdbcType=INTEGER},
       appraisingStart = #{appraisingStart,jdbcType=TINYINT},
       appraisingResult = #{appraisingResult,jdbcType=TINYINT},
@@ -38,13 +38,34 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 
-    select id, year, clubId, appraisingStart, appraisingResult, studentId
+    select id, term, clubId, appraisingStart, appraisingResult, studentId
     from t_club_appraising
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 
-    select id, year, clubId, appraisingStart, appraisingResult, studentId
+    select id, term, clubId, appraisingStart, appraisingResult, studentId
     from t_club_appraising
+  </select>
+  <select id="selByTerm" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+    select id, term, clubId, appraisingStart, appraisingResult, studentId
+    from t_club_appraising
+    where term = #{term,jdbcType=INTEGER}
+  </select>
+  <select id="updateClubApp" resultMap="BaseResultMap">
+
+    update t_club_appraising
+    <set>
+        <if test="status == 1"></if>
+          actStatus = 1 and reviewStatus = 0
+        <if test="status == 2"></if>
+          actStatus = 1 and reviewStatus = 1
+        <if test="status == 3"></if>
+          actStatus = 0 and reviewStatus = 0
+        <if test="status == 4"></if>
+          actStatus = 0 and reviewStatus = 1
+    </set>
+    where term = #{term,jdbcType=INTEGER}
   </select>
 </mapper>

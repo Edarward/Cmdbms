@@ -1,16 +1,17 @@
 package com.cmdbms.controller;
 
+import com.cmdbms.mapper.AffichepictureMapper;
 import com.cmdbms.model.Affichenotice;
+import com.cmdbms.model.Affichepicture;
 import com.cmdbms.service.AfficheSer;
 import com.cmdbms.util.ResultUtils;
+import com.cmdbms.util.UpLoadPicture;
 import com.cmdbms.vo.ResultVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/affiche")
@@ -18,6 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class AfficheCon {
     @Autowired
     private AfficheSer afficheSer;
+    @Autowired
+    private UpLoadPicture upLoadPicture;
+    @Autowired
+    private AffichepictureMapper affichepictureMapper;
 
     @ApiOperation(value = "查询公告信息")
     @GetMapping("/selectNotice")
@@ -99,5 +104,21 @@ public class AfficheCon {
         }catch (Exception e){
             return ResultUtils.error(-1,"失败");
         }
+    }
+
+    @ApiOperation(value = "添加图片")
+    @PostMapping("/addPicture")
+    public ResultVO addPicture (@RequestParam("picture") MultipartFile file) {
+        String img_url = upLoadPicture.upload(file);
+        return ResultUtils.success(img_url);
+    }
+
+    @ApiOperation(value = "添加轮播图")
+    @PostMapping("/addBanner")
+    public ResultVO addBanner (String picAddress){
+        Affichepicture affichepicture = new Affichepicture();
+        affichepicture.setPicAddress(picAddress);
+        affichepicture.setPicReleaser("管理员");
+        return ResultUtils.success(affichepictureMapper.insert(affichepicture));
     }
 }

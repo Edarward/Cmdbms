@@ -24,6 +24,9 @@ spring:
   aop:
     proxy-target-class: true
 
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:D//OTA/,classpath:/image/
+
 mybatis:
   mapperLocations: classpath:mappers/*Mapper.xml
 server:

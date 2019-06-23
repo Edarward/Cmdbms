@@ -27,8 +27,8 @@ public interface ClubmanagerMapper {
      * Param: cludStatus  社团状态  0为全部查询
      * return: id  name
      * Author: Edarward
-     * Date: 2019/6/12
      */
     List<Clubmanager> selectByClubStatus (@Param(value = "clubStatus")Integer clubStatus);
 
+    int clubStatus (@Param(value = "id")Integer id,@Param(value = "clubStatus")Integer clubStatus);
 }

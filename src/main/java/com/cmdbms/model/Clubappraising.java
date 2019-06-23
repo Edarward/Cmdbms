@@ -5,24 +5,24 @@ public class Clubappraising {
     private Integer id;
 
 
-    private Integer year;
+    private Integer term;
 
 
     private Integer clubId;
 
 
-    private Byte appraisingStart;
+    private Boolean appraisingStart;
 
 
-    private Byte appraisingResult;
+    private Boolean appraisingResult;
 
 
     private Integer studentId;
 
 
-    public Clubappraising(Integer id, Integer year, Integer clubId, Byte appraisingStart, Byte appraisingResult, Integer studentId) {
+    public Clubappraising(Integer id, Integer term, Integer clubId, Boolean appraisingStart, Boolean appraisingResult, Integer studentId) {
         this.id = id;
-        this.year = year;
+        this.term = term;
         this.clubId = clubId;
         this.appraisingStart = appraisingStart;
         this.appraisingResult = appraisingResult;
@@ -45,13 +45,13 @@ public class Clubappraising {
     }
 
 
-    public Integer getYear() {
-        return year;
+    public Integer getTerm() {
+        return term;
     }
 
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setTerm(Integer term) {
+        this.term = term;
     }
 
 
@@ -65,22 +65,22 @@ public class Clubappraising {
     }
 
 
-    public Byte getAppraisingStart() {
+    public Boolean getAppraisingStart() {
         return appraisingStart;
     }
 
 
-    public void setAppraisingStart(Byte appraisingStart) {
+    public void setAppraisingStart(Boolean appraisingStart) {
         this.appraisingStart = appraisingStart;
     }
 
 
-    public Byte getAppraisingResult() {
+    public Boolean getAppraisingResult() {
         return appraisingResult;
     }
 
 
-    public void setAppraisingResult(Byte appraisingResult) {
+    public void setAppraisingResult(Boolean appraisingResult) {
         this.appraisingResult = appraisingResult;
     }
 

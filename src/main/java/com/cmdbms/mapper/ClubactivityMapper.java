@@ -1,6 +1,7 @@
 package com.cmdbms.mapper;
 
 import com.cmdbms.model.Clubactivity;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,4 +21,10 @@ public interface ClubactivityMapper {
 
 
     int updateByPrimaryKey(Clubactivity record);
+
+
+    List<Clubactivity> selByStatus(@Param(value = "status")int status);
+
+
+    int clubActAuditing(@Param(value = "reviewStatus")Integer reviewStatus,@Param(value = "id")Integer id);
 }

@@ -36,4 +36,15 @@ public class DateFormatUtil {
         return timeFormat;
     }
 
+    public static Date StringFormat(String date) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date newDate = sdf.parse(date);
+        return newDate;
+    }
+
+    public static Date StringFormat(String date,String format) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        Date newDate = sdf.parse(date);
+        return newDate;
+    }
 }
