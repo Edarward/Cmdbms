@@ -59,7 +59,7 @@ public class AfficheSerImpl implements AfficheSer {
                 notStatetype = 3;
                 break;
             case 5://发布
-                notStatetype = 3;
+                notStatetype = 4;
                 break;
              default:
                  break;
