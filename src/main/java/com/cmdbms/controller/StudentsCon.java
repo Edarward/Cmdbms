@@ -123,6 +123,7 @@ public class StudentsCon {
         }
     }
 
+
     @ApiOperation(value = "查询课程信息信息")
     @GetMapping("/selectCode")
     public ResultVO selectCode(Integer stuId){

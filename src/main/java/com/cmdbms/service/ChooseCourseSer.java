@@ -3,14 +3,18 @@ package com.cmdbms.service;
 import com.cmdbms.model.Choocheck;
 import com.cmdbms.model.Choosecourse;
 
+import java.text.ParseException;
 import java.util.List;
 
 public interface ChooseCourseSer {
 
 
-    List selectCheckChooseInfo();
+    List selectStudentGrade();
 
-    List selectCheckQuitInfo();
+
+    List selectCheckChooseInfo() throws Exception;
+
+    List selectCheckQuitInfo() throws Exception;
 
 
     //使用此方法进行选课

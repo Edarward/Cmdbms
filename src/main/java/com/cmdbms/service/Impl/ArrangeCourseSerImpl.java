@@ -4,6 +4,8 @@ import com.cmdbms.model.Argcoure;
 import com.cmdbms.model.Teaarghis;
 import com.cmdbms.model.Teaarrange;
 import com.cmdbms.service.ArrangeCourseSer;
+import com.cmdbms.util.DateFormatUtil;
+import com.sun.javaws.exceptions.ExitException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -56,13 +58,16 @@ public class ArrangeCourseSerImpl implements ArrangeCourseSer{
     public List selectOne(){
         List<Argcoure> argcoureList = argcoureMapper.selectAll();
         List resList = new ArrayList();
-
+        ExitException exitException;
         for (int i =0;i<argcoureList.size();i++){
             Argcoure argcoure=argcoureList.get(i);
             String courseName = courseMapper.selectNamefromId(argcoure.getClassId());
             String teacherName = staffmsgMapper.selectNamefromId(argcoure.getTeacherId());
-            System.out.println(courseName);
-            System.out.println(argcoure.getClassId());
+            //System.out.println(argcoure.getCourseTime().toString());
+            System.out.println("--------------------------");
+
+            System.out.println(argcoure.getCourseTime().toString());
+            System.out.println("--------------------------");
             Map temMap = new HashMap();
             temMap.put("id",argcoure.getId());
             temMap.put("classId",argcoure.getClassId());
@@ -71,7 +76,10 @@ public class ArrangeCourseSerImpl implements ArrangeCourseSer{
             temMap.put("teacherName",teacherName);
             temMap.put("classroomId",argcoure.getClassroomId());
             temMap.put("coureDate",argcoure.getCoureDate());
-            temMap.put("courseTime",argcoure.getCourseTime());
+
+            String courseTime =  DateFormatUtil.stampToDate(argcoure.getCourseTime());
+            System.out.println(courseTime);
+            temMap.put("courseTime",argcoure.getCourseTime().toString());
             temMap.put("degree",argcoure.getDegree());
             resList.add(temMap);
         }

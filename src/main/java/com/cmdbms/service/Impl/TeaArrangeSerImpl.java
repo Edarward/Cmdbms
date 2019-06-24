@@ -7,6 +7,7 @@ import com.cmdbms.mapper.TeaevaluateMapper;
 import com.cmdbms.model.Argcoure;
 import com.cmdbms.model.Teaarrange;
 import com.cmdbms.service.TeaArrangeSer;
+import com.cmdbms.util.DateFormatUtil;
 import org.apache.ibatis.annotations.Arg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,7 +59,7 @@ public class TeaArrangeSerImpl implements TeaArrangeSer {
             temMap.put("id",teaarrange.getId());
             temMap.put("teaName",teaName);
             temMap.put("className",className);
-            temMap.put("courseTime",argcoure.getCourseTime());
+            temMap.put("courseTime", DateFormatUtil.stampToDate(argcoure.getCourseTime()));
             temMap.put("classroomId",argcoure.getClassroomId());
             temMap.put("coureDate",argcoure.getCoureDate());
             resList.add(temMap);

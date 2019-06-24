@@ -23,6 +23,8 @@ public interface CourseMapper {
     String selectNamefromId(int id);
 
     String selectStuNamefromId(int id);
+
+    int selectCreditById(int stuId);
     /*查询课表信息*/
     //List selectCourse();
 }

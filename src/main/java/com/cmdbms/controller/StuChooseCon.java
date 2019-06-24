@@ -171,4 +171,16 @@ public class StuChooseCon {
         }
     }
 
+    @ApiOperation(value = " 管理员查看学生学分")
+    @GetMapping("/selectStudentGrade")
+    public ResultVO selectStudentGrade () {
+        try {
+            return ResultUtils.success(chooseCourseSer.selectStudentGrade());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultUtils.error(-1,"查询失败！");
+        }
+    }
+
+
 }

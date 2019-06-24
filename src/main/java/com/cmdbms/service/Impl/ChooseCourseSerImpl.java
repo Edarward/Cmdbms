@@ -1,18 +1,14 @@
 package com.cmdbms.service.Impl;
 
-import com.cmdbms.mapper.ChoocheckMapper;
-import com.cmdbms.mapper.ChoosecourseMapper;
-import com.cmdbms.mapper.CourseMapper;
-import com.cmdbms.mapper.QuitcheckMapper;
-import com.cmdbms.model.Choocheck;
-import com.cmdbms.model.Choosecourse;
-import com.cmdbms.model.Course;
-import com.cmdbms.model.Quitcheck;
+import com.cmdbms.mapper.*;
+import com.cmdbms.model.*;
 import com.cmdbms.service.ChooseCourseSer;
+import com.cmdbms.util.DateFormatUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,11 +30,14 @@ public class ChooseCourseSerImpl implements ChooseCourseSer {
     private CourseMapper courseMapper;
 
     @Autowired
+    private StudentmsgMapper studentmsgMapper;
+
+    @Autowired
     private ChoocheckMapper choocheckMapper;
     @Autowired
     private QuitcheckMapper quitcheckMapper;
 
-    public List selectCheckQuitInfo(){
+    public List selectCheckQuitInfo() throws ParseException {
         List resList = new ArrayList();
         System.out.println("12345678");
         List<Quitcheck> quitcheckList = quitcheckMapper.selectAllIn();
@@ -57,7 +56,7 @@ public class ChooseCourseSerImpl implements ChooseCourseSer {
             temMap.put("stuName",stuName);
             temMap.put("classId",classId);
             temMap.put("className",className);
-            temMap.put("applyTime",temChooCheck.getApplyTime());
+            temMap.put("applyTime",DateFormatUtil.stampToDate(temChooCheck.getApplyTime()));
             temMap.put("pass",temChooCheck.getPass());
             System.out.println("12345678");
             resList.add(temMap);
@@ -66,7 +65,7 @@ public class ChooseCourseSerImpl implements ChooseCourseSer {
         return resList;
 
     }
-    public  List selectCheckChooseInfo(){
+    public  List selectCheckChooseInfo()throws ParseException{
         List resList = new ArrayList();
         List<Choocheck> choocheckList = choocheckMapper.selectAll();
         for (int i = 0;i<choocheckList.size();i++){
@@ -81,7 +80,7 @@ public class ChooseCourseSerImpl implements ChooseCourseSer {
             temMap.put("stuName",stuName);
             temMap.put("classId",clasId);
             temMap.put("className",className);
-            temMap.put("applyTime",temChooCheck.getApplyTime());
+            temMap.put("applyTime",DateFormatUtil.DateFormat(temChooCheck.getApplyTime().toString()));
             temMap.put("pass",temChooCheck.getPass());
 
             resList.add(temMap);
@@ -118,7 +117,7 @@ public class ChooseCourseSerImpl implements ChooseCourseSer {
             temMap.put("stuName",stuName);
             temMap.put("classId",temChoosecourse.getClassId());
             temMap.put("className",className);
-            temMap.put("applytime",temChoosecourse.getApplytime());
+            temMap.put("applytime", DateFormatUtil.stampToDate(temChoosecourse.getApplytime()));
             resList.add(temMap);
         }
 
@@ -179,13 +178,35 @@ public class ChooseCourseSerImpl implements ChooseCourseSer {
         System.out.println("dasdasdasd");
         Timestamp applyTime = choocheckMapper.
                 selApplTimeByClaIdAndStuId(choocheck.getClasId(),choocheck.getStuId());
-        System.out.println("dasdasdasd");
         int chooseCourseId = choocheckMapper.
                 selChooseIdByClaIdAndStuId(choocheck.getClasId(),choocheck.getStuId());
-        System.out.println("dasdasdasd");
         choocheck.setApplyTime(applyTime);
         choosecourseMapper.deleteByPrimaryKey(chooseCourseId);
         System.out.println("删除这个：：：-----》》》》"+chooseCourseId);
         return (choocheckMapper.insert(choocheck));
     }
+
+    public List selectStudentGrade(){
+        List resList = new ArrayList();
+    System.out.println("12324");
+        List<Studentmsg> temStudent = studentmsgMapper.selectAll();
+        System.out.println("12324");
+        for (int i =0;i<temStudent.size();i++){
+            Studentmsg studentmsg = temStudent.get(i);
+            Map temMap = new HashMap();
+            int stuId = studentmsg.getId();
+            System.out.println(stuId);
+            int grade = courseMapper.selectCreditById(stuId);
+            System.out.println(grade);
+            String stuName = courseMapper.selectStuNamefromId(stuId);
+            System.out.println(stuName);
+            temMap.put("stuId",stuId);
+            temMap.put("stuName",stuName);
+            temMap.put("grade",grade);
+            resList.add(temMap);
+        }
+        return resList;
+    }
+
+
 }

@@ -55,6 +55,14 @@
 
     </select>
 
+  <select id="selectCreditById" parameterType="java.lang.Integer"  resultType="integer">
+
+      SELECT COUNT(B.credit)
+      FROM t_choo_check A,t_course B
+      WHERE A.stuId=#{stuId,jdbcType=INTEGER};
+    </select>
+
+
   <select id="selectNamefromId"  resultType="string">
     SELECT A.`name`
     FROM t_course A

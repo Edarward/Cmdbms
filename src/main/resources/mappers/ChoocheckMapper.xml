@@ -96,10 +96,12 @@
     where stuId = #{stuId,jdbcType=INTEGER}
   </select>
 
-  <select id="selectAlls" parameterType="map" resultType="java.lang.Integer">
-    select clasId
-    from t_choo_check
-    where stuId = #{stuId,jdbcType=INTEGER} and
-    pass = #{pass,jdbcType=BIT}
+
+  <select id="selectCreditById" parameterType="integer" resultType="java.lang.Integer">
+      SELECT COUNT(B.credit)
+      FROM t_choo_check A,t_course B
+      WHERE A.stuId=#{stuId,jdbcType=INTEGER}
+
   </select>
+
 </mapper>

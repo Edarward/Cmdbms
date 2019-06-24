@@ -5,6 +5,7 @@ import com.cmdbms.controller.FinStudentCon;
 import com.cmdbms.mapper.FinancialstudentMapper;
 import com.cmdbms.model.Financialstudent;
 import com.cmdbms.service.FinStudentSer;
+import com.cmdbms.util.DateFormatUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +43,7 @@ public class FinStudentSerImpl implements FinStudentSer {
             temMap.put("proName",proName);
             temMap.put("stuId",temFin.getStuId());
             temMap.put("stuName",stuName);
-            temMap.put("proTime",temFin.getProTime());
+            temMap.put("proTime", DateFormatUtil.stampToDate(temFin.getProTime()));
             temMap.put("proState",temFin.getProState());
             resList.add(temMap);
         }
@@ -67,7 +68,7 @@ public class FinStudentSerImpl implements FinStudentSer {
             temMap.put("proName",proName);
             temMap.put("stuId",temFin.getStuId());
             temMap.put("stuName",stuName);
-            temMap.put("proTime",temFin.getProTime());
+            temMap.put("proTime",DateFormatUtil.stampToDate(temFin.getProTime()));
             temMap.put("proState",temFin.getProState());
             resList.add(temMap);
         }

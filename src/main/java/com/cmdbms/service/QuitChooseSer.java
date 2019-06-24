@@ -4,6 +4,7 @@ import com.cmdbms.model.Choocheck;
 import com.cmdbms.model.Quitcheck;
 import com.cmdbms.model.Quitcoure;
 
+import java.text.ParseException;
 import java.util.List;
 
 public interface QuitChooseSer {
@@ -18,5 +19,5 @@ public interface QuitChooseSer {
     int checkQuitInfo(Quitcheck quitcheck);
 
 
-    List selectChoCheckInfo(int stuId);
+    List selectChoCheckInfo(int stuId) throws ParseException;
 }
