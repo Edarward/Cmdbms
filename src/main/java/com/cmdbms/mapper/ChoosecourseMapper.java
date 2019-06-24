@@ -8,6 +8,7 @@ import java.util.List;
 @Repository
 public interface ChoosecourseMapper {
 
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Choosecourse record);

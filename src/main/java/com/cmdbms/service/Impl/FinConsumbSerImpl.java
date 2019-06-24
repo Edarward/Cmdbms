@@ -3,9 +3,11 @@ package com.cmdbms.service.Impl;
 import com.cmdbms.mapper.*;
 import com.cmdbms.model.*;
 import com.cmdbms.service.FinConsumbSer;
+import com.cmdbms.util.DateFormatUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -45,7 +47,25 @@ public class FinConsumbSerImpl implements FinConsumbSer {
     }
 
     public List selectOne(){
-        return finComMapper.selectAll();
+        List<Financialconsumables> temList = finComMapper.selectAll();
+        List resList = new ArrayList();
+        for (int i =0;i<temList.size();i++){
+
+            Financialconsumables tem = temList.get(i);
+            Timestamp startTime = tem.getMatStartTime();
+            Timestamp endTime = tem.getMatEndTime();
+
+            Map temMap = new HashMap();
+            temMap.put("matId",tem.getMatId());
+            temMap.put("matName",tem.getMatName());
+            temMap.put("matNumber",tem.getMatNumber());
+            temMap.put("matStartTime",DateFormatUtil.stampToDate(startTime));
+            temMap.put("matEndTime",DateFormatUtil.stampToDate(endTime));
+            temMap.put("matLossMoney",tem.getMatLossMoney());
+            resList.add(temMap);
+        }
+
+        return resList;
     }
 
     public int updateOne(Financialconsumables record){

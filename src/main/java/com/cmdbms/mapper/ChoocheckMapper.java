@@ -11,6 +11,7 @@ public interface ChoocheckMapper {
 
     int deleteByPrimaryKey(Integer id);
 
+    int selectCreditById(int stuId);
 
     int insert(Choocheck record);
 

@@ -2,6 +2,7 @@ package com.cmdbms.util;
 
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,4 +37,12 @@ public class DateFormatUtil {
         return timeFormat;
     }
 
+
+    /*将时间戳转换为date*/
+    public static String stampToDate(Timestamp s){
+        SimpleDateFormat newDate =  new SimpleDateFormat("yyyy MM dd HH:mm:ss");
+        String d = newDate.format(s);
+        System.out.println("Format To String(Date):"+d);
+        return d;
+    }
 }

@@ -37,6 +37,7 @@ public class FinStudentCon {
     }
 
 
+    //修改时间
     @ApiOperation(value = "管理员查询缴费记录")
     @GetMapping("/selectFinStudent")
     public ResultVO selectFinStudent () {
@@ -47,7 +48,7 @@ public class FinStudentCon {
         }
     }
 
-
+    //修改时间
     @ApiOperation(value = "管理员查询缴费记录")
     @PostMapping("/selectFinStuSelf")
     public ResultVO selectFinStuSelf (int stuId) {

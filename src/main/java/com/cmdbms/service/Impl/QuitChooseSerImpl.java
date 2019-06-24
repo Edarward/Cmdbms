@@ -5,10 +5,12 @@ import com.cmdbms.model.Choocheck;
 import com.cmdbms.model.Quitcheck;
 import com.cmdbms.model.Quitcoure;
 import com.cmdbms.service.QuitChooseSer;
+import com.cmdbms.util.DateFormatUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -55,7 +57,7 @@ public class QuitChooseSerImpl implements QuitChooseSer {
             temMap.put("className", className);
             temMap.put("studentId", quitcoure.getStuId());
             temMap.put("studentName",studentName);
-            temMap.put("applyTime", quitcoure.getApplyTime());
+            temMap.put("applyTime", DateFormatUtil.stampToDate(quitcoure.getApplyTime()));
             resList.add(temMap);
         }
         return resList;
@@ -91,7 +93,7 @@ public class QuitChooseSerImpl implements QuitChooseSer {
 
     }
 
-    public List selectChoCheckInfo(int stuId){
+    public List selectChoCheckInfo(int stuId) throws ParseException {
 
         List<Choocheck> checkInfo = choocheckMapper.selectInfoByStuId(stuId);
         List resList = new ArrayList();
@@ -101,7 +103,7 @@ public class QuitChooseSerImpl implements QuitChooseSer {
             temMap.put("id",temChoCheck.getId());
             temMap.put("classId",temChoCheck.getClasId());
             temMap.put("className",courseMapper.selectNamefromId(temChoCheck.getClasId()));
-            temMap.put("applyTime",temChoCheck.getApplyTime());
+            temMap.put("applyTime",DateFormatUtil.DateFormat(temChoCheck.getApplyTime().toString()));
             resList.add(temMap);
         }
         return resList;

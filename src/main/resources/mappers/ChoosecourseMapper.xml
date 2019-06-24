@@ -51,4 +51,6 @@
     where stuID = #{stuId,jdbcType=INTEGER}
   </select>
 
+
+
 </mapper>
