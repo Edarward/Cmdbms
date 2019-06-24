@@ -17,6 +17,10 @@ public interface AffichenoticeMapper {
     List<Affichenotice> selectByPrimaryKey(Integer notStatetype);
 
 
+    List<Affichenotice> selectNoticetwo(@Param(value = "notWriter")String  notWriter,
+                                        @Param(value = "notStatetype")Integer notStatetype);
+
+
     List<Affichenotice> selectAll();
 
 

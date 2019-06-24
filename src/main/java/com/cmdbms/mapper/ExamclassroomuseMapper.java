@@ -20,7 +20,7 @@ public interface ExamclassroomuseMapper {
                @Param(value = "useClrName")String useClrName);
 
 
-    List<Examclassroomuse> selectByPrimaryKey(Integer useThrough);
+    List<Examclassroomuse> selectByPrimaryKey(@Param(value = "useThrough")Integer useThrough);
 
     List<Examclassroomuse> selectByPrimaryKeytwo(Date useClrDate);
 

@@ -29,16 +29,14 @@
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examretake">
 
     update t_exam_retake
-    set exuseSubname = #{exuseSubname,jdbcType=VARCHAR},
-      exuseStuId = #{exuseStuId,jdbcType=INTEGER},
-      exuseThrough = #{exuseThrough,jdbcType=INTEGER}
+    set  exuseThrough = #{exuseThrough,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 
     select id, exuseSubname, exuseStuId, exuseTime, exuseAuditTime, exuseThrough
     from t_exam_retake
-    where exuseThrough = #{exuseThrough,jdbcType=INTEGER}
+    <where><if test="exuseThrough != null and exuseThrough !=''">exuseThrough = #{exuseThrough,jdbcType=INTEGER}</if></where>
   </select>
   <select id="selectByPrimaryKeytwo" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 

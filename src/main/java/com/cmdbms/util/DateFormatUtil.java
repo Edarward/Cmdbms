@@ -37,12 +37,22 @@ public class DateFormatUtil {
         return timeFormat;
     }
 
-
     /*将时间戳转换为date*/
-    public static String stampToDate(Timestamp s){
-        SimpleDateFormat newDate =  new SimpleDateFormat("yyyy MM dd HH:mm:ss");
+    public static String stampToDate(Timestamp s) {
+        SimpleDateFormat newDate = new SimpleDateFormat("yyyy MM dd HH:mm:ss");
         String d = newDate.format(s);
-        System.out.println("Format To String(Date):"+d);
+        System.out.println("Format To String(Date):" + d);
         return d;
+    }
+    public static Date StringFormat(String date) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date newDate = sdf.parse(date);
+        return newDate;
+    }
+
+    public static Date StringFormat(String date,String format) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        Date newDate = sdf.parse(date);
+        return newDate;
     }
 }

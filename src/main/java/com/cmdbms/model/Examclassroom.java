@@ -8,16 +8,16 @@ public class Examclassroom {
     private String clrName;
 
 
-    private Integer clrType;
+    private String clrType;
 
 
     private String clrSize;
 
 
-    private Integer clrState;
+    private String clrState;
 
 
-    public Examclassroom(Integer id, String clrName, Integer clrType, String clrSize, Integer clrState) {
+    public Examclassroom(Integer id, String clrName, String clrType, String clrSize, String clrState) {
         this.id = id;
         this.clrName = clrName;
         this.clrType = clrType;
@@ -51,12 +51,12 @@ public class Examclassroom {
     }
 
 
-    public Integer getClrType() {
+    public String getClrType() {
         return clrType;
     }
 
 
-    public void setClrType(Integer clrType) {
+    public void setClrType(String clrType) {
         this.clrType = clrType;
     }
 
@@ -71,12 +71,12 @@ public class Examclassroom {
     }
 
 
-    public Integer getClrState() {
+    public String getClrState() {
         return clrState;
     }
 
 
-    public void setClrState(Integer clrState) {
+    public void setClrState(String clrState) {
         this.clrState = clrState;
     }
 }

@@ -20,4 +20,28 @@ public interface ClubmessageMapper {
 
 
     int updateByPrimaryKey(Clubmessage record);
+
+    /**
+     * Description: 返回参加该活动的人数
+     * Author: Edarward
+     */
+    int ActCount(Integer clubActivityId);
+
+    /**
+     * Description: 下架留言
+     * Author: Edarward
+     */
+    int clubMessageDown(Integer Id);
+
+    /**
+     * Description: 查询留言
+     * Author: Edarward
+     */
+    List<Clubmessage> selClubMessage(Integer clubActivityId);
+
+    /**
+     * Description: 某学生参加的活动
+     * Author: Edarward
+     */
+    List<Clubmessage> selClubByStuId(Integer studentId);
 }

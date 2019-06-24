@@ -67,22 +67,34 @@ public class ExamCon {
         }
     }
 
-    @ApiOperation(value = "修改成绩信息")
-    @PostMapping("/updateGrade")
-    public ResultVO updateGrade(Integer id, Integer gradeStuId, Integer gradeStu, String gradeLimit, Integer gradeJudge, Integer gradeViolate, Integer gradeReview){
+    @ApiOperation(value = "查询学生考试信息")
+    @GetMapping("/selectStuarrange")
+    public ResultVO selectStuarrange(Integer id,Integer stuexamStuId){
         try {
-            return ResultUtils.success(examSer.updateGrade(id,gradeStuId,gradeStu,gradeLimit,gradeJudge,gradeViolate,gradeReview));
+            return ResultUtils.success(examSer.selectStuarrange(id,stuexamStuId));
         }catch (Exception e){
             System.out.println(e);
             return ResultUtils.error(-1,"失败");
         }
     }
 
+
+    @ApiOperation(value = "修改成绩信息")
+    @PostMapping("/updateGrade")
+    public ResultVO updateGrade(Integer id, Integer gradeStuId, Integer gradeStu, String gradeLimit, Integer gradeJudge, Integer gradeViolate, Integer gradeReview){
+        try {
+            return ResultUtils.success(examSer.updateGrade(id,gradeStuId,gradeStu,gradeLimit,gradeJudge,gradeViolate,gradeReview));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
     @ApiOperation(value = "查询成绩信息")
     @GetMapping("/selectGrade")
-    public ResultVO selectGrade(Integer gradeStuId){
+    public ResultVO selectGrade(Integer gradeStuId,Integer gradeReview){
         try {
-            return ResultUtils.success(examSer.selectGrade(gradeStuId));
+            return ResultUtils.success(examSer.selectGrade(gradeStuId,gradeReview));
         }catch (Exception e){
             System.out.println(e);
             return ResultUtils.error(-1,"失败");

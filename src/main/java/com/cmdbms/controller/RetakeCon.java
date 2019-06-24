@@ -56,7 +56,7 @@ public class RetakeCon {
         try {
             return ResultUtils.success(retakeSer.selectRetake(exuseThrough));
         }catch (Exception e){
-            return ResultUtils.error(-1,"/失败");
+            return ResultUtils.error(-1,"失败");
         }
     }
 

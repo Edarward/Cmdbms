@@ -86,4 +86,38 @@ public class ClubNumberCon {
             return ResultUtils.error(-1,"失败");
         }
     }
+
+    /**
+     * 信息门户
+     */
+    @ApiOperation(value = "个人信息查询")
+    @PostMapping("selClubPsoNumber")
+    public ResultVO auditingList (Integer studentId) {
+        try {
+            return ResultUtils.success(clubNumberSer.auditingList(studentId));
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @ApiOperation(value = "成员入社申请")
+    @PostMapping("joinApp")
+    public ResultVO joinApp (Integer studentId,Integer clubId) {
+        try {
+            return ResultUtils.success(clubNumberSer.joinApp(studentId,clubId));
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @ApiOperation(value = "成员入社申请")
+    @PostMapping("exitApp")
+    public ResultVO exitApp (Integer studentId,Integer clubId) {
+        try {
+            return ResultUtils.success(clubNumberSer.exitApp(studentId,clubId));
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
 }

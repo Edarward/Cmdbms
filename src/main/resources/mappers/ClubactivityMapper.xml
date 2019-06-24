@@ -42,15 +42,47 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 
-    select id, clubId, actDescription, actLocation, actStartTime, actStopTime, actStatus, 
+    select id, clubId, actDescription, actLocation, actStartTime, actStopTime, actStatus,
     reviewStatus
     from t_club_activity
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 
-    select id, clubId, actDescription, actLocation, actStartTime, actStopTime, actStatus, 
+    select id, clubId, actDescription, actLocation, actStartTime, actStopTime, actStatus,
     reviewStatus
     from t_club_activity
   </select>
+  <select id="selByStatus" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+
+  select id, clubId, actDescription, actLocation, actStartTime, actStopTime, actStatus,
+  reviewStatus
+  from t_club_activity
+    <if test="status==1"><!--请求审核-->
+      <where>
+        actStatus = 1 and reviewStatus = 0
+      </where>
+    </if>
+    <if test="status==2"><!--审核通过-->
+      <where>
+        actStatus = 1 and reviewStatus = 1
+      </where>
+    </if>
+    <if test="status==3"><!--审核不通过-->
+      <where>
+        actStatus = 0 and reviewStatus = 0
+      </where>
+    </if>
+    <if test="status==4"><!--活动结束-->
+      <where>
+        actStatus = 0 and reviewStatus = 1
+      </where>
+    </if>
+  </select>
+  <update id="clubActAuditing"  >
+
+    update t_club_activity
+    set reviewStatus = #{reviewStatus,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

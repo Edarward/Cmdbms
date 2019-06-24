@@ -46,10 +46,22 @@ public class ClassroomCon {
 
     @ApiOperation(value = "查询教室信息")
     @GetMapping("/selectClassroom")
-    public ResultVO selectClassroom(Integer clrType){
+    public ResultVO selectClassroom(String clrType){
         try {
             return ResultUtils.success(classroomSer.selectClassroom(clrType));
         }catch (Exception e){
+            System.out.println(e);
+            return ResultUtils.error(-1,"失败");
+        }
+    }
+
+    @ApiOperation(value = "删除教室信息")
+    @PostMapping("/deleteClassroom")
+    public ResultVO deleteClassroom(Integer id){
+        try {
+            return ResultUtils.success(classroomSer.deleteClassroom(id));
+        }catch (Exception e){
+            System.out.println(e);
             return ResultUtils.error(-1,"失败");
         }
     }

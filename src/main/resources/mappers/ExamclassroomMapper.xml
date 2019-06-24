@@ -6,9 +6,9 @@
     <constructor>
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="clrName" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="clrType" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clrType" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="clrSize" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="clrState" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="clrState" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -20,23 +20,23 @@
 
     insert into t_exam_classroom (id, clrName, clrType, 
       clrSize, clrState)
-    values (#{id,jdbcType=INTEGER}, #{clrName,jdbcType=VARCHAR}, #{clrType,jdbcType=INTEGER}, 
-      #{clrSize,jdbcType=VARCHAR}, #{clrState,jdbcType=INTEGER})
+    values (#{id,jdbcType=INTEGER}, #{clrName,jdbcType=VARCHAR}, #{clrType,jdbcType=VARCHAR},
+      #{clrSize,jdbcType=VARCHAR}, #{clrState,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examclassroom">
 
     update t_exam_classroom
     set clrName = #{clrName,jdbcType=VARCHAR},
-      clrType = #{clrType,jdbcType=INTEGER},
+      clrType = #{clrType,jdbcType=VARCHAR},
       clrSize = #{clrSize,jdbcType=VARCHAR},
-      clrState = #{clrState,jdbcType=INTEGER}
+      clrState = #{clrState,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap">
 
     select id, clrName, clrType, clrSize, clrState
     from t_exam_classroom
-    where clrType = #{clrType,jdbcType=INTEGER}
+    where clrType = #{clrType,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

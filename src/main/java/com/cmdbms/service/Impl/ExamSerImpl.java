@@ -1,10 +1,7 @@
 package com.cmdbms.service.Impl;
 
 import com.cmdbms.mapper.*;
-import com.cmdbms.model.Examarrange;
-import com.cmdbms.model.Examgrade;
-import com.cmdbms.model.Examunpass;
-import com.cmdbms.model.Examviolent;
+import com.cmdbms.model.*;
 import com.cmdbms.service.ExamSer;
 import com.cmdbms.service.SalaryLevelSer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,10 +47,11 @@ public class ExamSerImpl implements ExamSer {
                                 String examClrName,
                                 String examSubName,
                                 Integer examYear) throws ParseException {
+        Boolean pass = true;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date newexamDate = sdf.parse(examDate);
         Integer record = examarrangeMapper.insert(id,examSubId,newexamDate,examTime,examClassroomId,examClrName,examSubName,examYear);
-        List<Integer> integerList = choocheckMapper.selectstuId(examSubId);
+        List<Integer> integerList = choocheckMapper.selectstuId(examSubId,pass);
         for (int i = 0;i<integerList.size();i++){
             Integer stuexamStuId = integerList.get(i);
             System.out.println(stuexamStuId.toString());
@@ -88,7 +86,10 @@ public class ExamSerImpl implements ExamSer {
                                 Integer examClassroomId,
                                 String examClrName) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date newexamDate = sdf.parse(examDate);
+        Date newexamDate = null;
+        if (examDate!=null) {
+            newexamDate = sdf.parse(examDate);
+        }
         Integer record = examarrangeMapper.updateByPrimaryKey(id,newexamDate,examTime,examClassroomId,examClrName);
         Integer integer = examstuarrangeMapper.updateByPrimaryKey(id,examClassroomId,newexamDate,examTime,examClrName);
         return record.toString();
@@ -104,25 +105,32 @@ public class ExamSerImpl implements ExamSer {
                               Integer gradeViolate,
                               Integer gradeReview) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date newgradeLimit = sdf.parse(gradeLimit);
+        Date newgradeLimit = null;
+        if(gradeLimit!=null){
+            newgradeLimit = sdf.parse(gradeLimit);
+        }
         Integer record = examgradeMapper.updateByPrimaryKey(id,gradeStuId,gradeStu,newgradeLimit,gradeJudge,gradeViolate,gradeReview);
         List<Integer> integerList = examgradeMapper.selectgradeSub(id,gradeStuId);
         Integer gradeSubId = integerList.get(0);
         List<String> stringList = examgradeMapper.selectgradeSubName(id,gradeStuId);
         String gradeSubName = stringList.get(0);
-        if (gradeStu<60){
-            examunpassMapper.insert(id,gradeSubId,gradeStuId,gradeStu,gradeViolate,gradeSubName);
+        if(gradeStu!=null) {
+            if (gradeStu < 60) {
+                examunpassMapper.insert(id, gradeSubId, gradeStuId, gradeStu, gradeViolate, gradeSubName);
+            }
         }
-        if (gradeViolate == 0){
-            examviolentMapper.insert(id,gradeStuId);
+        if (gradeViolate!=null) {
+            if (gradeViolate == 0) {
+                examviolentMapper.insert(id, gradeStuId);
+            }
         }
         return record.toString();
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public List<Examgrade> selectGrade(Integer gradeStuId){
-        List<Examgrade> examgradeList = examgradeMapper.selectstugrade(gradeStuId);
+    public List<Examgrade> selectGrade(Integer gradeStuId,Integer gradeReview){
+        List<Examgrade> examgradeList = examgradeMapper.selectstugrade(gradeStuId,gradeReview);
         return examgradeList;
     }
 
@@ -145,5 +153,12 @@ public class ExamSerImpl implements ExamSer {
     public String updateViolent(Integer id,Integer vioStuId, String vioBehavior, String vioContent, Integer vioLevel){
         Integer integer = examviolentMapper.updateByPrimaryKey(id,vioStuId,vioBehavior,vioContent,vioLevel);
         return integer.toString();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public List<Examstuarrange> selectStuarrange(Integer id, Integer stuexamStuId){
+        List<Examstuarrange> examstuarrangeList = examstuarrangeMapper.selectByPrimaryKey(id,stuexamStuId);
+        return examstuarrangeList;
     }
 }

@@ -31,7 +31,7 @@ public class ClassroomSerImpl implements ClassroomSer {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public List<Examclassroom> selectClassroom(Integer clrType){
+    public List<Examclassroom> selectClassroom(String clrType){
         List<Examclassroom> examclassroomList = examclassroomMapper.selectByPrimaryKey(clrType);
         return examclassroomList;
     }
@@ -41,6 +41,13 @@ public class ClassroomSerImpl implements ClassroomSer {
     public String updateClassroom(Examclassroom examclassroom){
         Integer record = examclassroomMapper.updateByPrimaryKey(examclassroom);
         return record.toString();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int deleteClassroom(Integer id){
+        Integer record = examclassroomMapper.deleteByPrimaryKey(id);
+        return record;
     }
 
     @Override

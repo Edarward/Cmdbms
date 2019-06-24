@@ -1,6 +1,7 @@
 package com.cmdbms.mapper;
 
 import com.cmdbms.model.Choocheck;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
@@ -34,11 +35,16 @@ public interface ChoocheckMapper {
     List selectInfoByStuId(int stuId);
 
     //考试管理使用
-    List<Integer> selectstuId(Integer clasId);
+    List<Integer> selectstuId(@Param(value = "clasId")Integer clasId,
+                              @Param(value = "pass")Boolean pass );
 
     //学生管理用
     List<Choocheck> selectpass(Integer stuId);
 
     //学生管理用
     List<Integer> selectclasId(Integer stuId);
+
+    //学生管理
+    List<Integer> selectAlls(@Param(value = "stuId")Integer stuId,
+                             @Param(value = "pass")Boolean pass);
 }

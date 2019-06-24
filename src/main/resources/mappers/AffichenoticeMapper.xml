@@ -32,12 +32,12 @@
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Affichenotice">
 
     update t_affiche_notice
-    set notType = #{notType,jdbcType=VARCHAR},
-      notContent = #{notContent,jdbcType=VARCHAR},
-      notWriter = #{notWriter,jdbcType=VARCHAR},
-      notReleaser = #{notReleaser,jdbcType=VARCHAR},
-      notState = #{notState,jdbcType=INTEGER},
-      notStatetype = #{notStatetype,jdbcType=INTEGER}
+    <set> <if test="notType != null">notType = #{notType,jdbcType=VARCHAR},</if>
+      <if test="notContent != null">notContent = #{notContent,jdbcType=VARCHAR},</if>
+      <if test="notWriter != null">notWriter = #{notWriter,jdbcType=VARCHAR},</if>
+      <if test="notReleaser != null">notReleaser = #{notReleaser,jdbcType=VARCHAR},</if>
+      <if test="notState != null">notState = #{notState,jdbcType=INTEGER},</if>
+      <if test="notStatetype != null">notStatetype = #{notStatetype,jdbcType=INTEGER}</if></set>
     where notId = #{notId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -47,6 +47,17 @@
     from t_affiche_notice
     where notStatetype = #{notStatetype,jdbcType=INTEGER}
   </select>
+
+  <select id="selectNoticetwo" parameterType="map" resultMap="BaseResultMap">
+
+    select notId, notType, notContent, notWriter, notWritetime, notReleaser, notReleasetime, notState,
+    notStatetype
+    from t_affiche_notice
+    where notWriter = #{notWriter,jdbcType=VARCHAR}
+    and notStatetype = #{notStatetype,jdbcType=INTEGER}
+  </select>
+
+
   <select id="selectAll" resultMap="BaseResultMap">
 
     select notId, notType, notWriter, notWritetime, notReleaser, notReleasetime, notState, 

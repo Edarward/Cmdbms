@@ -99,11 +99,16 @@
     set joinApplication = 1
     where id = #{id,jdbcType=INTEGER}
   </update>
-
   <update id="exitAuditing" parameterType="java.lang.Integer">
 
     update t_club_number
     set joinApplication = 0
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="clubNumberPing" >
+
+    update t_club_number
+    set voteStatus = #{appraisiontId,jdbcType=INTEGER}
+    where studentId = #{studentId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -113,4 +113,45 @@ public class ClubNumberSerImpl implements ClubNumberSer {
             return clubnumberMapper.exitAuditing(id);
         }
     }
+
+    @Override
+    public List<Object> auditingList(Integer studentId) throws ParseException {
+        List<Clubnumber> clubnumberList = clubnumberMapper.selectByStudentId(studentId);
+        List<Object> clubnumbers = new ArrayList<>();
+        for (Clubnumber clubnumber : clubnumberList) {
+            Map<String,Object> recording = new HashMap<>();
+            recording.put("id",clubnumber.getId());
+            recording.put("studentId",clubnumber.getStudentId());
+            Studentmsg studentmsg = studentmsgMapper.selectByPrimaryKey(studentId);
+            recording.put("studentName",studentmsg.getName());
+            recording.put("clubId",clubnumber.getClubId());
+            Clubmanager clubmanager = clubmanagerMapper.selectByPrimaryKey(clubnumber.getClubId());
+            recording.put("clubName",clubmanager.getName());
+            recording.put("joinTime",DateFormatUtil.DateFormat(clubnumber.getJoinTime().toString()));
+            recording.put("exitTime",DateFormatUtil.DateFormat(clubnumber.getExitTime().toString()));
+            clubnumbers.add(recording);
+        }
+        return clubnumbers;
+    }
+
+    @Override
+    public int joinApp(Integer studentId,Integer clubId) {
+        Clubnumber clubnumber = new Clubnumber();
+        clubnumber.setStudentId(studentId);
+        clubnumber.setClubId(clubId);
+        clubnumber.setJoinApplication(false);
+        clubnumber.setExitApplication(false);
+        clubnumber.setClubPositionId(4);
+        return clubnumberMapper.insert(clubnumber);
+    }
+
+    @Override
+    public int exitApp(Integer studentId,Integer clubId) {
+        Clubnumber clubnumber = new Clubnumber();
+        clubnumber.setStudentId(studentId);
+        clubnumber.setClubId(clubId);
+        clubnumber.setJoinApplication(true);
+        clubnumber.setExitApplication(true);
+        return clubnumberMapper.insert(clubnumber);
+    }
 }

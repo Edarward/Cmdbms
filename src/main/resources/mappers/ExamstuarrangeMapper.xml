@@ -34,10 +34,10 @@
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examstuarrange">
 
     update t_exam_stuarrange
-    set stuexamClrId = #{stuexamClrId,jdbcType=INTEGER},
-      stuexamDate = #{stuexamDate,jdbcType=DATE},
-      stuexamTime = #{stuexamTime,jdbcType=INTEGER},
-      stuexamClrName = #{stuexamClrName,jdbcType=VARCHAR}
+    <set> <if test="stuexamClrId != null"> stuexamClrId = #{stuexamClrId,jdbcType=INTEGER},</if>
+      <if test="stuexamDate != null"> stuexamDate = #{stuexamDate,jdbcType=DATE},</if>
+      <if test="stuexamTime != null"> stuexamTime = #{stuexamTime,jdbcType=INTEGER},</if>
+      <if test="stuexamClrName != null"> stuexamClrName = #{stuexamClrName,jdbcType=VARCHAR}</if></set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
@@ -45,8 +45,8 @@
     select id, stuexamStuId, stuexamSubId, stuexamClrId, stuexamDate, stuexamTime, stuexamClrName, 
     stuexamSubName, stuexamYear
     from t_exam_stuarrange
-    where id = #{id,jdbcType=INTEGER}
-      and stuexamStuId = #{stuexamStuId,jdbcType=INTEGER}
+    <where><if test="id != null and id !=''"> id = #{id,jdbcType=INTEGER}</if>
+      <if test="stuexamStuId != null and stuexamStuId !=''"> and stuexamStuId = #{stuexamStuId,jdbcType=INTEGER}</if></where>
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
 

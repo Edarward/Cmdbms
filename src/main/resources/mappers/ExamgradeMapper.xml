@@ -32,13 +32,12 @@
       #{gradeSubName,jdbcType=VARCHAR}, #{gradeMajor,jdbcType=VARCHAR}, #{gradeYear,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Examgrade">
-
     update t_exam_grade
-    set   gradeStu = #{gradeStu,jdbcType=INTEGER},
-      gradeLimit = #{gradeLimit,jdbcType=DATE},
-      gradeJudge = #{gradeJudge,jdbcType=INTEGER},
-      gradeViolate = #{gradeViolate,jdbcType=INTEGER},
-      gradeReview = #{gradeReview,jdbcType=INTEGER}
+    <set>  <if test="gradeStu != null">gradeStu = #{gradeStu,jdbcType=INTEGER},</if>
+      <if test="gradeLimit != null">gradeLimit = #{gradeLimit,jdbcType=DATE},</if>
+      <if test="gradeJudge != null">gradeJudge = #{gradeJudge,jdbcType=INTEGER},</if>
+      <if test="gradeViolate != null">gradeViolate = #{gradeViolate,jdbcType=INTEGER},</if>
+      <if test="gradeReview != null">gradeReview = #{gradeReview,jdbcType=INTEGER}</if></set>
     where id = #{id,jdbcType=INTEGER}
       and gradeStuId = #{gradeStuId,jdbcType=INTEGER}
   </update>
@@ -75,7 +74,8 @@
     select id, gradeStuId, gradeSubId, gradeStu, gradeSubName, gradeLimit, gradeJudge,
     gradeAlterTime, gradeViolate, gradeReview, gradeMajor, gradeYear
     from t_exam_grade
-    <where><if test="gradeStuId != null and gradeStuId !=''">gradeStuId = #{gradeStuId,jdbcType=INTEGER}</if> </where>
+    <where><if test="gradeStuId != null and gradeStuId !=''">gradeStuId = #{gradeStuId,jdbcType=INTEGER}</if>
+            <if test="gradeReview != null and gradeStuId !=''"> gradeReview = #{gradeReview,jdbcType=INTEGER}</if></where>
   </select>
   <select id="selectgrade" parameterType="map" resultMap="BaseResultMap">
     select id, gradeStuId, gradeSubId, gradeStu, gradeSubName, gradeLimit, gradeJudge,
