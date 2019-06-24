@@ -82,6 +82,7 @@ public class ClubManagerSerImpl implements ClubManagerSer {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int clubDismissApp(Integer id,Integer studentId) throws Exception {
         Clubmanager clubmanager = clubmanagerMapper.selectByPrimaryKey(id);
         if (clubmanager.getStudentId().equals(studentId)) {

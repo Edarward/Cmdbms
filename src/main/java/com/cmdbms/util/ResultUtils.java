@@ -1,6 +1,7 @@
 package com.cmdbms.util;
 
 import com.cmdbms.enums.ResultCodeEnums;
+import com.cmdbms.exception.CoException;
 import com.cmdbms.vo.ResultVO;
 
 
@@ -26,6 +27,13 @@ public class ResultUtils {
     }
 
     public static ResultVO error(ResultCodeEnums resultCodeEnums) {
+        ResultVO resultVO = new ResultVO();
+        resultVO.setMsg(resultCodeEnums.getMsg());
+        resultVO.setCode(resultCodeEnums.getCode());
+        return resultVO;
+    }
+
+    public static ResultVO error(CoException resultCodeEnums) {
         ResultVO resultVO = new ResultVO();
         resultVO.setMsg(resultCodeEnums.getMsg());
         resultVO.setCode(resultCodeEnums.getCode());

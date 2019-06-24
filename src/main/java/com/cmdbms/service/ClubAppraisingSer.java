@@ -8,7 +8,7 @@ public interface ClubAppraisingSer {
 
     int updateClubApp (Integer status,Integer term);
 
-    int clubNumberPing(Integer studentId,Integer appraisiontId);
+    int clubNumberPing(Integer id,Integer appraisiontId);
 
     List<Object> clubNumberPingList();
 }

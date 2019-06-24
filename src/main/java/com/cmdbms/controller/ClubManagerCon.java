@@ -51,6 +51,7 @@ public class ClubManagerCon {
         try {
             return ResultUtils.success(clubManagerSer.ClubCreateApp(name, number, studentId));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
@@ -61,8 +62,18 @@ public class ClubManagerCon {
         try {
             return ResultUtils.success(clubManagerSer.clubDismissApp(id, studentId));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
 
+    @ApiOperation(value = "社团展示")
+    @GetMapping("/selClub")
+    public ResultVO selClub () {
+        try {
+            return ResultUtils.success(clubManagerSer.clubmanagerList(3));
+        } catch (Exception e) {
+            return ResultUtils.error(-1,"失败");
+        }
+    }
 }

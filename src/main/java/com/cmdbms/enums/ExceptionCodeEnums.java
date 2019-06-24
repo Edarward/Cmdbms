@@ -6,7 +6,9 @@ package com.cmdbms.enums;
  */
 public enum ExceptionCodeEnums {
 
-    DATA_NOT_FOUND(1, "不存在此数据"),
+    NO_ACCESS(1,"没有权限"),
+
+    DATA_NOT_FOUND(5, "不存在此数据"),
 
     ADMIN_NOT_FOUND(2, "管理员账号或密码错误"),
 
@@ -14,21 +16,11 @@ public enum ExceptionCodeEnums {
 
     NO_SIGN(4, "没有登陆"),
 
-    WX_ERROR(5, "微信错误"),
-
     DATA_IS_EXIST(6, "数据已经存在"),
-
-    WX_OK(7, "微信成功"),
 
     NO_DATA(8,"缺少参数"),
 
-    ERROR_STATE(9,"订单不符合状态"),
-
-    ERROR_MONEY(10,"支付金额与原订单金额不一致"),
-
     FAIL_OPERATION(11,"操作失败")
-
-
     ;
 
     public Integer getCode() {

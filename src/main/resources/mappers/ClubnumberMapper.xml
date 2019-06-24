@@ -23,12 +23,10 @@
   <insert id="insert" parameterType="com.cmdbms.model.Clubnumber">
 
     insert into t_club_number (id, studentId, clubId, 
-      joinTime, exitTime, clubPositionId, 
-      joinApplication, exitApplication, voteStatus
+      clubPositionId, joinApplication, exitApplication, voteStatus
       )
     values (#{id,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER}, #{clubId,jdbcType=INTEGER}, 
-      #{joinTime,jdbcType=TIMESTAMP}, #{exitTime,jdbcType=TIMESTAMP}, #{clubPositionId,jdbcType=INTEGER}, 
-      #{joinApplication,jdbcType=BIT}, #{exitApplication,jdbcType=BIT}, #{voteStatus,jdbcType=INTEGER}
+      #{clubPositionId,jdbcType=INTEGER}, #{joinApplication,jdbcType=BIT}, #{exitApplication,jdbcType=BIT}, #{voteStatus,jdbcType=INTEGER}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Clubnumber">
@@ -93,22 +91,28 @@
       </where>
     </if>
   </select>
-  <update id="joinAuditing" parameterType="java.lang.Integer">
+  <update id="joinAuditing" >
 
     update t_club_number
-    set joinApplication = 1
+    set joinApplication = 1 , joinTime = #{joinTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="exitAuditing" parameterType="java.lang.Integer">
+  <update id="exitAuditing" >
 
     update t_club_number
-    set joinApplication = 0
+    set joinApplication = 0  , exitTime = #{exitTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="clubNumberPing" >
 
     update t_club_number
-    set voteStatus = #{appraisiontId,jdbcType=INTEGER}
-    where studentId = #{studentId,jdbcType=INTEGER}
+    set voteStatus = #{voteStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByExitApp" parameterType="java.lang.Integer">
+
+    update t_club_number
+    set  joinApplication = true ,exitApplication = true
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -44,4 +44,7 @@ public interface ClubmessageMapper {
      * Author: Edarward
      */
     List<Clubmessage> selClubByStuId(Integer studentId);
+
+
+    int addConOne(Integer id,String content);
 }

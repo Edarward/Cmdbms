@@ -4,6 +4,7 @@ import com.cmdbms.model.Clubnumber;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 @Repository
 public interface ClubnumberMapper {
@@ -51,19 +52,23 @@ public interface ClubnumberMapper {
      * Description: 入社审核 更改状态
      * Author: Edarward
      */
-    int joinAuditing(@Param(value = "Id")Integer Id);
+    int joinAuditing(@Param(value = "id")Integer id,@Param(value = "joinTime") Timestamp joinTime);
 
     /**
      * Description: 退社审核 更改状态
      * Author: Edarward
      */
-    int exitAuditing(@Param(value = "Id")Integer Id);
+    int exitAuditing(@Param(value = "id")Integer id,@Param(value = "exitTime") Timestamp exitTime);
 
     /**
      * Description: 评优投票
      * Author: Edarward
      */
-    int clubNumberPing(Integer studentId,Integer appraisiontId);
+    int clubNumberPing(Integer id,Integer voteStatus);
 
-
+    /**
+     * Description: 退社
+     * Author: Edarward
+     */
+    int updateByExitApp(Integer id);
 }

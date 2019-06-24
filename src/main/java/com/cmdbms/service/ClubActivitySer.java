@@ -1,7 +1,6 @@
 package com.cmdbms.service;
 
 import com.cmdbms.model.Clubactivity;
-import com.cmdbms.model.Clubmessage;
 
 import java.text.ParseException;
 import java.util.List;
@@ -24,7 +23,7 @@ public interface ClubActivitySer {
 
     List<Object> selActivity() throws ParseException;
 
-    int addConOne(Clubmessage clubmessage);
+    int addConOne(Integer id,String content);
 
     List<Object> selMyActivity(Integer studentId) throws ParseException;
 

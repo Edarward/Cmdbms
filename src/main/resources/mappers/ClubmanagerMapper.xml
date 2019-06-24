@@ -21,10 +21,9 @@
   <insert id="insert" parameterType="com.cmdbms.model.Clubmanager">
 
     insert into t_club_manager (id, `name`, `number`,
-      declarationTime, createTime, studentId, 
-      clubStatus)
+       studentId, clubStatus)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, 
-      #{declarationTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{studentId,jdbcType=INTEGER}, 
+       #{studentId,jdbcType=INTEGER},
       #{clubStatus,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.cmdbms.model.Clubmanager">

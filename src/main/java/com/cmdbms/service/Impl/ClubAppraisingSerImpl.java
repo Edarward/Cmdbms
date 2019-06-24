@@ -64,7 +64,7 @@ public class ClubAppraisingSerImpl implements ClubAppraisingSer {
     public int updateClubApp (Integer status,Integer term) {
         //开始评价 1
         if (status == 1) {
-            //将所有创建的社团放入评优表中
+            //将所有创建的社团放入评优
             List<Clubmanager> clubmanagerList = clubmanagerMapper.selectByClubStatus(3);
             for (Clubmanager clubmanager : clubmanagerList) {
                 Clubappraising clubappraising = new Clubappraising();
@@ -82,8 +82,8 @@ public class ClubAppraisingSerImpl implements ClubAppraisingSer {
     }
 
     @Override
-    public int clubNumberPing(Integer studentId,Integer appraisiontId) {
-        return clubnumberMapper.clubNumberPing(studentId, appraisiontId);
+    public int clubNumberPing(Integer id,Integer appraisiontId) {
+        return clubnumberMapper.clubNumberPing(id, appraisiontId);
     }
 
     @Override
@@ -91,16 +91,18 @@ public class ClubAppraisingSerImpl implements ClubAppraisingSer {
         List<Object> resultList = new ArrayList<>();
         List<Clubappraising> clubappraisingList =  clubappraisingMapper.selectAll();
         for (Clubappraising clubappraising : clubappraisingList) {
-            Map<String,Object> resultMap = new HashMap<>(3);
-            //学期
-            resultMap.put("term",clubappraising.getTerm());
-            //社团名称
-            Clubmanager clubmanager = clubmanagerMapper.selectByPrimaryKey(clubappraising.getClubId());
-            resultMap.put("clubName",clubmanager.getName());
-            //学生名字
-            Studentmsg studentmsg = studentmsgMapper.selectByPrimaryKey(clubappraising.getStudentId());
-            resultMap.put("studentName",studentmsg.getName());
-            resultList.add(resultMap);
+            if (!clubappraising.getAppraisingStart()&&clubappraising.getAppraisingResult()) {
+                Map<String,Object> resultMap = new HashMap<>(3);
+                //学期
+                resultMap.put("term",clubappraising.getTerm());
+                //社团名称
+                Clubmanager clubmanager = clubmanagerMapper.selectByPrimaryKey(clubappraising.getClubId());
+                resultMap.put("clubName",clubmanager.getName());
+                //学生名字
+                Studentmsg studentmsg = studentmsgMapper.selectByPrimaryKey(clubappraising.getStudentId());
+                resultMap.put("studentName",studentmsg.getName());
+                resultList.add(resultMap);
+            }
         }
         return resultList;
     }

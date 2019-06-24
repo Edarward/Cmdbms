@@ -29,12 +29,12 @@ public interface ClubNumberSer {
      * Param: appState   0为退社申请   1为入社申请
      * Author: Edarward
      */
-    int auditing(Integer appState,Integer Id);
+    int auditing(Integer appState,Integer id);
 
     List<Object> auditingList(Integer studentId) throws ParseException;
 
     int joinApp(Integer studentId,Integer clubId);
 
-    int exitApp(Integer studentId,Integer clubId);
+    int exitApp(Integer studentId,Integer id);
 
 }

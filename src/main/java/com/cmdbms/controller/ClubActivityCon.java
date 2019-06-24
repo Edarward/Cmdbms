@@ -1,7 +1,7 @@
 package com.cmdbms.controller;
 
+import com.cmdbms.exception.CoException;
 import com.cmdbms.model.Clubactivity;
-import com.cmdbms.model.Clubmessage;
 import com.cmdbms.service.ClubActivitySer;
 import com.cmdbms.util.DateFormatUtil;
 import com.cmdbms.util.ResultUtils;
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.text.ParseException;
 
 @RestController
 @RequestMapping("/clubActivity")
@@ -38,6 +40,7 @@ public class ClubActivityCon {
         try {
             return ResultUtils.success(clubActivitySer.clubActAuditing(reviewStatus,id));
         }catch (Exception e){
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
@@ -87,6 +90,7 @@ public class ClubActivityCon {
         try {
             return ResultUtils.success(clubActivitySer.selClubMessage(clubActivityId));
         }catch (Exception e){
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
@@ -107,7 +111,10 @@ public class ClubActivityCon {
             clubactivity.setActStatus(true);
             clubactivity.setReviewStatus(false);
             return ResultUtils.success(clubActivitySer.clubActivityApp(clubactivity,studentId));
-        }catch (Exception e){
+        }catch (CoException e){
+            return ResultUtils.error(e.getCode(),e.getMsg());
+        } catch (ParseException e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
@@ -118,21 +125,18 @@ public class ClubActivityCon {
         try {
             return ResultUtils.success(clubActivitySer.selActivity());
         } catch (Exception e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
 
     @ApiOperation(value = "写留言")
     @PostMapping("addContent")
-    public ResultVO addContent (Integer studentId,String content,Integer actId) {
+    public ResultVO addContent (Integer id,String content) {
         try {
-            Clubmessage clubmessage = new Clubmessage();
-            clubmessage.setStudentId(studentId);
-            clubmessage.setContent(content);
-            clubmessage.setClubActivityId(actId);
-            clubmessage.setContentStatus(true);
-            return ResultUtils.success(clubActivitySer.addConOne(clubmessage));
+            return ResultUtils.success(clubActivitySer.addConOne(id,content));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
@@ -143,6 +147,7 @@ public class ClubActivityCon {
         try {
             return ResultUtils.success(clubActivitySer.selMyActivity(studentId));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }

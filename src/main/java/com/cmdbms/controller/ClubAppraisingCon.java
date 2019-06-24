@@ -51,9 +51,9 @@ public class ClubAppraisingCon {
      */
     @ApiOperation(value = "社团成员评优")
     @PostMapping("/clubNumberPing")
-    public ResultVO clubNumberPing (Integer studentId,Integer appraisiontId) {
+    public ResultVO clubNumberPing (Integer id,Integer appraisiontId) {
         try {
-            return ResultUtils.success(clubAppraisingSer.clubNumberPing(studentId,appraisiontId));
+            return ResultUtils.success(clubAppraisingSer.clubNumberPing(id,appraisiontId));
         }catch (Exception e){
             return ResultUtils.error(-1,"失败");
         }
@@ -65,6 +65,7 @@ public class ClubAppraisingCon {
         try {
             return ResultUtils.success(clubAppraisingSer.clubNumberPingList());
         }catch (Exception e){
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }

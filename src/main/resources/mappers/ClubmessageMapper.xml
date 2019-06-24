@@ -67,4 +67,10 @@
     from t_club_message
     where studentId = #{studentId,jdbcType=INTEGER}
   </select>
+  <update id="addConOne" >
+
+    update t_club_message
+    set  content = #{content,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

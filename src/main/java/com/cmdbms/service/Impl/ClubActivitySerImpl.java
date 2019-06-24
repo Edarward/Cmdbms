@@ -1,5 +1,6 @@
 package com.cmdbms.service.Impl;
 
+import com.cmdbms.exception.CoException;
 import com.cmdbms.mapper.ClubactivityMapper;
 import com.cmdbms.mapper.ClubmanagerMapper;
 import com.cmdbms.mapper.ClubmessageMapper;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.cmdbms.enums.ExceptionCodeEnums.NO_ACCESS;
 
 @Service
 public class ClubActivitySerImpl implements ClubActivitySer {
@@ -141,12 +144,12 @@ public class ClubActivitySerImpl implements ClubActivitySer {
     }
 
     @Override
-    public int clubActivityApp(Clubactivity clubactivity,Integer studentId) {
+    public int clubActivityApp(Clubactivity clubactivity,Integer studentId) throws CoException{
         Clubmanager clubmanager = clubmanagerMapper.selectByPrimaryKey(clubactivity.getClubId());
         if (clubmanager.getStudentId().equals(studentId)) {
             return clubactivityMapper.insert(clubactivity);
         } else {
-            return 1;
+            throw new CoException(NO_ACCESS);
         }
     }
 
@@ -160,48 +163,57 @@ public class ClubActivitySerImpl implements ClubActivitySer {
             //社团名称
             Clubmanager clubmanager = clubmanagerMapper.selectByPrimaryKey(clubactivity.getClubId());
             resultMap.put("clubName",clubmanager.getName());
-            resultMap.put("actDescription",clubmanager.getDeclarationTime());
+            resultMap.put("actDescription",clubactivity.getActDescription());
             resultMap.put("actLocation",clubactivity.getActLocation());
             resultMap.put("actStartTime",DateFormatUtil.DateFormat(clubactivity.getActStartTime().toString()));
             resultMap.put("actStopTime",DateFormatUtil.DateFormat(clubactivity.getActStopTime().toString()));
-            resultList.add(resultList);
+            resultList.add(resultMap);
         }
         return resultList;
     }
 
     @Override
-    public int addConOne(Clubmessage clubmessage) {
-        return clubmessageMapper.insert(clubmessage);
+    @Transactional(rollbackFor = Exception.class)
+    public int addConOne(Integer id,String content) {
+        return clubmessageMapper.addConOne(id, content);
     }
 
     @Override
     public List<Object> selMyActivity(Integer studentId) throws ParseException {
         List<Object> resultList = new ArrayList<>();
         List<Clubmessage> clubmessageList = clubmessageMapper.selClubByStuId(studentId);
-        List<Clubactivity> clubactivityList = clubactivityMapper.selectAll();
         for (Clubmessage Clubmessage  : clubmessageList) {
             Integer actId = Clubmessage.getClubActivityId();
             Map<String,Object> resultMap =  new HashMap<>();
+            resultMap.put("id",Clubmessage.getId());
             resultMap.put("actId",actId);
             //社团名称
             Clubmanager clubmanager = clubmanagerMapper.selectByPrimaryKey(actId);
             resultMap.put("clubName",clubmanager.getName());
-            resultMap.put("actDescription",clubmanager.getDeclarationTime());
             //活动信息
             Clubactivity clubactivity = clubactivityMapper.selectByPrimaryKey(actId);
+            resultMap.put("actDescription",clubactivity.getActDescription());
             resultMap.put("actLocation",clubactivity.getActLocation());
             resultMap.put("actStartTime",DateFormatUtil.DateFormat(clubactivity.getActStartTime().toString()));
             resultMap.put("actStopTime",DateFormatUtil.DateFormat(clubactivity.getActStopTime().toString()));
-            resultList.add(resultList);
+            if (Clubmessage.getContent() == null) {
+                resultMap.put("context","请留言");
+            } else {
+                resultMap.put("context",Clubmessage.getContent());
+            }
+
+            resultList.add(resultMap);
         }
         return resultList;
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int activityApp(Integer studentId,Integer actId) {
         Clubmessage clubmessage = new Clubmessage();
         clubmessage.setStudentId(studentId);
         clubmessage.setClubActivityId(actId);
+        clubmessage.setContentStatus(true);
         return clubmessageMapper.insert(clubmessage);
     }
 

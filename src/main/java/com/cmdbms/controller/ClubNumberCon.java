@@ -79,10 +79,11 @@ public class ClubNumberCon {
 
     @ApiOperation(value = "成员申请审核—入社(退社)审核")
     @PostMapping("auditingList")
-    public ResultVO auditingList (Integer appState,Integer Id) {
+    public ResultVO auditingList (Integer appState,Integer id) {
         try {
-            return ResultUtils.success(clubNumberSer.auditing(appState,Id));
+            return ResultUtils.success(clubNumberSer.auditing(appState,id));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
@@ -91,11 +92,12 @@ public class ClubNumberCon {
      * 信息门户
      */
     @ApiOperation(value = "个人信息查询")
-    @PostMapping("selClubPsoNumber")
+    @GetMapping("selClubPsoNumber")
     public ResultVO auditingList (Integer studentId) {
         try {
             return ResultUtils.success(clubNumberSer.auditingList(studentId));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
@@ -106,16 +108,18 @@ public class ClubNumberCon {
         try {
             return ResultUtils.success(clubNumberSer.joinApp(studentId,clubId));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
 
-    @ApiOperation(value = "成员入社申请")
+    @ApiOperation(value = "成员退社申请")
     @PostMapping("exitApp")
-    public ResultVO exitApp (Integer studentId,Integer clubId) {
+    public ResultVO exitApp (Integer studentId,Integer id) {
         try {
-            return ResultUtils.success(clubNumberSer.exitApp(studentId,clubId));
+            return ResultUtils.success(clubNumberSer.exitApp(studentId,id));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResultUtils.error(-1,"失败");
         }
     }
